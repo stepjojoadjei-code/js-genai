@@ -38,8 +38,8 @@
   },
   "scripts": {
     "prepare": "npm run build-prod",
-    "build": "rollup -c && api-extractor run --local --verbose && api-extractor run -c api-extractor.node.json --local --verbose&& api-extractor run -c api-extractor.web.json --local --verbose",
-    "build-prod": "rollup -c && api-extractor run --verbose && api-extractor run -c api-extractor.node.json --verbose && api-extractor run -c api-extractor.web.json --verbose",
+    "build": "rollup -c && api-extractor run --local --verbose && api-extractor run -c api-extractor.node.json --local --verbose&& api-extractor run -c api-extractor.web.json --local --verbose && node scripts/ignore_missing_mcp_dep.js",
+    "build-prod": "rollup -c && api-extractor run --verbose && api-extractor run -c api-extractor.node.json --verbose && api-extractor run -c api-extractor.web.json --verbose && node scripts/ignore_missing_mcp_dep.js",
     "unit-test": "tsc && jasmine dist/test/unit/**/*_test.js dist/test/unit/*_test.js",
     "system-test": "tsc && jasmine dist/test/system/**/*_test.js",
     "test-server-tests": "tsc && GOOGLE_CLOUD_PROJECT=googcloudproj GOOGLE_CLOUD_LOCATION=googcloudloc jasmine dist/test/system/node/*_test.js !dist/test/system/node/live_test.js -- --test-server",
