@@ -1977,11 +1977,8 @@ export type PartUnion = Part | string;
 
 // @public
 export enum PersonGeneration {
-    // (undocumented)
     ALLOW_ADULT = "ALLOW_ADULT",
-    // (undocumented)
     ALLOW_ALL = "ALLOW_ALL",
-    // (undocumented)
     DONT_ALLOW = "DONT_ALLOW"
 }
 

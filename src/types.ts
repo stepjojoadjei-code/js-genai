@@ -542,8 +542,17 @@ export enum SafetyFilterLevel {
 
 /** Enum that controls the generation of people. */
 export enum PersonGeneration {
+  /**
+   * Block generation of images of people.
+   */
   DONT_ALLOW = 'DONT_ALLOW',
+  /**
+   * Generate images of adults, but not children.
+   */
   ALLOW_ADULT = 'ALLOW_ADULT',
+  /**
+   * Generate images that include adults and children.
+   */
   ALLOW_ALL = 'ALLOW_ALL',
 }
 
@@ -2416,8 +2425,9 @@ export declare interface GenerateImagesConfig {
   /** Number of images to generate.
    */
   numberOfImages?: number;
-  /** Aspect ratio of the generated images.
-   */
+  /** Aspect ratio of the generated images. Supported values are
+      "1:1", "3:4", "4:3", "9:16", and "16:9".
+       */
   aspectRatio?: string;
   /** Controls how much the model adheres to the text prompt. Large
       values increase output and prompt alignment, but may compromise image
@@ -2587,8 +2597,9 @@ export declare interface EditImageConfig {
   /** Number of images to generate.
    */
   numberOfImages?: number;
-  /** Aspect ratio of the generated images.
-   */
+  /** Aspect ratio of the generated images. Supported values are
+      "1:1", "3:4", "4:3", "9:16", and "16:9".
+       */
   aspectRatio?: string;
   /** Controls how much the model adheres to the text prompt. Large
       values increase output and prompt alignment, but may compromise image
