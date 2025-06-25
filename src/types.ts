@@ -602,6 +602,20 @@ export enum EditMode {
   EDIT_MODE_PRODUCT_IMAGE = 'EDIT_MODE_PRODUCT_IMAGE',
 }
 
+/** Enum that controls the compression quality of the generated videos. */
+export enum VideoCompressionQuality {
+  /**
+   * Optimized video compression quality. This will produce videos
+      with a compressed, smaller file size.
+   */
+  OPTIMIZED = 'OPTIMIZED',
+  /**
+   * Lossless video compression quality. This will produce videos
+      with a larger file size.
+   */
+  LOSSLESS = 'LOSSLESS',
+}
+
 /** State for the lifecycle of a File. */
 export enum FileState {
   STATE_UNSPECIFIED = 'STATE_UNSPECIFIED',
@@ -2990,6 +3004,8 @@ export declare interface GenerateVideosConfig {
   generateAudio?: boolean;
   /** Image to use as the last frame of generated videos. Only supported for image to video use cases. */
   lastFrame?: Image;
+  /** Compression quality of the generated videos. */
+  compressionQuality?: VideoCompressionQuality;
 }
 
 /** Class that represents the parameters for generating videos. */

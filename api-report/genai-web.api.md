@@ -1000,6 +1000,7 @@ export class GenerateImagesResponse {
 export interface GenerateVideosConfig {
     abortSignal?: AbortSignal;
     aspectRatio?: string;
+    compressionQuality?: VideoCompressionQuality;
     durationSeconds?: number;
     enhancePrompt?: boolean;
     fps?: number;
@@ -2677,6 +2678,12 @@ export interface Video {
     mimeType?: string;
     uri?: string;
     videoBytes?: string;
+}
+
+// @public
+export enum VideoCompressionQuality {
+    LOSSLESS = "LOSSLESS",
+    OPTIMIZED = "OPTIMIZED"
 }
 
 // @public
