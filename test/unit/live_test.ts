@@ -241,13 +241,12 @@ describe('live', () => {
     const live = new Live(apiClient, new FakeAuth(), websocketFactory);
 
     let capturedCallbacks: WebSocketCallbacks | undefined;
-    const websocketFactorySpy = spyOn(
-      websocketFactory,
-      'create',
-    ).and.callFake((url, headers, callbacks) => {
-      capturedCallbacks = callbacks;
-      return new FakeWebSocket(url, headers, callbacks);
-    });
+    const websocketFactorySpy = spyOn(websocketFactory, 'create').and.callFake(
+      (url, headers, callbacks) => {
+        capturedCallbacks = callbacks;
+        return new FakeWebSocket(url, headers, callbacks);
+      },
+    );
 
     const onMessageSpy = jasmine.createSpy('onmessage');
     await live.connect({
