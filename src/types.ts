@@ -840,7 +840,8 @@ export declare interface VideoMetadata {
 export declare interface Blob {
   /** Optional. Display name of the blob. Used to provide a label or filename to distinguish blobs. This field is not currently used in the Gemini GenerateContent calls. */
   displayName?: string;
-  /** Required. Raw bytes. */
+  /** Required. Raw bytes.
+   * @remarks Encoded as base64 string. */
   data?: string;
   /** Required. The IANA standard MIME type of the source data. */
   mimeType?: string;
@@ -912,7 +913,8 @@ export declare interface Part {
   inlineData?: Blob;
   /** Optional. URI based data. */
   fileData?: FileData;
-  /** An opaque signature for the thought so it can be reused in subsequent requests. */
+  /** An opaque signature for the thought so it can be reused in subsequent requests.
+   * @remarks Encoded as base64 string. */
   thoughtSignature?: string;
   /** Optional. Result of executing the [ExecutableCode]. */
   codeExecutionResult?: CodeExecutionResult;
@@ -1897,7 +1899,8 @@ export declare interface RetrievalMetadata {
 export declare interface SearchEntryPoint {
   /** Optional. Web content snippet that can be embedded in a web page or an app webview. */
   renderedContent?: string;
-  /** Optional. Base64 encoded JSON representing array of tuple. */
+  /** Optional. Base64 encoded JSON representing array of tuple.
+   * @remarks Encoded as base64 string. */
   sdkBlob?: string;
 }
 
@@ -2505,7 +2508,8 @@ export declare interface Image {
   gcsUri?: string;
   /** The image bytes data. ``Image`` can contain a value for this field
       or the ``gcs_uri`` field but not both.
-       */
+      
+  * @remarks Encoded as base64 string. */
   imageBytes?: string;
   /** The MIME type of the image. */
   mimeType?: string;
@@ -2947,7 +2951,8 @@ export declare interface TokensInfo {
   role?: string;
   /** A list of token ids from the input. */
   tokenIds?: string[];
-  /** A list of tokens from the input. */
+  /** A list of tokens from the input.
+   * @remarks Encoded as base64 string. */
   tokens?: string[];
 }
 
@@ -2961,7 +2966,8 @@ export class ComputeTokensResponse {
 export declare interface Video {
   /** Path to another storage. */
   uri?: string;
-  /** Video bytes. */
+  /** Video bytes.
+   * @remarks Encoded as base64 string. */
   videoBytes?: string;
   /** Video encoding, for example "video/mp4". */
   mimeType?: string;
@@ -5022,7 +5028,8 @@ export declare interface LiveMusicSourceMetadata {
 
 /** Representation of an audio chunk. */
 export declare interface AudioChunk {
-  /** Raw byets of audio data. */
+  /** Raw bytes of audio data.
+   * @remarks Encoded as base64 string. */
   data?: string;
   /** MIME type of the audio chunk. */
   mimeType?: string;
