@@ -1923,6 +1923,7 @@ export interface LiveServerSessionResumptionUpdate {
 
 // @public (undocumented)
 export interface LiveServerSetupComplete {
+    sessionId?: string;
 }
 
 // @public

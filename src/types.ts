@@ -4456,7 +4456,10 @@ export class SubjectReferenceImage {
 }
 
 export /** Sent in response to a `LiveGenerateContentSetup` message from the client. */
-declare interface LiveServerSetupComplete {}
+declare interface LiveServerSetupComplete {
+  /** The session id of the live session. */
+  sessionId?: string;
+}
 
 /** Audio transcription in Server Conent. */
 export declare interface Transcription {
