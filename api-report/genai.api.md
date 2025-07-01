@@ -161,6 +161,7 @@ export class Batches extends BaseModule {
     cancel(params: types.CancelBatchJobParameters): Promise<void>;
     // Warning: (ae-forgotten-export) The symbol "types" needs to be exported by the entry point index.d.ts
     create: (params: types.CreateBatchJobParameters) => Promise<types.BatchJob>;
+    delete(params: types.DeleteBatchJobParameters): Promise<types.DeleteResourceJob>;
     get(params: types.GetBatchJobParameters): Promise<types.BatchJob>;
     list: (params?: types.ListBatchJobsParameters) => Promise<Pager<types.BatchJob>>;
 }
@@ -594,6 +595,18 @@ export interface DatasetStats {
 }
 
 // @public
+export interface DeleteBatchJobConfig {
+    abortSignal?: AbortSignal;
+    httpOptions?: HttpOptions;
+}
+
+// @public
+export interface DeleteBatchJobParameters {
+    config?: DeleteBatchJobConfig;
+    name: string;
+}
+
+// @public
 export interface DeleteCachedContentConfig {
     abortSignal?: AbortSignal;
     httpOptions?: HttpOptions;
@@ -640,6 +653,16 @@ export interface DeleteModelParameters {
 
 // @public (undocumented)
 export class DeleteModelResponse {
+}
+
+// @public
+export interface DeleteResourceJob {
+    // (undocumented)
+    done?: boolean;
+    // (undocumented)
+    error?: JobError;
+    // (undocumented)
+    name?: string;
 }
 
 // @public

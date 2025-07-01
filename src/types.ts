@@ -4127,6 +4127,37 @@ export class ListBatchJobsResponse {
   batchJobs?: BatchJob[];
 }
 
+/** Optional parameters for models.get method. */
+export declare interface DeleteBatchJobConfig {
+  /** Used to override HTTP request options. */
+  httpOptions?: HttpOptions;
+  /** Abort signal which can be used to cancel the request.
+
+  NOTE: AbortSignal is a client-only operation. Using it to cancel an
+  operation will not cancel the request in the service. You will still
+  be charged usage for any applicable operations.
+       */
+  abortSignal?: AbortSignal;
+}
+
+/** Config for batches.delete parameters. */
+export declare interface DeleteBatchJobParameters {
+  /** A fully-qualified BatchJob resource name or ID.
+    Example: "projects/.../locations/.../batchPredictionJobs/456"
+    or "456" when project and location are initialized in the client.
+     */
+  name: string;
+  /** Optional parameters for the request. */
+  config?: DeleteBatchJobConfig;
+}
+
+/** The return value of delete operation. */
+export declare interface DeleteResourceJob {
+  name?: string;
+  done?: boolean;
+  error?: JobError;
+}
+
 export declare interface GetOperationConfig {
   /** Used to override HTTP request options. */
   httpOptions?: HttpOptions;

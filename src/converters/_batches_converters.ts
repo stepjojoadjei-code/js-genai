@@ -1565,6 +1565,29 @@ export function listBatchJobsParametersToMldev(
   return toObject;
 }
 
+export function deleteBatchJobParametersToMldev(
+  apiClient: ApiClient,
+  fromObject: types.DeleteBatchJobParameters,
+): Record<string, unknown> {
+  const toObject: Record<string, unknown> = {};
+
+  const fromName = common.getValueByPath(fromObject, ['name']);
+  if (fromName != null) {
+    common.setValueByPath(
+      toObject,
+      ['_url', 'name'],
+      t.tBatchJobName(apiClient, fromName),
+    );
+  }
+
+  const fromConfig = common.getValueByPath(fromObject, ['config']);
+  if (fromConfig != null) {
+    common.setValueByPath(toObject, ['config'], fromConfig);
+  }
+
+  return toObject;
+}
+
 export function videoMetadataToVertex(
   fromObject: types.VideoMetadata,
 ): Record<string, unknown> {
@@ -3113,6 +3136,29 @@ export function listBatchJobsParametersToVertex(
   return toObject;
 }
 
+export function deleteBatchJobParametersToVertex(
+  apiClient: ApiClient,
+  fromObject: types.DeleteBatchJobParameters,
+): Record<string, unknown> {
+  const toObject: Record<string, unknown> = {};
+
+  const fromName = common.getValueByPath(fromObject, ['name']);
+  if (fromName != null) {
+    common.setValueByPath(
+      toObject,
+      ['_url', 'name'],
+      t.tBatchJobName(apiClient, fromName),
+    );
+  }
+
+  const fromConfig = common.getValueByPath(fromObject, ['config']);
+  if (fromConfig != null) {
+    common.setValueByPath(toObject, ['config'], fromConfig);
+  }
+
+  return toObject;
+}
+
 export function jobErrorFromMldev(): Record<string, unknown> {
   const toObject: Record<string, unknown> = {};
 
@@ -4483,6 +4529,29 @@ export function listBatchJobsResponseFromMldev(
       });
     }
     common.setValueByPath(toObject, ['batchJobs'], transformedList);
+  }
+
+  return toObject;
+}
+
+export function deleteResourceJobFromMldev(
+  fromObject: types.DeleteResourceJob,
+): Record<string, unknown> {
+  const toObject: Record<string, unknown> = {};
+
+  const fromName = common.getValueByPath(fromObject, ['name']);
+  if (fromName != null) {
+    common.setValueByPath(toObject, ['name'], fromName);
+  }
+
+  const fromDone = common.getValueByPath(fromObject, ['done']);
+  if (fromDone != null) {
+    common.setValueByPath(toObject, ['done'], fromDone);
+  }
+
+  const fromError = common.getValueByPath(fromObject, ['error']);
+  if (fromError != null) {
+    common.setValueByPath(toObject, ['error'], jobErrorFromMldev());
   }
 
   return toObject;
@@ -5913,6 +5982,29 @@ export function listBatchJobsResponseFromVertex(
       });
     }
     common.setValueByPath(toObject, ['batchJobs'], transformedList);
+  }
+
+  return toObject;
+}
+
+export function deleteResourceJobFromVertex(
+  fromObject: types.DeleteResourceJob,
+): Record<string, unknown> {
+  const toObject: Record<string, unknown> = {};
+
+  const fromName = common.getValueByPath(fromObject, ['name']);
+  if (fromName != null) {
+    common.setValueByPath(toObject, ['name'], fromName);
+  }
+
+  const fromDone = common.getValueByPath(fromObject, ['done']);
+  if (fromDone != null) {
+    common.setValueByPath(toObject, ['done'], fromDone);
+  }
+
+  const fromError = common.getValueByPath(fromObject, ['error']);
+  if (fromError != null) {
+    common.setValueByPath(toObject, ['error'], jobErrorFromVertex(fromError));
   }
 
   return toObject;
