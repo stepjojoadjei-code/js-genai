@@ -35,7 +35,7 @@ async function generateContentFromMLDev() {
     contents: 'List 3 popular cookie recipes.',
     config: {
       responseMimeType: 'application/json',
-      responseSchema: schemaToBeProcessed,
+      responseJsonSchema: schemaToBeProcessed,
     },
   });
 
