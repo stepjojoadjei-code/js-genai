@@ -792,7 +792,8 @@ describe('ApiClient', () => {
           ),
         ),
       );
-      const timeoutSpy = spyOn(global, 'setTimeout');
+      const mockTimer = jasmine.createSpyObj('timeout', ['unref']);
+      const timeoutSpy = spyOn(global, 'setTimeout').and.returnValue(mockTimer);
 
       await client.request({
         path: 'test-path',
@@ -820,6 +821,7 @@ describe('ApiClient', () => {
       expect(fetchArgs[0]).toEqual(
         'https://custom-request-base-url.googleapis.com/v1alpha/test-path?param1=value1&param2=value2',
       );
+      expect(mockTimer.unref).toHaveBeenCalled();
     });
     it('should set bearer token for vertexai', async () => {
       const client = new ApiClient({

@@ -446,7 +446,19 @@ export class ApiClient {
       const abortController = new AbortController();
       const signal = abortController.signal;
       if (httpOptions.timeout && httpOptions?.timeout > 0) {
-        setTimeout(() => abortController.abort(), httpOptions.timeout);
+        const timeoutHandle = setTimeout(
+          () => abortController.abort(),
+          httpOptions.timeout,
+        );
+        if (
+          timeoutHandle &&
+          typeof (timeoutHandle as unknown as NodeJS.Timeout).unref ===
+            'function'
+        ) {
+          // call unref to prevent nodejs process from hanging, see
+          // https://nodejs.org/api/timers.html#timeoutunref
+          timeoutHandle.unref();
+        }
       }
       if (abortSignal) {
         abortSignal.addEventListener('abort', () => {
