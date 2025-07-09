@@ -54,7 +54,10 @@ describe('MCP related client Tests', () => {
 
   describe('generateContent', () => {
     it('ML Dev one CallableTool with MCPClients and conduct automated function calling', async () => {
-      const ai = new GoogleGenAI({vertexai: false, apiKey: GOOGLE_API_KEY});
+      const ai = new GoogleGenAI({
+        vertexai: false,
+        apiKey: GOOGLE_API_KEY,
+      });
       const mcpCallableTool = mcpToTool(
         await spinUpPrintingServer(),
         await spinUpBeepingServer(),
@@ -78,7 +81,10 @@ describe('MCP related client Tests', () => {
       expect(consoleBeepSpy).toHaveBeenCalledWith('\u0007');
     });
     it('ML Dev Multiple CallableTool with MCPClients and conduct automated function calling', async () => {
-      const ai = new GoogleGenAI({vertexai: false, apiKey: GOOGLE_API_KEY});
+      const ai = new GoogleGenAI({
+        vertexai: false,
+        apiKey: GOOGLE_API_KEY,
+      });
       const callableTool1 = mcpToTool(await spinUpPrintingServer());
       const callableTool2 = mcpToTool(await spinUpBeepingServer());
       const consoleLogSpy = spyOn(console, 'log').and.callThrough();
