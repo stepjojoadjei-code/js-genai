@@ -596,6 +596,9 @@ export class ApiClient {
     url: string,
     requestInit: RequestInit,
   ): Promise<Response> {
+    if (this.hasEphemeralToken(requestInit.headers)) {
+      console.warn('Ephemeral tokens are only supported by the live API.');
+    }
     return fetch(url, requestInit).catch((e) => {
       throw new Error(`exception ${e} sending request`);
     });
@@ -612,6 +615,17 @@ export class ApiClient {
     headers[CONTENT_TYPE_HEADER] = 'application/json';
 
     return headers;
+  }
+
+  private hasEphemeralToken(headersInit: HeadersInit | undefined): boolean {
+    if (!headersInit) {
+      return false;
+    }
+    const headers = new Headers(headersInit);
+    const authHeaderValue = headers.get('Authorization');
+    return (
+      !!authHeaderValue && authHeaderValue.startsWith('Token auth_tokens/')
+    );
   }
 
   private async getHeadersInternal(

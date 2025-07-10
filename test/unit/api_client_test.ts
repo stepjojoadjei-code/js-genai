@@ -858,6 +858,38 @@ describe('ApiClient', () => {
       expect(headers.get('User-Agent')).toContain('google-genai-sdk/');
       expect(headers.get('x-goog-api-client')).toContain('google-genai-sdk/');
     });
+    it('should log warn message for non live call with ephemeral token', async () => {
+      const consoleWarnSpy: jasmine.Spy = spyOn(console, 'warn').and.stub();
+      const client = new ApiClient({
+        auth: new FakeAuth('auth_tokens/ephemeral_key'),
+        apiKey: 'auth_tokens/ephemeral_key',
+        vertexai: false,
+        uploader: new CrossUploader(),
+        downloader: new CrossDownloader(),
+      });
+      const queryParams: Record<string, string> = {
+        'param1': 'value1',
+        'param2': 'value2',
+      };
+      spyOn(global, 'fetch').and.returnValue(
+        Promise.resolve(
+          new Response(
+            JSON.stringify(mockGenerateContentResponse),
+            fetchOkOptions,
+          ),
+        ),
+      );
+
+      await client.request({
+        path: 'test-path',
+        queryParams: queryParams,
+        httpMethod: 'GET',
+      });
+
+      expect(consoleWarnSpy).toHaveBeenCalledWith(
+        'Ephemeral tokens are only supported by the live API.',
+      );
+    });
     it('should merge request http options and client http options', async () => {
       const client = new ApiClient({
         auth: new FakeAuth('test-api-key'),
