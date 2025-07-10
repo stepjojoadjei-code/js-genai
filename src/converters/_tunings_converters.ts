@@ -118,26 +118,6 @@ export function tuningDatasetToMldev(
   return toObject;
 }
 
-export function tuningValidationDatasetToMldev(
-  fromObject: types.TuningValidationDataset,
-): Record<string, unknown> {
-  const toObject: Record<string, unknown> = {};
-
-  if (common.getValueByPath(fromObject, ['gcsUri']) !== undefined) {
-    throw new Error('gcsUri parameter is not supported in Gemini API.');
-  }
-
-  if (
-    common.getValueByPath(fromObject, ['vertexDatasetResource']) !== undefined
-  ) {
-    throw new Error(
-      'vertexDatasetResource parameter is not supported in Gemini API.',
-    );
-  }
-
-  return toObject;
-}
-
 export function createTuningJobConfigToMldev(
   fromObject: types.CreateTuningJobConfig,
   parentObject: Record<string, unknown>,
