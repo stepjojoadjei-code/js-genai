@@ -6,7 +6,6 @@
 
 import * as fs from 'fs';
 import * as path from 'path';
-import {fileURLToPath} from 'url';
 
 import {GoogleGenAIOptions} from '../../../src/client.js';
 import {Session} from '../../../src/live.js';
@@ -20,23 +19,10 @@ const GOOGLE_CLOUD_LOCATION = process.env.GOOGLE_CLOUD_LOCATION;
 const VERTEX_MODEL = 'gemini-2.0-flash-live-preview-04-09';
 const MLDEV_MODEL = 'gemini-live-2.5-flash-preview';
 
-const __filename = fileURLToPath(import.meta.url);
-const __dirname = path.dirname(__filename);
-
 function loadFileAsBase64(filename: string): Promise<string> {
   return new Promise((resolve, reject) => {
-    // Construct the full path to the file, the test file is in dist/, while the test asset is in test/
-    const filePath = path.join(
-      __dirname,
-      '..',
-      '..',
-      '..',
-      '..',
-      'test',
-      'system',
-      'node',
-      filename,
-    );
+    // Construct the full path to the file
+    const filePath = path.join(__dirname, filename);
 
     fs.readFile(filePath, (err, data) => {
       if (err) {
@@ -553,7 +539,7 @@ describe('live', () => {
   });
 
   it('MLDev should respond to realtime media-audio input', async () => {
-    const audioBase64 = await loadFileAsBase64('hello_are_you_there.pcm');
+    const audioBase64 = await loadFileAsBase64('hello_are_you_there.wav');
 
     const clientOpts: GoogleGenAIOptions = {
       vertexai: false,
@@ -580,7 +566,7 @@ describe('live', () => {
   });
 
   it('MLDev should reply to realtime audio input', async () => {
-    const audioBase64 = await loadFileAsBase64('hello_are_you_there.pcm');
+    const audioBase64 = await loadFileAsBase64('hello_are_you_there.wav');
     const clientOpts: GoogleGenAIOptions = {
       vertexai: false,
       apiKey: GOOGLE_API_KEY,
@@ -628,7 +614,7 @@ describe('live', () => {
   });
 
   it('MLDev handle activity start and end', async () => {
-    const audioBase64 = await loadFileAsBase64('hello_are_you_there.pcm');
+    const audioBase64 = await loadFileAsBase64('hello_are_you_there.wav');
 
     const clientOpts: GoogleGenAIOptions = {
       vertexai: false,
