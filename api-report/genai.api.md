@@ -719,6 +719,7 @@ export enum DynamicRetrievalConfigMode {
 // @public
 export interface EditImageConfig {
     abortSignal?: AbortSignal;
+    addWatermark?: boolean;
     aspectRatio?: string;
     baseSteps?: number;
     editMode?: EditMode;

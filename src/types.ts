@@ -2782,6 +2782,9 @@ export declare interface EditImageConfig {
       only).
        */
   outputCompressionQuality?: number;
+  /** Whether to add a watermark to the generated images.
+   */
+  addWatermark?: boolean;
   /** Describes the editing mode for the request. */
   editMode?: EditMode;
   /** The number of sampling steps. A higher value has better image

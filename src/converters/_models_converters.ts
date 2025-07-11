@@ -3356,6 +3356,15 @@ export function editImageConfigToVertex(
     );
   }
 
+  const fromAddWatermark = common.getValueByPath(fromObject, ['addWatermark']);
+  if (parentObject !== undefined && fromAddWatermark != null) {
+    common.setValueByPath(
+      parentObject,
+      ['parameters', 'addWatermark'],
+      fromAddWatermark,
+    );
+  }
+
   const fromEditMode = common.getValueByPath(fromObject, ['editMode']);
   if (parentObject !== undefined && fromEditMode != null) {
     common.setValueByPath(
