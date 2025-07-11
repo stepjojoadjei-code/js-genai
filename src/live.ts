@@ -131,6 +131,14 @@ export class Live {
      ```
     */
   async connect(params: types.LiveConnectParameters): Promise<Session> {
+    // TODO: b/404946746 - Support per request HTTP options.
+    if (params.config && params.config.httpOptions) {
+      throw new Error(
+        'The Live module does not support httpOptions at request-level in' +
+          ' LiveConnectConfig yet. Please use the client-level httpOptions' +
+          ' configuration instead.',
+      );
+    }
     const websocketBaseUrl = this.apiClient.getWebsocketBaseUrl();
     const apiVersion = this.apiClient.getApiVersion();
     let url: string;
