@@ -1230,6 +1230,10 @@ export function generateImagesConfigToMldev(
     throw new Error('addWatermark parameter is not supported in Gemini API.');
   }
 
+  if (common.getValueByPath(fromObject, ['imageSize']) !== undefined) {
+    throw new Error('imageSize parameter is not supported in Gemini API.');
+  }
+
   if (common.getValueByPath(fromObject, ['enhancePrompt']) !== undefined) {
     throw new Error('enhancePrompt parameter is not supported in Gemini API.');
   }
@@ -2986,6 +2990,15 @@ export function generateImagesConfigToVertex(
       parentObject,
       ['parameters', 'addWatermark'],
       fromAddWatermark,
+    );
+  }
+
+  const fromImageSize = common.getValueByPath(fromObject, ['imageSize']);
+  if (parentObject !== undefined && fromImageSize != null) {
+    common.setValueByPath(
+      parentObject,
+      ['parameters', 'sampleImageSize'],
+      fromImageSize,
     );
   }
 

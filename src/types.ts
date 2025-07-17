@@ -2617,6 +2617,10 @@ export declare interface GenerateImagesConfig {
   /** Whether to add a watermark to the generated images.
    */
   addWatermark?: boolean;
+  /** The size of the largest dimension of the generated image.
+      Supported sizes are 1K and 2K (not supported for Imagen 3 models).
+       */
+  imageSize?: string;
   /** Whether to use the prompt rewriting logic.
    */
   enhancePrompt?: boolean;

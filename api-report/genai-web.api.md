@@ -1116,6 +1116,7 @@ export interface GenerateImagesConfig {
     enhancePrompt?: boolean;
     guidanceScale?: number;
     httpOptions?: HttpOptions;
+    imageSize?: string;
     includeRaiReason?: boolean;
     includeSafetyAttributes?: boolean;
     language?: ImagePromptLanguage;
