@@ -8,7 +8,7 @@ outdated or legacy code. You can copy and paste the instructions from this file
 into your development environment to provide the model with the necessary
 context.
 
-> **Note: This is an Alpha (v0.1) Release** This is an early and experimental
+> **Note: This is an Alpha (v0.2) Release** This is an early and experimental
 > collection of prompts. It's intended for testing and to gather feedback from
 > the community. Results are not guaranteed, and we expect frequent updates.
 
@@ -90,7 +90,7 @@ and SDKs.
 -   **Incorrect** `ai.models.getModel`
 -   **Incorrect** `ai.models['model_name']`
 -   **Incorrect** `generationConfig`
--   **Incorrect** `GoogleGenAIError`
+-   **Incorrect** `GoogleGenAIError` -> **Correct** `ApiError`
 -   **Incorrect** `GenerateContentResult` -> **Correct**
     `GenerateContentResponse`.
 -   **Incorrect** `GenerateContentRequest` -> **Correct**
@@ -101,15 +101,15 @@ and SDKs.
 The `@google/genai` library requires creating a `GoogleGenAI` instance for all
 API calls.
 
--   Always use `const ai = new GoogleGenAI()` to create an instance.
+-   Always use `const ai = new GoogleGenAI({})` to create an instance.
 -   Set the `GEMINI_API_KEY` environment variable, which will be picked up
     automatically in Node.js environments.
 
 ```javascript
 import { GoogleGenAI } from '@google/genai';
 
-// Uses the GEMINI_API_KEY environment variable
-const ai = new GoogleGenAI();
+// Uses the GEMINI_API_KEY environment variable if apiKey not specified
+const ai = new GoogleGenAI({}); 
 
 // Or pass the API key directly
 // const ai = new GoogleGenAI({apiKey: process.env.GEMINI_API_KEY});
@@ -118,7 +118,7 @@ const ai = new GoogleGenAI();
 ## Models
 
 -   By default, use the following models when using `@google/genai`:
-    -   **General Text & Multimodal Tasks:** `gemini-2.5`
+    -   **General Text & Multimodal Tasks:** `gemini-2.5-flash`
     -   **Coding and Complex Reasoning Tasks:** `gemini-2.5-pro`
     -   **Image Generation Tasks:** `imagen-3.0-generate-002`
     -   **Video Generation Tasks:** `veo-2.0-generate-001`
@@ -140,7 +140,7 @@ Here's how to generate a response from a text prompt.
 ```javascript
 import { GoogleGenAI } from '@google/genai';
 
-const ai = new GoogleGenAI(); // Assumes GEMINI_API_KEY is set
+const ai = new GoogleGenAI({}); // Assumes GEMINI_API_KEY is set
 
 async function run() {
   const response = await ai.models.generateContent({
@@ -157,13 +157,13 @@ run();
 Multimodal inputs are supported by passing file data in the `contents` array.
 
 ```javascript
-import { GoogleGenAI } from '@google/genai';
+import { GoogleGenAI, Part } from '@google/genai';
 import * as fs from 'fs';
 
-const ai = new GoogleGenAI();
+const ai = new GoogleGenAI({});
 
-// Converts local file information to a Part object.
-function fileToGenerativePart(path, mimeType) {
+// Converts local file information to a Part object.  
+function fileToGenerativePart(path, mimeType): Part {
   return {
     inlineData: {
       data: Buffer.from(fs.readFileSync(path)).toString("base64"),
@@ -185,22 +185,26 @@ async function run() {
 
 run();
 ```
+You can use this approach to pass a variety of data types (images, audio, video, pdf). For PDF, use `application/pdf` as `mimeType`.
 
 For larger files, use `ai.files.upload`:
 
 ```javascript
-import { GoogleGenAI } from '@google/genai';
-const ai = new GoogleGenAI();
+import { GoogleGenAI, createPartFromUri, createUserContent } from '@google/genai';
+const ai = new GoogleGenAI({});
 
 async function run() {
     const f = await ai.files.upload({
         file: 'path/to/sample.mp3',
-        mimeType: 'audio/mp3',
+        config:{mimeType: 'audio/mp3'},
     });
 
     const response = await ai.models.generateContent({
         model: 'gemini-2.5-flash',
-        contents: [f, "can you describe this audio?"]
+         contents: createUserContent([
+          createPartFromUri(f.uri, f.mimeType),
+          "Describe this audio clip"
+        ])
     });
 
     console.log(response.text);
@@ -268,7 +272,7 @@ Use system instructions to guide the model's behavior.
 ```javascript
 import { GoogleGenAI } from '@google/genai';
 
-const ai = new GoogleGenAI();
+const ai = new GoogleGenAI({});
 
 async function run() {
     const response = await ai.models.generateContent({
@@ -295,12 +299,12 @@ Avoid setting safety configurations unless explicitly requested by the user. If
 explicitly asked for by the user, here is a sample API:
 
 ```javascript
-import { GoogleGenAI, HarmCategory, HarmBlockThreshold } from '@google/genai';
+import { GoogleGenAI, HarmCategory, HarmBlockThreshold, Part } from '@google/genai';
 import * as fs from 'fs';
 
-const ai = new GoogleGenAI();
+const ai = new GoogleGenAI({});
 
-function fileToGenerativePart(path, mimeType) {
+function fileToGenerativePart(path, mimeType): Part {
   return {
     inlineData: {
       data: Buffer.from(fs.readFileSync(path)).toString("base64"),
@@ -334,7 +338,7 @@ It is possible to stream responses to reduce user perceived latency:
 
 ```javascript
 import { GoogleGenAI } from '@google/genai';
-const ai = new GoogleGenAI();
+const ai = new GoogleGenAI({});
 
 async function run() {
   const responseStream = await ai.models.generateContentStream({
@@ -358,15 +362,15 @@ history.
 ```javascript
 import { GoogleGenAI } from '@google/genai';
 
-const ai = new GoogleGenAI();
+const ai = new GoogleGenAI({});
 
 async function run() {
     const chat = ai.chats.create({model: "gemini-2.5-flash"});
 
-    let response = await chat.sendMessage("I have 2 dogs in my house.");
+    let response = await chat.sendMessage({message:"I have 2 dogs in my house."});
     console.log(response.text);
 
-    response = await chat.sendMessage("How many paws are in my house?");
+    response = await chat.sendMessage({message: "How many paws are in my house?"});
     console.log(response.text);
 
     const history = await chat.getHistory();
@@ -376,6 +380,19 @@ async function run() {
 }
 run();
 ```
+It is also possible to use streaming with Chat:
+
+```javascript
+    const chat = ai.chats.create({model: "gemini-2.5-flash"});
+    const stream = await chat.sendMessageStream({message:"I have 2 dogs in my house."});
+    for await (const chunk of stream) {
+      console.log(chunk.text);
+      console.log("_".repeat(80));
+    }
+```
+
+Note: ai.chats.create({model}) returns `Chat` under `@google/genai` which tracks the session. 
+
 
 ### Structured outputs
 
@@ -425,7 +442,7 @@ Type.OBJECT cannot be empty; it must contain other properties.
 ```javascript
 import { GoogleGenAI, Type } from "@google/genai";
 
-const ai = new GoogleGenAI({ apiKey: process.env.API_KEY });
+const ai = new GoogleGenAI({});
 const response = await ai.models.generateContent({
    model: "gemini-2.5-flash",
    contents: "List a few popular cookie recipes, and include the amounts of ingredients.",
@@ -484,7 +501,7 @@ information to answer a question or act on a request outside the model.
 
 ```javascript
 import {GoogleGenAI, FunctionDeclaration, Type} from '@google/genai';
-const ai = new GoogleGenAI({apiKey: process.env.API_KEY});
+const ai = new GoogleGenAI({});
 
 async function run() {
     const controlLightDeclaration = {
@@ -523,7 +540,7 @@ Here's how to generate images using the Imagen models.
 ```javascript
 import { GoogleGenAI } from "@google/genai";
 
-const ai = new GoogleGenAI({ apiKey: process.env.API_KEY });
+const ai = new GoogleGenAI({});
 
 async function run() {
     const response = await ai.models.generateImages({
@@ -543,6 +560,8 @@ async function run() {
 }
 run();
 ```
+
+Note: Do not include negativePrompts in config, it's not supported.
 
 ### Generate Videos
 
@@ -591,7 +610,7 @@ information from the web.
 ```javascript
 import { GoogleGenAI } from "@google/genai";
 
-const ai = new GoogleGenAI({ apiKey: process.env.API_KEY });
+const ai = new GoogleGenAI({});
 
 async function run() {
     const response = await ai.models.generateContent({
@@ -625,7 +644,7 @@ For instance, the following simple API call:
 
 ```javascript
 import { GoogleGenAI } from '@google/genai';
-const ai = new GoogleGenAI();
+const ai = new GoogleGenAI({});
 
 async function run() {
     const response = await ai.models.generateContent({
@@ -641,7 +660,7 @@ is effectively a shorthand for this more explicit structure:
 
 ```javascript
 import { GoogleGenAI } from '@google/genai';
-const ai = new GoogleGenAI();
+const ai = new GoogleGenAI({});
 
 async function run() {
     const response = await ai.models.generateContent({
@@ -655,11 +674,15 @@ async function run() {
 run();
 ```
 
+## API Errors
+`ApiError` from `@google/genai` extends from EcmaScript `Error` and has `message`, `name` fields in addition to `status` (HTTP Code). 
+
 ## Other APIs
 
 The list of APIs and capabilities above are not comprehensive. If users ask you
 to generate code for a capability not provided above, refer them to
 https://googleapis.github.io/js-genai/.
+
 
 ## Useful Links
 
