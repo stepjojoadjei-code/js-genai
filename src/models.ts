@@ -1575,8 +1575,9 @@ export class Models extends BaseModule {
 
       return response.then((apiResponse) => {
         const resp = converters.generateVideosOperationFromVertex(apiResponse);
-
-        return resp as types.GenerateVideosOperation;
+        const typedResp = new types.GenerateVideosOperation();
+        Object.assign(typedResp, resp);
+        return typedResp;
       });
     } else {
       const body = converters.generateVideosParametersToMldev(
@@ -1607,8 +1608,9 @@ export class Models extends BaseModule {
 
       return response.then((apiResponse) => {
         const resp = converters.generateVideosOperationFromMldev(apiResponse);
-
-        return resp as types.GenerateVideosOperation;
+        const typedResp = new types.GenerateVideosOperation();
+        Object.assign(typedResp, resp);
+        return typedResp;
       });
     }
   }

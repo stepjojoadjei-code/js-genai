@@ -7,6 +7,7 @@
 import type {Tool as McpTool} from '@modelcontextprotocol/sdk/types.js';
 
 import {ApiClient} from './_api_client.js';
+import * as baseTransformers from './_base_transformers.js';
 import * as types from './types.js';
 
 export function tModel(apiClient: ApiClient, model: string | unknown): string {
@@ -617,11 +618,7 @@ export function tTuningJobStatus(status: string | unknown): string {
 }
 
 export function tBytes(fromImageBytes: string | unknown): string {
-  if (typeof fromImageBytes !== 'string') {
-    throw new Error('fromImageBytes must be a string');
-  }
-  // TODO(b/389133914): Remove dummy bytes converter.
-  return fromImageBytes;
+  return baseTransformers.tBytes(fromImageBytes);
 }
 
 function _isFile(origin: unknown): boolean {
