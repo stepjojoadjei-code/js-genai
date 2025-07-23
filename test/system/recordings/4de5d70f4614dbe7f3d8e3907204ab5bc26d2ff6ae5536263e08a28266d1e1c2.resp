@@ -1,0 +1,54 @@
+Status code: 200 
+X-Xss-Protection: 0
+X-Content-Type-Options: nosniff
+Content-Type: application/json; charset=UTF-8
+Content-Length: 461
+Date: Wed, 23 Jul 2025 00:47:44 GMT
+Server: scaffolding on HTTPServer2
+X-Frame-Options: SAMEORIGIN
+Vary: Origin
+Vary: X-Origin
+Vary: Referer
+Content-Encoding: gzip
+
+{
+  "candidates": [
+    {
+      "content": {
+        "role": "model",
+        "parts": [
+          {
+            "text": "The result of dividing 10 by 2 using the customDivide function is 42.\n"
+          }
+        ]
+      },
+      "finishReason": "STOP",
+      "score": -0.90394377708435059,
+      "avgLogprobs": -0.043044941765921454
+    }
+  ],
+  "usageMetadata": {
+    "promptTokenCount": 27,
+    "candidatesTokenCount": 21,
+    "totalTokenCount": 48,
+    "billablePromptUsage": {
+      "textCount": 203
+    },
+    "trafficType": "ON_DEMAND",
+    "promptTokensDetails": [
+      {
+        "modality": "TEXT",
+        "tokenCount": 27
+      }
+    ],
+    "candidatesTokensDetails": [
+      {
+        "modality": "TEXT",
+        "tokenCount": 21
+      }
+    ]
+  },
+  "modelVersion": "gemini-2.0-flash",
+  "createTime": "2025-07-23T00:47:44.261890Z",
+  "responseId": "MDGAaIL-D8SnnvgPzvaamQw"
+}

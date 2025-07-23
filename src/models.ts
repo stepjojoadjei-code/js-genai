@@ -8,6 +8,8 @@
 
 import {
   DEFAULT_MAX_REMOTE_CALLS,
+  hasCallableTools,
+  hasNonCallableTools,
   isCallableTool,
   shouldAppendAfcHistory,
   shouldDisableAfc,
@@ -18,12 +20,7 @@ import {BaseModule} from './_common.js';
 import * as _internal_types from './_internal_types.js';
 import {tContents} from './_transformers.js';
 import * as converters from './converters/_models_converters.js';
-import {
-  hasMcpClientTools,
-  hasMcpToolUsage,
-  hasNonMcpTools,
-  setMcpUsageHeader,
-} from './mcp/_mcp.js';
+import {hasMcpToolUsage, setMcpUsageHeader} from './mcp/_mcp.js';
 import {PagedItem, Pager} from './pagers.js';
 import * as types from './types.js';
 
@@ -73,13 +70,13 @@ export class Models extends BaseModule {
   generateContent = async (
     params: types.GenerateContentParameters,
   ): Promise<types.GenerateContentResponse> => {
-    const transformedParams = await this.processParamsForMcpUsage(params);
+    const transformedParams = await this.processParamsMaybeAddMcpUsage(params);
     this.maybeMoveToResponseJsonSchem(params);
-    if (!hasMcpClientTools(params) || shouldDisableAfc(params.config)) {
+    if (!hasCallableTools(params) || shouldDisableAfc(params.config)) {
       return await this.generateContentInternal(transformedParams);
     }
 
-    if (hasNonMcpTools(params)) {
+    if (hasNonCallableTools(params)) {
       throw new Error(
         'Automatic function calling with CallableTools and Tools is not yet supported.',
       );
@@ -202,7 +199,8 @@ export class Models extends BaseModule {
   ): Promise<AsyncGenerator<types.GenerateContentResponse>> => {
     this.maybeMoveToResponseJsonSchem(params);
     if (shouldDisableAfc(params.config)) {
-      const transformedParams = await this.processParamsForMcpUsage(params);
+      const transformedParams =
+        await this.processParamsMaybeAddMcpUsage(params);
       return await this.generateContentStreamInternal(transformedParams);
     } else {
       return await this.processAfcStream(params);
@@ -215,7 +213,7 @@ export class Models extends BaseModule {
    * modify the original params. Also sets the MCP usage header if there are
    * MCP tools in the parameters.
    */
-  private async processParamsForMcpUsage(
+  private async processParamsMaybeAddMcpUsage(
     params: types.GenerateContentParameters,
   ): Promise<types.GenerateContentParameters> {
     const tools = params.config?.tools;
@@ -303,7 +301,8 @@ export class Models extends BaseModule {
           remoteCallCount++;
           wereFunctionsCalled = false;
         }
-        const transformedParams = await models.processParamsForMcpUsage(params);
+        const transformedParams =
+          await models.processParamsMaybeAddMcpUsage(params);
         const response =
           await models.generateContentStreamInternal(transformedParams);
 

@@ -1,0 +1,60 @@
+Status code: 200 
+Content-Type: application/json; charset=UTF-8
+Vary: Origin
+Vary: X-Origin
+Vary: Referer
+Content-Encoding: gzip
+Date: Wed, 23 Jul 2025 00:47:44 GMT
+X-Frame-Options: SAMEORIGIN
+X-Content-Type-Options: nosniff
+Server: scaffolding on HTTPServer2
+Content-Length: 469
+X-Xss-Protection: 0
+
+{
+  "candidates": [
+    {
+      "content": {
+        "role": "model",
+        "parts": [
+          {
+            "functionCall": {
+              "name": "customDivide",
+              "args": {
+                "numerator": 10,
+                "denominator": 2
+              }
+            }
+          }
+        ]
+      },
+      "finishReason": "STOP",
+      "score": -0.0031064026989042759,
+      "avgLogprobs": -0.00051773378315071261
+    }
+  ],
+  "usageMetadata": {
+    "promptTokenCount": 17,
+    "candidatesTokenCount": 6,
+    "totalTokenCount": 23,
+    "billablePromptUsage": {
+      "textCount": 131
+    },
+    "trafficType": "ON_DEMAND",
+    "promptTokensDetails": [
+      {
+        "modality": "TEXT",
+        "tokenCount": 17
+      }
+    ],
+    "candidatesTokensDetails": [
+      {
+        "modality": "TEXT",
+        "tokenCount": 6
+      }
+    ]
+  },
+  "modelVersion": "gemini-2.0-flash",
+  "createTime": "2025-07-23T00:47:43.545360Z",
+  "responseId": "LzGAaNCkIaynnvgPxKnQyAY"
+}
