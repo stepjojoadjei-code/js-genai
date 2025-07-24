@@ -1,0 +1,73 @@
+57948f937eabe870fa5dc3da1a949f1abea75cc88a04f4c2b3815e260f5261d0.req 743
+b4d6e60a9b97e7b98c63df9308728c5c88c0b40c398046772c63447b94608b4d
+Server Address: us-central1-aiplatform.googleapis.com
+Port: 443
+Protocol: https
+********************************************************************************
+POST /v1beta1/projects/REDACTED/locations/REDACTED/publishers/google/models/gemini-2.0-flash:generateContent HTTP/1.1
+Accept: */*
+Accept-Encoding: gzip, deflate
+Accept-Language: *
+Connection: keep-alive
+Content-Length: 182
+Content-Type: application/json
+Sec-Fetch-Mode: cors
+Test-Name: Chats Tests sendMessage Vertex AI with history
+
+
+{"contents":[{"parts":[{"text":"a=5"}],"role":"user"},{"parts":[{"text":"b=10"}],"role":"user"},{"parts":[{"text":"what is the value of a+b?"}],"role":"user"}],"generationConfig":{}}
+57948f937eabe870fa5dc3da1a949f1abea75cc88a04f4c2b3815e260f5261d0.resp 1142
+Status code: 200 
+Date: Thu, 24 Jul 2025 03:03:51 GMT
+Server: scaffolding on HTTPServer2
+Content-Length: 428
+X-Xss-Protection: 0
+Content-Encoding: gzip
+X-Frame-Options: SAMEORIGIN
+X-Content-Type-Options: nosniff
+Content-Type: application/json; charset=UTF-8
+Vary: Origin
+Vary: X-Origin
+Vary: Referer
+
+{
+  "candidates": [
+    {
+      "content": {
+        "role": "model",
+        "parts": [
+          {
+            "text": "a + b = 5 + 10 = 15\n"
+          }
+        ]
+      },
+      "finishReason": "STOP",
+      "score": -1.4018427133560181,
+      "avgLogprobs": -0.093456180890401211
+    }
+  ],
+  "usageMetadata": {
+    "promptTokenCount": 16,
+    "candidatesTokenCount": 15,
+    "totalTokenCount": 31,
+    "billablePromptUsage": {
+      "textCount": 27
+    },
+    "trafficType": "ON_DEMAND",
+    "promptTokensDetails": [
+      {
+        "modality": "TEXT",
+        "tokenCount": 16
+      }
+    ],
+    "candidatesTokensDetails": [
+      {
+        "modality": "TEXT",
+        "tokenCount": 15
+      }
+    ]
+  },
+  "modelVersion": "gemini-2.0-flash",
+  "createTime": "2025-07-24T03:03:50.856396Z",
+  "responseId": "lqKBaMyiNNujmecPv6mqqAI"
+}

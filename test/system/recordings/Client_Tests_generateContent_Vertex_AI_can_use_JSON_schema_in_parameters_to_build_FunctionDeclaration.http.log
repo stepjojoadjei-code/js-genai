@@ -1,0 +1,79 @@
+3fe7787e453bb30164f82527d7280b4d30eba7652795221b5b5114a0f6ee3b96.req 1199
+b4d6e60a9b97e7b98c63df9308728c5c88c0b40c398046772c63447b94608b4d
+Server Address: us-central1-aiplatform.googleapis.com
+Port: 443
+Protocol: https
+********************************************************************************
+POST /v1beta1/projects/REDACTED/locations/REDACTED/publishers/google/models/gemini-1.5-flash:generateContent HTTP/1.1
+Accept: */*
+Accept-Encoding: gzip, deflate
+Accept-Language: *
+Connection: keep-alive
+Content-Length: 583
+Content-Type: application/json
+Sec-Fetch-Mode: cors
+Test-Name: Client Tests generateContent Vertex AI can use JSON schema in parameters to build FunctionDeclaration
+
+
+{"contents":[{"parts":[{"text":"put word: hello and word: world into a string"}],"role":"user"}],"tools":[{"functionDeclarations":[{"description":"this is a concat string function","name":"concatStringFunction","parametersJsonSchema":{"type":"object","properties":{"firstString":{"type":"string"},"secondString":{"type":"string"}},"required":["firstString","secondString"],"additionalProperties":false,"$schema":"http://json-schema.org/draft-07/schema#"}}]}],"toolConfig":{"functionCallingConfig":{"mode":"ANY","allowedFunctionNames":["concatStringFunction"]}},"generationConfig":{}}
+3fe7787e453bb30164f82527d7280b4d30eba7652795221b5b5114a0f6ee3b96.resp 1315
+Status code: 200 
+X-Frame-Options: SAMEORIGIN
+Content-Type: application/json; charset=UTF-8
+Vary: Origin
+Vary: X-Origin
+Vary: Referer
+Server: scaffolding on HTTPServer2
+X-Content-Type-Options: nosniff
+Content-Encoding: gzip
+Date: Thu, 24 Jul 2025 03:47:57 GMT
+Content-Length: 479
+X-Xss-Protection: 0
+
+{
+  "candidates": [
+    {
+      "content": {
+        "role": "model",
+        "parts": [
+          {
+            "functionCall": {
+              "name": "concatStringFunction",
+              "args": {
+                "firstString": "hello",
+                "secondString": "world"
+              }
+            }
+          }
+        ]
+      },
+      "finishReason": "STOP",
+      "score": -0.00031515053706243634,
+      "avgLogprobs": -3.50167263402707e-05
+    }
+  ],
+  "usageMetadata": {
+    "promptTokenCount": 20,
+    "candidatesTokenCount": 9,
+    "totalTokenCount": 29,
+    "billablePromptUsage": {
+      "textCount": 249
+    },
+    "trafficType": "ON_DEMAND",
+    "promptTokensDetails": [
+      {
+        "modality": "TEXT",
+        "tokenCount": 20
+      }
+    ],
+    "candidatesTokensDetails": [
+      {
+        "modality": "TEXT",
+        "tokenCount": 9
+      }
+    ]
+  },
+  "modelVersion": "gemini-1.5-flash-002",
+  "createTime": "2025-07-24T03:47:56.087334Z",
+  "responseId": "7KyBaKaqBb6dmecPlbCEqA4"
+}

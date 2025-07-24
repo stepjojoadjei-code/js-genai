@@ -1,0 +1,51 @@
+077fa2375eb5aa36aa66d86a2f21e036ef867dada988cd50d06291f2ce850ffa.req 672
+b4d6e60a9b97e7b98c63df9308728c5c88c0b40c398046772c63447b94608b4d
+Server Address: us-central1-aiplatform.googleapis.com
+Port: 443
+Protocol: https
+********************************************************************************
+POST /v1beta1/projects/REDACTED/locations/REDACTED/publishers/google/models/gemini-2.0-flash:streamGenerateContent?alt=sse HTTP/1.1
+Accept: */*
+Accept-Encoding: gzip, deflate
+Accept-Language: *
+Connection: keep-alive
+Content-Length: 94
+Content-Type: application/json
+Sec-Fetch-Mode: cors
+Test-Name: Chats Tests sendMessage Vertex AI with text stream
+
+
+{"contents":[{"parts":[{"text":"why is the sky blue?"}],"role":"user"}],"generationConfig":{}}
+077fa2375eb5aa36aa66d86a2f21e036ef867dada988cd50d06291f2ce850ffa.resp 4401
+Status code: 200 
+Vary: Origin
+Vary: X-Origin
+Vary: Referer
+X-Xss-Protection: 0
+X-Frame-Options: SAMEORIGIN
+Content-Type: text/event-stream
+Content-Disposition: attachment
+Date: Thu, 24 Jul 2025 03:03:57 GMT
+Server: scaffolding on HTTPServer2
+X-Content-Type-Options: nosniff
+
+data: {"candidates": [{"content": {"role": "model","parts": [{"text": "The"}]}}],"usageMetadata": {"billablePromptUsage": {"textCount": 16},"trafficType": "ON_DEMAND"},"modelVersion": "gemini-2.0-flash","createTime": "2025-07-24T03:03:57.621356Z","responseId": "naKBaKz2Ja27ld8PkdK68Aw"}
+
+data: {"candidates": [{"content": {"role": "model","parts": [{"text": " sky appears blue"}]}}],"usageMetadata": {"trafficType": "ON_DEMAND"},"modelVersion": "gemini-2.0-flash","createTime": "2025-07-24T03:03:57.621356Z","responseId": "naKBaKz2Ja27ld8PkdK68Aw"}
+
+data: {"candidates": [{"content": {"role": "model","parts": [{"text": " due to a phenomenon called **Rayleigh scattering**. Here's a breakdown:"}]}}],"usageMetadata": {"trafficType": "ON_DEMAND"},"modelVersion": "gemini-2.0-flash","createTime": "2025-07-24T03:03:57.621356Z","responseId": "naKBaKz2Ja27ld8PkdK68Aw"}
+
+data: {"candidates": [{"content": {"role": "model","parts": [{"text": "\n\n*   **Sunlight and Colors:** Sunlight is made up of all the"}]}}],"usageMetadata": {"trafficType": "ON_DEMAND"},"modelVersion": "gemini-2.0-flash","createTime": "2025-07-24T03:03:57.621356Z","responseId": "naKBaKz2Ja27ld8PkdK68Aw"}
+
+data: {"candidates": [{"content": {"role": "model","parts": [{"text": " colors of the rainbow.\n\n*   **Entering the Atmosphere:** When sunlight enters the Earth's atmosphere, it collides with tiny air molecules (mostly nitrogen"}]}}],"usageMetadata": {"trafficType": "ON_DEMAND"},"modelVersion": "gemini-2.0-flash","createTime": "2025-07-24T03:03:57.621356Z","responseId": "naKBaKz2Ja27ld8PkdK68Aw"}
+
+data: {"candidates": [{"content": {"role": "model","parts": [{"text": " and oxygen).\n\n*   **Scattering of Light:** This collision causes the sunlight to scatter in different directions. The amount of scattering depends on the wavelength ("}]}}],"usageMetadata": {"trafficType": "ON_DEMAND"},"modelVersion": "gemini-2.0-flash","createTime": "2025-07-24T03:03:57.621356Z","responseId": "naKBaKz2Ja27ld8PkdK68Aw"}
+
+data: {"candidates": [{"content": {"role": "model","parts": [{"text": "color) of the light.\n\n*   **Rayleigh Scattering Favors Blue and Violet:** Rayleigh scattering is much more effective at scattering shorter wavelengths of light, which are blue and violet.\n\n*   **Why Not Violet?** While violet"}]}}],"usageMetadata": {"trafficType": "ON_DEMAND"},"modelVersion": "gemini-2.0-flash","createTime": "2025-07-24T03:03:57.621356Z","responseId": "naKBaKz2Ja27ld8PkdK68Aw"}
+
+data: {"candidates": [{"content": {"role": "model","parts": [{"text": " light is scattered even more than blue light, there are a couple of reasons why the sky appears predominantly blue:\n    *   **Sun's Output:** The sun emits less violet light than blue light.\n    *   **Atmospheric Absorption"}]}}],"usageMetadata": {"trafficType": "ON_DEMAND"},"modelVersion": "gemini-2.0-flash","createTime": "2025-07-24T03:03:57.621356Z","responseId": "naKBaKz2Ja27ld8PkdK68Aw"}
+
+data: {"candidates": [{"content": {"role": "model","parts": [{"text": ":** Some violet light is absorbed by the upper atmosphere.\n    *   **Our Eyes:** Our eyes are also slightly more sensitive to blue than violet.\n\n*   **The Result:** Because blue light is scattered more effectively and is also more abundant in sunlight, it's scattered across the sky, giving it its blue color."}]}}],"usageMetadata": {"trafficType": "ON_DEMAND"},"modelVersion": "gemini-2.0-flash","createTime": "2025-07-24T03:03:57.621356Z","responseId": "naKBaKz2Ja27ld8PkdK68Aw"}
+
+data: {"candidates": [{"content": {"role": "model","parts": [{"text": "\n\nIn summary, the sky is blue because **blue light is scattered more efficiently by the Earth's atmosphere than other colors of light.**\n"}]},"finishReason": "STOP"}],"usageMetadata": {"promptTokenCount": 6,"candidatesTokenCount": 293,"totalTokenCount": 299,"trafficType": "ON_DEMAND","promptTokensDetails": [{"modality": "TEXT","tokenCount": 6}],"candidatesTokensDetails": [{"modality": "TEXT","tokenCount": 293}]},"modelVersion": "gemini-2.0-flash","createTime": "2025-07-24T03:03:57.621356Z","responseId": "naKBaKz2Ja27ld8PkdK68Aw"}
+

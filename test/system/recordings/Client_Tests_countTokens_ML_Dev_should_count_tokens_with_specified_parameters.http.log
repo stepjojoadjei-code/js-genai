@@ -1,0 +1,51 @@
+b130087766b4bc41e1a082d9e1186edf3d35412d358127c024af355fc3b7bb83.req 623
+b4d6e60a9b97e7b98c63df9308728c5c88c0b40c398046772c63447b94608b4d
+Server Address: generativelanguage.googleapis.com
+Port: 443
+Protocol: https
+********************************************************************************
+POST /v1beta/models/gemini-1.5-flash:countTokens HTTP/1.1
+Accept: */*
+Accept-Encoding: gzip, deflate
+Accept-Language: *
+Connection: keep-alive
+Content-Length: 96
+Content-Type: application/json
+Sec-Fetch-Mode: cors
+Test-Name: Client Tests countTokens ML Dev should count tokens with specified parameters
+
+
+{"contents":[{"parts":[{"text":"The quick brown fox jumps over the lazy dog."}],"role":"user"}]}
+b130087766b4bc41e1a082d9e1186edf3d35412d358127c024af355fc3b7bb83.resp 586
+Status code: 200 
+Server: scaffolding on HTTPServer2
+X-Xss-Protection: 0
+X-Frame-Options: SAMEORIGIN
+X-Content-Type-Options: nosniff
+Content-Type: application/json; charset=UTF-8
+Vary: Origin
+Vary: X-Origin
+Vary: Referer
+Content-Encoding: gzip
+Content-Length: 159
+Server-Timing: gfet4t7; dur=186
+Date: Thu, 24 Jul 2025 03:48:10 GMT
+
+{
+  "totalTokens": 11,
+  "systemInstructionsTokens": {},
+  "contentTokens": [
+    {
+      "partTokens": [
+        10
+      ],
+      "roleTokens": 1
+    }
+  ],
+  "promptTokensDetails": [
+    {
+      "modality": "TEXT",
+      "tokenCount": 11
+    }
+  ]
+}

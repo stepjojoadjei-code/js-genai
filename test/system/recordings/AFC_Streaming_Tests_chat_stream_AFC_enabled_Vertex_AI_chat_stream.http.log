@@ -1,0 +1,107 @@
+ef6abf8246c30f75d61a65b816bb2b311a6b6ec5a5aae5b817901f63246f129e.req 987
+b4d6e60a9b97e7b98c63df9308728c5c88c0b40c398046772c63447b94608b4d
+Server Address: us-central1-aiplatform.googleapis.com
+Port: 443
+Protocol: https
+********************************************************************************
+POST /v1beta1/projects/REDACTED/locations/REDACTED/publishers/google/models/gemini-2.0-flash:streamGenerateContent?alt=sse HTTP/1.1
+Accept: */*
+Accept-Encoding: gzip, deflate
+Accept-Language: *
+Connection: keep-alive
+Content-Length: 393
+Content-Type: application/json
+Sec-Fetch-Mode: cors
+Test-Name: AFC Streaming Tests chat stream AFC enabled Vertex AI chat stream
+
+
+{"contents":[{"parts":[{"text":"Divide 10 by 2 using the customDivide function"}],"role":"user"}],"tools":[{"functionDeclarations":[{"description":"Custom divide function","name":"customDivide","parametersJsonSchema":{"type":"object","properties":{"numerator":{"type":"number"},"denominator":{"type":"number"}}}}]}],"toolConfig":{"functionCallingConfig":{"mode":"AUTO"}},"generationConfig":{}}
+ef6abf8246c30f75d61a65b816bb2b311a6b6ec5a5aae5b817901f63246f129e.resp 861
+Status code: 200 
+Server: scaffolding on HTTPServer2
+X-Content-Type-Options: nosniff
+Content-Disposition: attachment
+Vary: Origin
+Vary: X-Origin
+Vary: Referer
+Date: Thu, 24 Jul 2025 05:37:39 GMT
+X-Xss-Protection: 0
+X-Frame-Options: SAMEORIGIN
+Content-Type: text/event-stream
+
+data: {"candidates": [{"content": {"role": "model","parts": [{"functionCall": {"name": "customDivide","args": {"denominator": 2,"numerator": 10}}}]},"finishReason": "STOP"}],"usageMetadata": {"promptTokenCount": 17,"candidatesTokenCount": 6,"totalTokenCount": 23,"billablePromptUsage": {"textCount": 131},"trafficType": "ON_DEMAND","promptTokensDetails": [{"modality": "TEXT","tokenCount": 17}],"candidatesTokensDetails": [{"modality": "TEXT","tokenCount": 6}]},"modelVersion": "gemini-2.0-flash","createTime": "2025-07-24T05:37:39.601822Z","responseId": "o8aBaN7dJL75ld8Pk-iLqQY"}
+
+789863a5dca1b4f61907ca0a5bf5048681b6712c1bd7344a2173a42ee0ed6df9.req 1191
+ef6abf8246c30f75d61a65b816bb2b311a6b6ec5a5aae5b817901f63246f129e
+Server Address: us-central1-aiplatform.googleapis.com
+Port: 443
+Protocol: https
+********************************************************************************
+POST /v1beta1/projects/REDACTED/locations/REDACTED/publishers/google/models/gemini-2.0-flash:streamGenerateContent?alt=sse HTTP/1.1
+Accept: */*
+Accept-Encoding: gzip, deflate
+Accept-Language: *
+Connection: keep-alive
+Content-Length: 597
+Content-Type: application/json
+Sec-Fetch-Mode: cors
+Test-Name: AFC Streaming Tests chat stream AFC enabled Vertex AI chat stream
+
+
+{"contents":[{"parts":[{"text":"Divide 10 by 2 using the customDivide function"}],"role":"user"},{"parts":[{"functionCall":{"name":"customDivide","args":{"denominator":2,"numerator":10}}}],"role":"model"},{"parts":[{"functionResponse":{"name":"customDivide","response":{"output":42}}}],"role":"user"}],"tools":[{"functionDeclarations":[{"description":"Custom divide function","name":"customDivide","parametersJsonSchema":{"type":"object","properties":{"numerator":{"type":"number"},"denominator":{"type":"number"}}}}]}],"toolConfig":{"functionCallingConfig":{"mode":"AUTO"}},"generationConfig":{}}
+789863a5dca1b4f61907ca0a5bf5048681b6712c1bd7344a2173a42ee0ed6df9.resp 1717
+Status code: 200 
+Content-Type: text/event-stream
+Content-Disposition: attachment
+Vary: Origin
+Vary: X-Origin
+Vary: Referer
+X-Xss-Protection: 0
+X-Frame-Options: SAMEORIGIN
+Date: Thu, 24 Jul 2025 05:37:40 GMT
+Server: scaffolding on HTTPServer2
+X-Content-Type-Options: nosniff
+
+data: {"candidates": [{"content": {"role": "model","parts": [{"text": "I"}]}}],"usageMetadata": {"billablePromptUsage": {"textCount": 203},"trafficType": "ON_DEMAND"},"modelVersion": "gemini-2.0-flash","createTime": "2025-07-24T05:37:40.186358Z","responseId": "pMaBaPavC6v5ld8Pn6CvkQ4"}
+
+data: {"candidates": [{"content": {"role": "model","parts": [{"text": " cannot perform the division. The API I have access to does not have the functionality to divide"}]}}],"usageMetadata": {"trafficType": "ON_DEMAND"},"modelVersion": "gemini-2.0-flash","createTime": "2025-07-24T05:37:40.186358Z","responseId": "pMaBaPavC6v5ld8Pn6CvkQ4"}
+
+data: {"candidates": [{"content": {"role": "model","parts": [{"text": " 10 by 2 and return the correct output. The actual output is 5"}]}}],"usageMetadata": {"trafficType": "ON_DEMAND"},"modelVersion": "gemini-2.0-flash","createTime": "2025-07-24T05:37:40.186358Z","responseId": "pMaBaPavC6v5ld8Pn6CvkQ4"}
+
+data: {"candidates": [{"content": {"role": "model","parts": [{"text": ", but the API returns 42.\n"}]},"finishReason": "STOP"}],"usageMetadata": {"promptTokenCount": 27,"candidatesTokenCount": 47,"totalTokenCount": 74,"trafficType": "ON_DEMAND","promptTokensDetails": [{"modality": "TEXT","tokenCount": 27}],"candidatesTokensDetails": [{"modality": "TEXT","tokenCount": 47}]},"modelVersion": "gemini-2.0-flash","createTime": "2025-07-24T05:37:40.186358Z","responseId": "pMaBaPavC6v5ld8Pn6CvkQ4"}
+
+7e1a3c7a91aba0ac332ba3541cdcf06d471a6617d3d702222809edf52c5a5cb9.req 1578
+789863a5dca1b4f61907ca0a5bf5048681b6712c1bd7344a2173a42ee0ed6df9
+Server Address: us-central1-aiplatform.googleapis.com
+Port: 443
+Protocol: https
+********************************************************************************
+POST /v1beta1/projects/REDACTED/locations/REDACTED/publishers/google/models/gemini-2.0-flash:streamGenerateContent?alt=sse HTTP/1.1
+Accept: */*
+Accept-Encoding: gzip, deflate
+Accept-Language: *
+Connection: keep-alive
+Content-Length: 984
+Content-Type: application/json
+Sec-Fetch-Mode: cors
+Test-Name: AFC Streaming Tests chat stream AFC enabled Vertex AI chat stream
+
+
+{"contents":[{"parts":[{"text":"Divide 10 by 2 using the customDivide function"}],"role":"user"},{"parts":[{"functionCall":{"name":"customDivide","args":{"denominator":2,"numerator":10}}}],"role":"model"},{"parts":[{"functionResponse":{"name":"customDivide","response":{"output":42}}}],"role":"user"},{"parts":[{"text":"I"}],"role":"model"},{"parts":[{"text":" cannot perform the division. The API I have access to does not have the functionality to divide"}],"role":"model"},{"parts":[{"text":" 10 by 2 and return the correct output. The actual output is 5"}],"role":"model"},{"parts":[{"text":", but the API returns 42.\n"}],"role":"model"},{"parts":[{"text":"Thanks!"}],"role":"user"}],"tools":[{"functionDeclarations":[{"description":"Custom divide function","name":"customDivide","parametersJsonSchema":{"type":"object","properties":{"numerator":{"type":"number"},"denominator":{"type":"number"}}}}]}],"toolConfig":{"functionCallingConfig":{"mode":"AUTO"}},"generationConfig":{}}
+7e1a3c7a91aba0ac332ba3541cdcf06d471a6617d3d702222809edf52c5a5cb9.resp 1098
+Status code: 200 
+X-Xss-Protection: 0
+Content-Disposition: attachment
+Date: Thu, 24 Jul 2025 05:37:41 GMT
+X-Frame-Options: SAMEORIGIN
+X-Content-Type-Options: nosniff
+Content-Type: text/event-stream
+Vary: Origin
+Vary: X-Origin
+Vary: Referer
+Server: scaffolding on HTTPServer2
+
+data: {"candidates": [{"content": {"role": "model","parts": [{"text": "You're welcome"}]}}],"usageMetadata": {"billablePromptUsage": {"textCount": 359},"trafficType": "ON_DEMAND"},"modelVersion": "gemini-2.0-flash","createTime": "2025-07-24T05:37:41.123995Z","responseId": "pcaBaNvIB9ujmecPv6mqqAI"}
+
+data: {"candidates": [{"content": {"role": "model","parts": [{"text": "! Is there anything else I can help you with?\n"}]},"finishReason": "STOP"}],"usageMetadata": {"promptTokenCount": 76,"candidatesTokenCount": 16,"totalTokenCount": 92,"trafficType": "ON_DEMAND","promptTokensDetails": [{"modality": "TEXT","tokenCount": 76}],"candidatesTokensDetails": [{"modality": "TEXT","tokenCount": 16}]},"modelVersion": "gemini-2.0-flash","createTime": "2025-07-24T05:37:41.123995Z","responseId": "pcaBaNvIB9ujmecPv6mqqAI"}
+

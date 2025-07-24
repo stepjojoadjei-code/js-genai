@@ -1,0 +1,108 @@
+aff16082648a3f87acf4953bf0e3145bc21612876a2436fb61fa9b84bd355421.req 927
+b4d6e60a9b97e7b98c63df9308728c5c88c0b40c398046772c63447b94608b4d
+Server Address: generativelanguage.googleapis.com
+Port: 443
+Protocol: https
+********************************************************************************
+POST /v1beta/models/gemini-2.0-flash:streamGenerateContent?alt=sse HTTP/1.1
+Accept: */*
+Accept-Encoding: gzip, deflate
+Accept-Language: *
+Connection: keep-alive
+Content-Length: 393
+Content-Type: application/json
+Sec-Fetch-Mode: cors
+Test-Name: AFC Streaming Tests chat stream AFC enabled Google AI chat stream
+
+
+{"contents":[{"parts":[{"text":"Divide 10 by 2 using the customDivide function"}],"role":"user"}],"tools":[{"functionDeclarations":[{"description":"Custom divide function","name":"customDivide","parametersJsonSchema":{"type":"object","properties":{"numerator":{"type":"number"},"denominator":{"type":"number"}}}}]}],"toolConfig":{"functionCallingConfig":{"mode":"AUTO"}},"generationConfig":{}}
+aff16082648a3f87acf4953bf0e3145bc21612876a2436fb61fa9b84bd355421.resp 781
+Status code: 200 
+Content-Type: text/event-stream
+Content-Disposition: attachment
+Date: Thu, 24 Jul 2025 05:37:37 GMT
+Server: scaffolding on HTTPServer2
+X-Frame-Options: SAMEORIGIN
+X-Content-Type-Options: nosniff
+Vary: Origin
+Vary: X-Origin
+Vary: Referer
+X-Xss-Protection: 0
+Server-Timing: gfet4t7; dur=1516
+
+data: {"candidates": [{"content": {"parts": [{"functionCall": {"name": "customDivide","args": {"denominator": 2,"numerator": 10}}}],"role": "model"},"finishReason": "STOP"}],"usageMetadata": {"promptTokenCount": 17,"candidatesTokenCount": 6,"totalTokenCount": 23,"promptTokensDetails": [{"modality": "TEXT","tokenCount": 17}],"candidatesTokensDetails": [{"modality": "TEXT","tokenCount": 6}]},"modelVersion": "gemini-2.0-flash","responseId": "oMaBaNPWI9ivgLUP4ae62Q4"}
+
+b32030edc1f19676350dbe65cdfd62f576af2cfdbe43d566de12edec2dd5eaf3.req 1131
+aff16082648a3f87acf4953bf0e3145bc21612876a2436fb61fa9b84bd355421
+Server Address: generativelanguage.googleapis.com
+Port: 443
+Protocol: https
+********************************************************************************
+POST /v1beta/models/gemini-2.0-flash:streamGenerateContent?alt=sse HTTP/1.1
+Accept: */*
+Accept-Encoding: gzip, deflate
+Accept-Language: *
+Connection: keep-alive
+Content-Length: 597
+Content-Type: application/json
+Sec-Fetch-Mode: cors
+Test-Name: AFC Streaming Tests chat stream AFC enabled Google AI chat stream
+
+
+{"contents":[{"parts":[{"text":"Divide 10 by 2 using the customDivide function"}],"role":"user"},{"parts":[{"functionCall":{"name":"customDivide","args":{"denominator":2,"numerator":10}}}],"role":"model"},{"parts":[{"functionResponse":{"name":"customDivide","response":{"output":42}}}],"role":"user"}],"tools":[{"functionDeclarations":[{"description":"Custom divide function","name":"customDivide","parametersJsonSchema":{"type":"object","properties":{"numerator":{"type":"number"},"denominator":{"type":"number"}}}}]}],"toolConfig":{"functionCallingConfig":{"mode":"AUTO"}},"generationConfig":{}}
+b32030edc1f19676350dbe65cdfd62f576af2cfdbe43d566de12edec2dd5eaf3.resp 1384
+Status code: 200 
+Content-Disposition: attachment
+Date: Thu, 24 Jul 2025 05:37:37 GMT
+Server: scaffolding on HTTPServer2
+X-Xss-Protection: 0
+X-Frame-Options: SAMEORIGIN
+X-Content-Type-Options: nosniff
+Content-Type: text/event-stream
+Vary: Origin
+Vary: X-Origin
+Vary: Referer
+Server-Timing: gfet4t7; dur=470
+
+data: {"candidates": [{"content": {"parts": [{"text": "I"}],"role": "model"}}],"usageMetadata": {"promptTokenCount": 101,"totalTokenCount": 101,"promptTokensDetails": [{"modality": "TEXT","tokenCount": 101}]},"modelVersion": "gemini-2.0-flash","responseId": "ocaBaPD-FbeV1dkPz_6j4Aw"}
+
+data: {"candidates": [{"content": {"parts": [{"text": " cannot fulfill this request. The API returns a fixed number 42 and does not perform"}],"role": "model"}}],"usageMetadata": {"promptTokenCount": 101,"totalTokenCount": 101,"promptTokensDetails": [{"modality": "TEXT","tokenCount": 101}]},"modelVersion": "gemini-2.0-flash","responseId": "ocaBaPD-FbeV1dkPz_6j4Aw"}
+
+data: {"candidates": [{"content": {"parts": [{"text": " the division.\n"}],"role": "model"},"finishReason": "STOP"}],"usageMetadata": {"promptTokenCount": 27,"candidatesTokenCount": 23,"totalTokenCount": 50,"promptTokensDetails": [{"modality": "TEXT","tokenCount": 27}],"candidatesTokensDetails": [{"modality": "TEXT","tokenCount": 23}]},"modelVersion": "gemini-2.0-flash","responseId": "ocaBaPD-FbeV1dkPz_6j4Aw"}
+
+6bb221b3d95aeb64d00e42a93204ea551628bf44b0daea9a2f215c14d9c6655e.req 1394
+b32030edc1f19676350dbe65cdfd62f576af2cfdbe43d566de12edec2dd5eaf3
+Server Address: generativelanguage.googleapis.com
+Port: 443
+Protocol: https
+********************************************************************************
+POST /v1beta/models/gemini-2.0-flash:streamGenerateContent?alt=sse HTTP/1.1
+Accept: */*
+Accept-Encoding: gzip, deflate
+Accept-Language: *
+Connection: keep-alive
+Content-Length: 860
+Content-Type: application/json
+Sec-Fetch-Mode: cors
+Test-Name: AFC Streaming Tests chat stream AFC enabled Google AI chat stream
+
+
+{"contents":[{"parts":[{"text":"Divide 10 by 2 using the customDivide function"}],"role":"user"},{"parts":[{"functionCall":{"name":"customDivide","args":{"denominator":2,"numerator":10}}}],"role":"model"},{"parts":[{"functionResponse":{"name":"customDivide","response":{"output":42}}}],"role":"user"},{"parts":[{"text":"I"}],"role":"model"},{"parts":[{"text":" cannot fulfill this request. The API returns a fixed number 42 and does not perform"}],"role":"model"},{"parts":[{"text":" the division.\n"}],"role":"model"},{"parts":[{"text":"Thanks!"}],"role":"user"}],"tools":[{"functionDeclarations":[{"description":"Custom divide function","name":"customDivide","parametersJsonSchema":{"type":"object","properties":{"numerator":{"type":"number"},"denominator":{"type":"number"}}}}]}],"toolConfig":{"functionCallingConfig":{"mode":"AUTO"}},"generationConfig":{}}
+6bb221b3d95aeb64d00e42a93204ea551628bf44b0daea9a2f215c14d9c6655e.resp 1011
+Status code: 200 
+Content-Type: text/event-stream
+Content-Disposition: attachment
+Vary: Origin
+Vary: X-Origin
+Vary: Referer
+Server: scaffolding on HTTPServer2
+X-Frame-Options: SAMEORIGIN
+Server-Timing: gfet4t7; dur=584
+Date: Thu, 24 Jul 2025 05:37:38 GMT
+X-Xss-Protection: 0
+X-Content-Type-Options: nosniff
+
+data: {"candidates": [{"content": {"parts": [{"text": "You"}],"role": "model"}}],"usageMetadata": {"promptTokenCount": 130,"totalTokenCount": 130,"promptTokensDetails": [{"modality": "TEXT","tokenCount": 130}]},"modelVersion": "gemini-2.0-flash","responseId": "osaBaKypC966xfcPr4WWmAs"}
+
+data: {"candidates": [{"content": {"parts": [{"text": "'re welcome!\n"}],"role": "model"},"finishReason": "STOP"}],"usageMetadata": {"promptTokenCount": 52,"candidatesTokenCount": 6,"totalTokenCount": 58,"promptTokensDetails": [{"modality": "TEXT","tokenCount": 52}],"candidatesTokensDetails": [{"modality": "TEXT","tokenCount": 6}]},"modelVersion": "gemini-2.0-flash","responseId": "osaBaKypC966xfcPr4WWmAs"}
+

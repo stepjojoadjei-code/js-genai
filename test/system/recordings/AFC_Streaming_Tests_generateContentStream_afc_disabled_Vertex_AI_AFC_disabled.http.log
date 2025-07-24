@@ -1,0 +1,33 @@
+0c593201544aa6f12169b3ec9955e5a171c91f7d1b4916fc30149b98ea4a1e06.req 999
+b4d6e60a9b97e7b98c63df9308728c5c88c0b40c398046772c63447b94608b4d
+Server Address: us-central1-aiplatform.googleapis.com
+Port: 443
+Protocol: https
+********************************************************************************
+POST /v1beta1/projects/REDACTED/locations/REDACTED/publishers/google/models/gemini-2.0-flash:streamGenerateContent?alt=sse HTTP/1.1
+Accept: */*
+Accept-Encoding: gzip, deflate
+Accept-Language: *
+Connection: keep-alive
+Content-Length: 393
+Content-Type: application/json
+Sec-Fetch-Mode: cors
+Test-Name: AFC Streaming Tests generateContentStream afc disabled Vertex AI AFC disabled
+
+
+{"contents":[{"parts":[{"text":"Divide 10 by 2 using the customDivide function"}],"role":"user"}],"tools":[{"functionDeclarations":[{"description":"Custom divide function","name":"customDivide","parametersJsonSchema":{"type":"object","properties":{"numerator":{"type":"number"},"denominator":{"type":"number"}}}}]}],"toolConfig":{"functionCallingConfig":{"mode":"AUTO"}},"generationConfig":{}}
+0c593201544aa6f12169b3ec9955e5a171c91f7d1b4916fc30149b98ea4a1e06.resp 861
+Status code: 200 
+X-Content-Type-Options: nosniff
+Content-Type: text/event-stream
+Content-Disposition: attachment
+Vary: Origin
+Vary: X-Origin
+Vary: Referer
+X-Frame-Options: SAMEORIGIN
+Date: Thu, 24 Jul 2025 05:32:34 GMT
+Server: scaffolding on HTTPServer2
+X-Xss-Protection: 0
+
+data: {"candidates": [{"content": {"role": "model","parts": [{"functionCall": {"name": "customDivide","args": {"denominator": 2,"numerator": 10}}}]},"finishReason": "STOP"}],"usageMetadata": {"promptTokenCount": 17,"candidatesTokenCount": 6,"totalTokenCount": 23,"billablePromptUsage": {"textCount": 131},"trafficType": "ON_DEMAND","promptTokensDetails": [{"modality": "TEXT","tokenCount": 17}],"candidatesTokensDetails": [{"modality": "TEXT","tokenCount": 6}]},"modelVersion": "gemini-2.0-flash","createTime": "2025-07-24T05:32:33.862599Z","responseId": "ccWBaIfTNKv5ld8Pn6CvkQ4"}
+

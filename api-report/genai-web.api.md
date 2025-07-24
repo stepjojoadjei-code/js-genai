@@ -1584,6 +1584,7 @@ export class ListBatchJobsResponse {
     batchJobs?: BatchJob[];
     // (undocumented)
     nextPageToken?: string;
+    sdkHttpResponse?: HttpResponse;
 }
 
 // @public
@@ -1606,6 +1607,7 @@ export class ListCachedContentsResponse {
     cachedContents?: CachedContent[];
     // (undocumented)
     nextPageToken?: string;
+    sdkHttpResponse?: HttpResponse;
 }
 
 // @public
@@ -1627,6 +1629,7 @@ export interface ListFilesParameters {
 export class ListFilesResponse {
     files?: File_2[];
     nextPageToken?: string;
+    sdkHttpResponse?: HttpResponse;
 }
 
 // @public (undocumented)
@@ -1654,6 +1657,7 @@ export class ListModelsResponse {
     models?: Model[];
     // (undocumented)
     nextPageToken?: string;
+    sdkHttpResponse?: HttpResponse;
 }
 
 // @public
@@ -1677,6 +1681,7 @@ export interface ListTuningJobsParameters {
 // @public
 export class ListTuningJobsResponse {
     nextPageToken?: string;
+    sdkHttpResponse?: HttpResponse;
     tuningJobs?: TuningJob[];
 }
 
@@ -2137,7 +2142,7 @@ export enum Outcome {
     OUTCOME_UNSPECIFIED = "OUTCOME_UNSPECIFIED"
 }
 
-// @public
+// @public (undocumented)
 export enum PagedItem {
     // (undocumented)
     PAGED_ITEM_BATCH_JOBS = "batchJobs",
@@ -2170,6 +2175,7 @@ export class Pager<T> implements AsyncIterable<T> {
     //
     // (undocumented)
     protected requestInternal: (params: PagedItemConfig) => Promise<PagedItemResponse<T>>;
+    get sdkHttpResponse(): types.HttpResponse | undefined;
 }
 
 // @public

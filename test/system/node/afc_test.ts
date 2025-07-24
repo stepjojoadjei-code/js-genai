@@ -4,6 +4,7 @@
  * SPDX-License-Identifier: Apache-2.0
  */
 
+import {GoogleGenAIOptions} from '../../../src/client.js';
 import {GoogleGenAI} from '../../../src/node/node_client.js';
 import {
   CallableTool,
@@ -11,6 +12,7 @@ import {
   FunctionCallingConfigMode,
   FunctionResponse,
   GenerateContentResponse,
+  HttpOptions,
   Part,
 } from '../../../src/types.js';
 import {setupTestServer, shutdownTestServer} from '../test_server.js';
@@ -46,7 +48,7 @@ const customDivideCallableTool: CallableTool = {
         functionResponse: {
           name: 'customDivide',
           response: {
-            result: 42,
+            output: 42,
           },
         },
       };
@@ -67,17 +69,30 @@ const expectedFunctionCall: FunctionCall = {
 const expectedFunctionResponse: FunctionResponse = {
   name: 'customDivide',
   response: {
-    result: 42,
+    output: 42,
   },
 };
 
-describe('AFC non-streaming Tests', () => {
+jasmine.DEFAULT_TIMEOUT_INTERVAL = 10 * 1000; // 10 seconds
+
+describe('non-streaming Tests', () => {
+  let testName: string = '';
+  let httpOptions: HttpOptions;
   beforeAll(async () => {
     await setupTestServer();
+    jasmine.getEnv().addReporter({
+      specStarted: function (result) {
+        testName = result.fullName;
+      },
+    });
   });
 
   afterAll(async () => {
     await shutdownTestServer();
+  });
+
+  beforeEach(() => {
+    httpOptions = {headers: {'Test-Name': testName}};
   });
 
   describe('generateContent afc enabled', () => {
@@ -116,7 +131,9 @@ describe('AFC non-streaming Tests', () => {
     ];
     for (const testCase of testCases) {
       it(testCase.name, async () => {
-        const client = new GoogleGenAI(testCase.clientParams);
+        const clientParams: GoogleGenAIOptions = testCase.clientParams;
+        clientParams.httpOptions = httpOptions;
+        const client = new GoogleGenAI(clientParams);
         const response = await client.models.generateContent({
           model: testCase.model,
           contents: testCase.messages,
@@ -125,7 +142,7 @@ describe('AFC non-streaming Tests', () => {
         const expectedFunctionResponse = {
           name: 'customDivide',
           response: {
-            result: 42,
+            output: 42,
           },
         };
         expect(
@@ -178,7 +195,9 @@ describe('AFC non-streaming Tests', () => {
 
     for (const testCase of testCases) {
       it(testCase.name, async () => {
-        const client = new GoogleGenAI(testCase.clientParams);
+        const clientParams: GoogleGenAIOptions = testCase.clientParams;
+        clientParams.httpOptions = httpOptions;
+        const client = new GoogleGenAI(clientParams);
         const response = await client.models.generateContent({
           model: testCase.model,
           contents: testCase.messages,
@@ -233,7 +252,9 @@ describe('AFC non-streaming Tests', () => {
       ];
       testCases.forEach((testCase) => {
         it(testCase.name, async () => {
-          const client = new GoogleGenAI(testCase.clientParams);
+          const clientParams: GoogleGenAIOptions = testCase.clientParams;
+          clientParams.httpOptions = httpOptions;
+          const client = new GoogleGenAI(clientParams);
           const chat = client.chats.create({
             model: testCase.model,
             config: testCase.config,
@@ -306,7 +327,9 @@ describe('AFC non-streaming Tests', () => {
 
       testCases.forEach((testCase) => {
         it(testCase.name, async () => {
-          const client = new GoogleGenAI(testCase.clientParams);
+          const clientParams: GoogleGenAIOptions = testCase.clientParams;
+          clientParams.httpOptions = httpOptions;
+          const client = new GoogleGenAI(clientParams);
           const chat = client.chats.create({
             model: testCase.model,
             config: testCase.config,
@@ -348,7 +371,7 @@ describe('AFC non-streaming Tests', () => {
                   functionResponse: {
                     name: 'customDivide',
                     response: {
-                      result: 42,
+                      output: 42,
                     },
                   },
                 },
@@ -365,12 +388,23 @@ describe('AFC non-streaming Tests', () => {
 });
 
 describe('AFC Streaming Tests', () => {
+  let testName: string = '';
+  let httpOptions: HttpOptions;
   beforeAll(async () => {
     await setupTestServer();
+    jasmine.getEnv().addReporter({
+      specStarted: function (result) {
+        testName = result.fullName;
+      },
+    });
   });
 
   afterAll(async () => {
     await shutdownTestServer();
+  });
+
+  beforeEach(() => {
+    httpOptions = {headers: {'Test-Name': testName}};
   });
 
   describe('generateContentStream afc enabled', () => {
@@ -410,7 +444,9 @@ describe('AFC Streaming Tests', () => {
 
     for (const testCase of testCases) {
       it(testCase.name, async () => {
-        const client = new GoogleGenAI(testCase.clientParams);
+        const clientParams: GoogleGenAIOptions = testCase.clientParams;
+        clientParams.httpOptions = httpOptions;
+        const client = new GoogleGenAI(clientParams);
         const response = await client.models.generateContentStream({
           model: testCase.model,
           contents: testCase.messages,
@@ -475,7 +511,9 @@ describe('AFC Streaming Tests', () => {
 
     for (const testCase of testCases) {
       it(testCase.name, async () => {
-        const client = new GoogleGenAI(testCase.clientParams);
+        const clientParams: GoogleGenAIOptions = testCase.clientParams;
+        clientParams.httpOptions = httpOptions;
+        const client = new GoogleGenAI(clientParams);
         const response = await client.models.generateContentStream({
           model: testCase.model,
           contents: testCase.messages,
@@ -530,7 +568,9 @@ describe('AFC Streaming Tests', () => {
 
     testCases.forEach((testCase) => {
       it(testCase.name, async () => {
-        const client = new GoogleGenAI(testCase.clientParams);
+        const clientParams: GoogleGenAIOptions = testCase.clientParams;
+        clientParams.httpOptions = httpOptions;
+        const client = new GoogleGenAI(clientParams);
         const chat = client.chats.create({
           model: testCase.model,
           config: testCase.config,
@@ -563,7 +603,7 @@ describe('AFC Streaming Tests', () => {
             vertexai: false,
             apiKey: GEMINI_API_KEY,
           },
-          model: 'gemini-2.0-flash',
+          model: 'gemini-2.5-flash',
           config: {
             tools: [customDivideCallableTool],
             toolConfig: {
@@ -583,7 +623,7 @@ describe('AFC Streaming Tests', () => {
         {
           name: 'Vertex AI can continue after max calls exceeded',
           clientParams: {vertexai: true, project: GOOGLE_CLOUD_PROJECT},
-          model: 'gemini-2.0-flash',
+          model: 'gemini-2.5-flash',
           config: {
             tools: [customDivideCallableTool],
             toolConfig: {
@@ -604,7 +644,9 @@ describe('AFC Streaming Tests', () => {
 
       testCases.forEach((testCase) => {
         it(testCase.name, async () => {
-          const client = new GoogleGenAI(testCase.clientParams);
+          const clientParams: GoogleGenAIOptions = testCase.clientParams;
+          clientParams.httpOptions = httpOptions;
+          const client = new GoogleGenAI(clientParams);
           const chat = client.chats.create({
             model: testCase.model,
             config: testCase.config,
@@ -623,7 +665,7 @@ describe('AFC Streaming Tests', () => {
           ).not.toBeNull();
           const secondResponse = await chat.sendMessageStream({
             message: {
-              functionResponse: {name: 'customDivide', response: {result: 2}},
+              functionResponse: {name: 'customDivide', response: {output: 2}},
             },
           });
           const secondChunks: GenerateContentResponse[] = [];

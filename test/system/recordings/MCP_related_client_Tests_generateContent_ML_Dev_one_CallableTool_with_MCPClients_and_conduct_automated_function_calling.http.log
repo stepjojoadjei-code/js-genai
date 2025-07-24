@@ -1,0 +1,148 @@
+0cd31dc95e9033ce2cb1d934fa052b4c45e134e6d523203529c51d729f0e761d.req 1142
+b4d6e60a9b97e7b98c63df9308728c5c88c0b40c398046772c63447b94608b4d
+Server Address: generativelanguage.googleapis.com
+Port: 443
+Protocol: https
+********************************************************************************
+POST /v1beta/models/gemini-2.0-flash:generateContent HTTP/1.1
+Accept: */*
+Accept-Encoding: gzip, deflate
+Accept-Language: *
+Connection: keep-alive
+Content-Length: 568
+Content-Type: application/json
+Sec-Fetch-Mode: cors
+Test-Name: MCP related client Tests generateContent ML Dev one CallableTool with MCPClients and conduct automated function calling
+
+
+{"contents":[{"parts":[{"text":"Use the printer to print a simple word: hello in blue, and beep with the beeper"}],"role":"user"}],"tools":[{"functionDeclarations":[{"name":"print","parametersJsonSchema":{"type":"object","properties":{"text":{"type":"string"},"color":{"type":"string","pattern":"red|blue|green|white"}},"required":["text","color"],"additionalProperties":false,"$schema":"http://json-schema.org/draft-07/schema#"}},{"name":"beep","parametersJsonSchema":{"type":"object"}}]}],"toolConfig":{"functionCallingConfig":{"mode":"AUTO"}},"generationConfig":{}}
+0cd31dc95e9033ce2cb1d934fa052b4c45e134e6d523203529c51d729f0e761d.resp 1261
+Status code: 200 
+Content-Type: application/json; charset=UTF-8
+Vary: Origin
+Vary: X-Origin
+Vary: Referer
+Content-Encoding: gzip
+Date: Thu, 24 Jul 2025 03:36:18 GMT
+Server: scaffolding on HTTPServer2
+X-Xss-Protection: 0
+Content-Length: 375
+X-Frame-Options: SAMEORIGIN
+X-Content-Type-Options: nosniff
+Server-Timing: gfet4t7; dur=1410
+
+{
+  "candidates": [
+    {
+      "content": {
+        "parts": [
+          {
+            "functionCall": {
+              "name": "print",
+              "args": {
+                "color": "blue",
+                "text": "hello"
+              }
+            }
+          },
+          {
+            "functionCall": {
+              "name": "beep",
+              "args": {}
+            }
+          }
+        ],
+        "role": "model"
+      },
+      "finishReason": "STOP",
+      "avgLogprobs": -0.0038933195173740387
+    }
+  ],
+  "usageMetadata": {
+    "promptTokenCount": 21,
+    "candidatesTokenCount": 6,
+    "totalTokenCount": 27,
+    "promptTokensDetails": [
+      {
+        "modality": "TEXT",
+        "tokenCount": 21
+      }
+    ],
+    "candidatesTokensDetails": [
+      {
+        "modality": "TEXT",
+        "tokenCount": 6
+      }
+    ]
+  },
+  "modelVersion": "gemini-2.0-flash",
+  "responseId": "MaqBaLXOO8rMmNAP6ubU6AQ"
+}
+8f2cd67022914a6869eeed404e5589fcab77e3e15944c03346a11ead5420f859.req 1438
+0cd31dc95e9033ce2cb1d934fa052b4c45e134e6d523203529c51d729f0e761d
+Server Address: generativelanguage.googleapis.com
+Port: 443
+Protocol: https
+********************************************************************************
+POST /v1beta/models/gemini-2.0-flash:generateContent HTTP/1.1
+Accept: */*
+Accept-Encoding: gzip, deflate
+Accept-Language: *
+Connection: keep-alive
+Content-Length: 864
+Content-Type: application/json
+Sec-Fetch-Mode: cors
+Test-Name: MCP related client Tests generateContent ML Dev one CallableTool with MCPClients and conduct automated function calling
+
+
+{"contents":[{"parts":[{"text":"Use the printer to print a simple word: hello in blue, and beep with the beeper"}],"role":"user"},{"parts":[{"functionCall":{"name":"print","args":{"color":"blue","text":"hello"}}},{"functionCall":{"name":"beep","args":{}}}],"role":"model"},{"parts":[{"functionResponse":{"name":"print","response":{"content":[]}}},{"functionResponse":{"name":"beep","response":{"content":[]}}}],"role":"user"}],"tools":[{"functionDeclarations":[{"name":"print","parametersJsonSchema":{"type":"object","properties":{"text":{"type":"string"},"color":{"type":"string","pattern":"red|blue|green|white"}},"required":["text","color"],"additionalProperties":false,"$schema":"http://json-schema.org/draft-07/schema#"}},{"name":"beep","parametersJsonSchema":{"type":"object"}}]}],"toolConfig":{"functionCallingConfig":{"mode":"AUTO"}},"generationConfig":{}}
+8f2cd67022914a6869eeed404e5589fcab77e3e15944c03346a11ead5420f859.resp 1046
+Status code: 200 
+Content-Type: application/json; charset=UTF-8
+Vary: Origin
+Vary: X-Origin
+Vary: Referer
+Content-Encoding: gzip
+Content-Length: 359
+X-Content-Type-Options: nosniff
+Date: Thu, 24 Jul 2025 03:36:19 GMT
+Server: scaffolding on HTTPServer2
+X-Xss-Protection: 0
+X-Frame-Options: SAMEORIGIN
+Server-Timing: gfet4t7; dur=735
+
+{
+  "candidates": [
+    {
+      "content": {
+        "parts": [
+          {
+            "text": "OK. I have printed \"hello\" in blue and beeped with the beeper.\n"
+          }
+        ],
+        "role": "model"
+      },
+      "finishReason": "STOP",
+      "avgLogprobs": -0.010499377783976103
+    }
+  ],
+  "usageMetadata": {
+    "promptTokenCount": 31,
+    "candidatesTokenCount": 19,
+    "totalTokenCount": 50,
+    "promptTokensDetails": [
+      {
+        "modality": "TEXT",
+        "tokenCount": 31
+      }
+    ],
+    "candidatesTokensDetails": [
+      {
+        "modality": "TEXT",
+        "tokenCount": 19
+      }
+    ]
+  },
+  "modelVersion": "gemini-2.0-flash",
+  "responseId": "MqqBaPjbJ46MmNAPxYqk6QU"
+}

@@ -1,0 +1,68 @@
+b994d70e7e48104759e2b8578867e91c88863fb3e8160af727064ca1a9639699.req 683
+b4d6e60a9b97e7b98c63df9308728c5c88c0b40c398046772c63447b94608b4d
+Server Address: generativelanguage.googleapis.com
+Port: 443
+Protocol: https
+********************************************************************************
+POST /v1beta/models/gemini-1.5-flash:generateContent HTTP/1.1
+Accept: */*
+Accept-Encoding: gzip, deflate
+Accept-Language: *
+Connection: keep-alive
+Content-Length: 133
+Content-Type: application/json
+Sec-Fetch-Mode: cors
+Test-Name: Client Tests generateContent ML Dev should return the headers in the sdkHttpResponse by default
+
+
+{"contents":[{"parts":[{"text":"why is the sky blue?"}],"role":"user"}],"generationConfig":{"candidateCount":1,"maxOutputTokens":20}}
+b994d70e7e48104759e2b8578867e91c88863fb3e8160af727064ca1a9639699.resp 1077
+Status code: 200 
+Server-Timing: gfet4t7; dur=1557
+Content-Encoding: gzip
+Date: Thu, 24 Jul 2025 03:47:59 GMT
+X-Content-Type-Options: nosniff
+Content-Type: application/json; charset=UTF-8
+Vary: Origin
+Vary: X-Origin
+Vary: Referer
+Server: scaffolding on HTTPServer2
+Content-Length: 379
+X-Xss-Protection: 0
+X-Frame-Options: SAMEORIGIN
+
+{
+  "candidates": [
+    {
+      "content": {
+        "parts": [
+          {
+            "text": "The sky is blue due to a phenomenon called **Rayleigh scattering**.  Sunlight is made up of"
+          }
+        ],
+        "role": "model"
+      },
+      "finishReason": "MAX_TOKENS",
+      "avgLogprobs": -0.0058019049465656281
+    }
+  ],
+  "usageMetadata": {
+    "promptTokenCount": 6,
+    "candidatesTokenCount": 20,
+    "totalTokenCount": 26,
+    "promptTokensDetails": [
+      {
+        "modality": "TEXT",
+        "tokenCount": 6
+      }
+    ],
+    "candidatesTokensDetails": [
+      {
+        "modality": "TEXT",
+        "tokenCount": 20
+      }
+    ]
+  },
+  "modelVersion": "gemini-1.5-flash",
+  "responseId": "7qyBaMjuHdivgLUP4ae62Q4"
+}

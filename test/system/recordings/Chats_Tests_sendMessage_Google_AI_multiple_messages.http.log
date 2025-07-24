@@ -1,0 +1,136 @@
+3b552190d305db6690777b23ae53a02d2a6c5701936d9c49845b6816e15df237.req 609
+b4d6e60a9b97e7b98c63df9308728c5c88c0b40c398046772c63447b94608b4d
+Server Address: generativelanguage.googleapis.com
+Port: 443
+Protocol: https
+********************************************************************************
+POST /v1beta/models/gemini-2.0-flash:generateContent HTTP/1.1
+Accept: */*
+Accept-Encoding: gzip, deflate
+Accept-Language: *
+Connection: keep-alive
+Content-Length: 103
+Content-Type: application/json
+Sec-Fetch-Mode: cors
+Test-Name: Chats Tests sendMessage Google AI multiple messages
+
+
+{"contents":[{"parts":[{"text":"Tell me a story in 100 words?"}],"role":"user"}],"generationConfig":{}}
+3b552190d305db6690777b23ae53a02d2a6c5701936d9c49845b6816e15df237.resp 1448
+Status code: 200 
+Content-Type: application/json; charset=UTF-8
+Vary: Origin
+Vary: X-Origin
+Vary: Referer
+Content-Encoding: gzip
+Date: Thu, 24 Jul 2025 03:03:42 GMT
+X-Xss-Protection: 0
+X-Content-Type-Options: nosniff
+Server-Timing: gfet4t7; dur=1245
+Server: scaffolding on HTTPServer2
+Content-Length: 579
+X-Frame-Options: SAMEORIGIN
+
+{
+  "candidates": [
+    {
+      "content": {
+        "parts": [
+          {
+            "text": "The lighthouse keeper, Silas, found a message in a bottle washed ashore. It read, \"Turn back. The sea remembers.\" He chuckled, dismissing it as a prank. That night, a monstrous wave slammed against the tower, shaking it to its core. The light flickered, died. Silas, thrown against the wall, saw the face in the crashing water – a face of rage, of deep, ancient hurt. The sea had remembered. Silas, regretting his dismissal, braced himself for the inevitable.\n"
+          }
+        ],
+        "role": "model"
+      },
+      "finishReason": "STOP",
+      "avgLogprobs": -0.86216024252084589
+    }
+  ],
+  "usageMetadata": {
+    "promptTokenCount": 11,
+    "candidatesTokenCount": 104,
+    "totalTokenCount": 115,
+    "promptTokensDetails": [
+      {
+        "modality": "TEXT",
+        "tokenCount": 11
+      }
+    ],
+    "candidatesTokensDetails": [
+      {
+        "modality": "TEXT",
+        "tokenCount": 104
+      }
+    ]
+  },
+  "modelVersion": "gemini-2.0-flash",
+  "responseId": "jaKBaKjZJdzzgLUPhZ_uoQU"
+}
+6c7fa64e686dab6b2810ae8606a933604bbcea4c02507648366db7ceeb01cd33.req 1182
+3b552190d305db6690777b23ae53a02d2a6c5701936d9c49845b6816e15df237
+Server Address: generativelanguage.googleapis.com
+Port: 443
+Protocol: https
+********************************************************************************
+POST /v1beta/models/gemini-2.0-flash:generateContent HTTP/1.1
+Accept: */*
+Accept-Encoding: gzip, deflate
+Accept-Language: *
+Connection: keep-alive
+Content-Length: 676
+Content-Type: application/json
+Sec-Fetch-Mode: cors
+Test-Name: Chats Tests sendMessage Google AI multiple messages
+
+
+{"contents":[{"parts":[{"text":"Tell me a story in 100 words?"}],"role":"user"},{"parts":[{"text":"The lighthouse keeper, Silas, found a message in a bottle washed ashore. It read, \"Turn back. The sea remembers.\" He chuckled, dismissing it as a prank. That night, a monstrous wave slammed against the tower, shaking it to its core. The light flickered, died. Silas, thrown against the wall, saw the face in the crashing water – a face of rage, of deep, ancient hurt. The sea had remembered. Silas, regretting his dismissal, braced himself for the inevitable.\n"}],"role":"model"},{"parts":[{"text":"What is the title of the story?"}],"role":"user"}],"generationConfig":{}}
+6c7fa64e686dab6b2810ae8606a933604bbcea4c02507648366db7ceeb01cd33.resp 1095
+Status code: 200 
+Server-Timing: gfet4t7; dur=665
+Vary: Origin
+Vary: X-Origin
+Vary: Referer
+Content-Encoding: gzip
+Content-Length: 391
+X-Xss-Protection: 0
+X-Frame-Options: SAMEORIGIN
+Content-Type: application/json; charset=UTF-8
+Date: Thu, 24 Jul 2025 03:03:43 GMT
+Server: scaffolding on HTTPServer2
+X-Content-Type-Options: nosniff
+
+{
+  "candidates": [
+    {
+      "content": {
+        "parts": [
+          {
+            "text": "The story does not have a specific title. A fitting title could be \"The Sea Remembers\" or \"Silas's Regret.\"\n"
+          }
+        ],
+        "role": "model"
+      },
+      "finishReason": "STOP",
+      "avgLogprobs": -0.54413022666141908
+    }
+  ],
+  "usageMetadata": {
+    "promptTokenCount": 123,
+    "candidatesTokenCount": 29,
+    "totalTokenCount": 152,
+    "promptTokensDetails": [
+      {
+        "modality": "TEXT",
+        "tokenCount": 123
+      }
+    ],
+    "candidatesTokensDetails": [
+      {
+        "modality": "TEXT",
+        "tokenCount": 29
+      }
+    ]
+  },
+  "modelVersion": "gemini-2.0-flash",
+  "responseId": "jqKBaP-rNbKU1dkP7PW48Qk"
+}

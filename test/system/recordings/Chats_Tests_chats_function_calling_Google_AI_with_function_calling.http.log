@@ -1,0 +1,148 @@
+4851bb8c5ee49973f48bed857098ff416ee363b14894636db06206f071cd2a40.req 830
+b4d6e60a9b97e7b98c63df9308728c5c88c0b40c398046772c63447b94608b4d
+Server Address: generativelanguage.googleapis.com
+Port: 443
+Protocol: https
+********************************************************************************
+POST /v1beta/models/gemini-2.0-flash:generateContent HTTP/1.1
+Accept: */*
+Accept-Encoding: gzip, deflate
+Accept-Language: *
+Connection: keep-alive
+Content-Length: 309
+Content-Type: application/json
+Sec-Fetch-Mode: cors
+Test-Name: Chats Tests chats function calling Google AI with function calling
+
+
+{"contents":[{"parts":[{"text":"what is the result of 100/2"}],"role":"user"}],"tools":[{"functionDeclarations":[{"description":"Custom divide function","name":"customDivide","parameters":{"type":"OBJECT","properties":{"numerator":{"type":"NUMBER"},"denominator":{"type":"NUMBER"}}}}]}],"generationConfig":{}}
+4851bb8c5ee49973f48bed857098ff416ee363b14894636db06206f071cd2a40.resp 1145
+Status code: 200 
+Content-Type: application/json; charset=UTF-8
+Vary: Origin
+Vary: X-Origin
+Vary: Referer
+Date: Thu, 24 Jul 2025 03:04:01 GMT
+Server: scaffolding on HTTPServer2
+Content-Length: 370
+X-Xss-Protection: 0
+X-Frame-Options: SAMEORIGIN
+Server-Timing: gfet4t7; dur=628
+Content-Encoding: gzip
+X-Content-Type-Options: nosniff
+
+{
+  "candidates": [
+    {
+      "content": {
+        "parts": [
+          {
+            "functionCall": {
+              "name": "customDivide",
+              "args": {
+                "denominator": 2,
+                "numerator": 100
+              }
+            }
+          }
+        ],
+        "role": "model"
+      },
+      "finishReason": "STOP",
+      "avgLogprobs": -0.0014493816221753757
+    }
+  ],
+  "usageMetadata": {
+    "promptTokenCount": 21,
+    "candidatesTokenCount": 6,
+    "totalTokenCount": 27,
+    "promptTokensDetails": [
+      {
+        "modality": "TEXT",
+        "tokenCount": 21
+      }
+    ],
+    "candidatesTokensDetails": [
+      {
+        "modality": "TEXT",
+        "tokenCount": 6
+      }
+    ]
+  },
+  "modelVersion": "gemini-2.0-flash",
+  "responseId": "oaKBaLWEHdqsqsMPw6_w8Qk"
+}
+6ebd757446a758219d1b325a1d23d63e6da9a56f30e2903a9dbdc6fe1bd0f052.req 1004
+4851bb8c5ee49973f48bed857098ff416ee363b14894636db06206f071cd2a40
+Server Address: generativelanguage.googleapis.com
+Port: 443
+Protocol: https
+********************************************************************************
+POST /v1beta/models/gemini-2.0-flash:generateContent HTTP/1.1
+Accept: */*
+Accept-Encoding: gzip, deflate
+Accept-Language: *
+Connection: keep-alive
+Content-Length: 483
+Content-Type: application/json
+Sec-Fetch-Mode: cors
+Test-Name: Chats Tests chats function calling Google AI with function calling
+
+
+{"contents":[{"parts":[{"text":"what is the result of 100/2"}],"role":"user"},{"parts":[{"functionCall":{"name":"customDivide","args":{"denominator":2,"numerator":100}}}],"role":"model"},{"parts":[{"text":"what is the result of 50/2?"}],"role":"user"}],"tools":[{"functionDeclarations":[{"description":"Custom divide function","name":"customDivide","parameters":{"type":"OBJECT","properties":{"numerator":{"type":"NUMBER"},"denominator":{"type":"NUMBER"}}}}]}],"generationConfig":{}}
+6ebd757446a758219d1b325a1d23d63e6da9a56f30e2903a9dbdc6fe1bd0f052.resp 1144
+Status code: 200 
+Vary: Origin
+Vary: X-Origin
+Vary: Referer
+Date: Thu, 24 Jul 2025 03:04:02 GMT
+Server: scaffolding on HTTPServer2
+Content-Length: 368
+X-Frame-Options: SAMEORIGIN
+X-Content-Type-Options: nosniff
+Content-Type: application/json; charset=UTF-8
+Content-Encoding: gzip
+X-Xss-Protection: 0
+Server-Timing: gfet4t7; dur=806
+
+{
+  "candidates": [
+    {
+      "content": {
+        "parts": [
+          {
+            "functionCall": {
+              "name": "customDivide",
+              "args": {
+                "numerator": 50,
+                "denominator": 2
+              }
+            }
+          }
+        ],
+        "role": "model"
+      },
+      "finishReason": "STOP",
+      "avgLogprobs": -0.0015330095775425434
+    }
+  ],
+  "usageMetadata": {
+    "promptTokenCount": 38,
+    "candidatesTokenCount": 6,
+    "totalTokenCount": 44,
+    "promptTokensDetails": [
+      {
+        "modality": "TEXT",
+        "tokenCount": 38
+      }
+    ],
+    "candidatesTokensDetails": [
+      {
+        "modality": "TEXT",
+        "tokenCount": 6
+      }
+    ]
+  },
+  "modelVersion": "gemini-2.0-flash",
+  "responseId": "oqKBaLv0EPSRhMIPv9mnsAs"
+}

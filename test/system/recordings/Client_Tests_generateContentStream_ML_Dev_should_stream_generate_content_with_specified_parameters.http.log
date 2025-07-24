@@ -1,0 +1,46 @@
+1d393a37d436df6ae737f6b511dbac36c7d3a3bea7d31666a18b5ab55bf1e172.req 701
+b4d6e60a9b97e7b98c63df9308728c5c88c0b40c398046772c63447b94608b4d
+Server Address: generativelanguage.googleapis.com
+Port: 443
+Protocol: https
+********************************************************************************
+POST /v1beta/models/gemini-1.5-flash:streamGenerateContent?alt=sse HTTP/1.1
+Accept: */*
+Accept-Encoding: gzip, deflate
+Accept-Language: *
+Connection: keep-alive
+Content-Length: 134
+Content-Type: application/json
+Sec-Fetch-Mode: cors
+Test-Name: Client Tests generateContentStream ML Dev should stream generate content with specified parameters
+
+
+{"contents":[{"parts":[{"text":"why is the sky blue?"}],"role":"user"}],"generationConfig":{"candidateCount":1,"maxOutputTokens":200}}
+1d393a37d436df6ae737f6b511dbac36c7d3a3bea7d31666a18b5ab55bf1e172.resp 3125
+Status code: 200 
+Date: Thu, 24 Jul 2025 03:48:15 GMT
+Server: scaffolding on HTTPServer2
+X-Content-Type-Options: nosniff
+Server-Timing: gfet4t7; dur=2761
+Content-Type: text/event-stream
+Content-Disposition: attachment
+X-Xss-Protection: 0
+X-Frame-Options: SAMEORIGIN
+Vary: Origin
+Vary: X-Origin
+Vary: Referer
+
+data: {"candidates": [{"content": {"parts": [{"text": "The"}],"role": "model"}}],"usageMetadata": {"promptTokenCount": 7,"totalTokenCount": 7,"promptTokensDetails": [{"modality": "TEXT","tokenCount": 7}]},"modelVersion": "gemini-1.5-flash","responseId": "_KyBaObpL6aVhMIPvfG-0Qw"}
+
+data: {"candidates": [{"content": {"parts": [{"text": " sky is blue due to a phenomenon called **Rayleigh scattering**.  Sunlight is"}],"role": "model"}}],"usageMetadata": {"promptTokenCount": 7,"totalTokenCount": 7,"promptTokensDetails": [{"modality": "TEXT","tokenCount": 7}]},"modelVersion": "gemini-1.5-flash","responseId": "_KyBaObpL6aVhMIPvfG-0Qw"}
+
+data: {"candidates": [{"content": {"parts": [{"text": " made up of all the colors of the rainbow.  As sunlight enters the Earth"}],"role": "model"}}],"usageMetadata": {"promptTokenCount": 7,"totalTokenCount": 7,"promptTokensDetails": [{"modality": "TEXT","tokenCount": 7}]},"modelVersion": "gemini-1.5-flash","responseId": "_KyBaObpL6aVhMIPvfG-0Qw"}
+
+data: {"candidates": [{"content": {"parts": [{"text": "'s atmosphere, it collides with tiny air molecules (mostly nitrogen and oxygen).  \n\nRayleigh scattering affects shorter wavelengths of light more strongly than longer wavelengths"}],"role": "model"}}],"usageMetadata": {"promptTokenCount": 7,"totalTokenCount": 7,"promptTokensDetails": [{"modality": "TEXT","tokenCount": 7}]},"modelVersion": "gemini-1.5-flash","responseId": "_KyBaObpL6aVhMIPvfG-0Qw"}
+
+data: {"candidates": [{"content": {"parts": [{"text": ".  Blue and violet light have the shortest wavelengths, so they are scattered much more than the longer wavelengths like red and orange.  This scattered blue light is"}],"role": "model"}}],"usageMetadata": {"promptTokenCount": 7,"totalTokenCount": 7,"promptTokensDetails": [{"modality": "TEXT","tokenCount": 7}]},"modelVersion": "gemini-1.5-flash","responseId": "_KyBaObpL6aVhMIPvfG-0Qw"}
+
+data: {"candidates": [{"content": {"parts": [{"text": " what we see when we look at the sky.\n\nWhile violet light is scattered even more than blue, our eyes are less sensitive to violet, and the sun emits slightly less violet light, resulting in a blue sky rather than a violet one"}],"role": "model"}}],"usageMetadata": {"promptTokenCount": 7,"totalTokenCount": 7,"promptTokensDetails": [{"modality": "TEXT","tokenCount": 7}]},"modelVersion": "gemini-1.5-flash","responseId": "_KyBaObpL6aVhMIPvfG-0Qw"}
+
+data: {"candidates": [{"content": {"parts": [{"text": ".\n"}],"role": "model"},"finishReason": "STOP"}],"usageMetadata": {"promptTokenCount": 6,"candidatesTokenCount": 147,"totalTokenCount": 153,"promptTokensDetails": [{"modality": "TEXT","tokenCount": 6}],"candidatesTokensDetails": [{"modality": "TEXT","tokenCount": 147}]},"modelVersion": "gemini-1.5-flash","responseId": "_KyBaObpL6aVhMIPvfG-0Qw"}
+

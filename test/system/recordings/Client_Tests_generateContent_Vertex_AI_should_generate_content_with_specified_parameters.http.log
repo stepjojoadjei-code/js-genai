@@ -1,0 +1,73 @@
+c463d56e23f96dc7e0514e1531d55ccedac54744807cf87bd03e22e5b08e6db2.req 736
+b4d6e60a9b97e7b98c63df9308728c5c88c0b40c398046772c63447b94608b4d
+Server Address: us-central1-aiplatform.googleapis.com
+Port: 443
+Protocol: https
+********************************************************************************
+POST /v1beta1/projects/REDACTED/locations/REDACTED/publishers/google/models/gemini-1.5-flash:generateContent HTTP/1.1
+Accept: */*
+Accept-Encoding: gzip, deflate
+Accept-Language: *
+Connection: keep-alive
+Content-Length: 133
+Content-Type: application/json
+Sec-Fetch-Mode: cors
+Test-Name: Client Tests generateContent Vertex AI should generate content with specified parameters
+
+
+{"contents":[{"parts":[{"text":"why is the sky blue?"}],"role":"user"}],"generationConfig":{"candidateCount":1,"maxOutputTokens":20}}
+c463d56e23f96dc7e0514e1531d55ccedac54744807cf87bd03e22e5b08e6db2.resp 1222
+Status code: 200 
+Date: Thu, 24 Jul 2025 03:48:10 GMT
+X-Frame-Options: SAMEORIGIN
+X-Content-Type-Options: nosniff
+Content-Type: application/json; charset=UTF-8
+Vary: Origin
+Vary: X-Origin
+Vary: Referer
+Content-Encoding: gzip
+Server: scaffolding on HTTPServer2
+Content-Length: 483
+X-Xss-Protection: 0
+
+{
+  "candidates": [
+    {
+      "content": {
+        "role": "model",
+        "parts": [
+          {
+            "text": "The sky is blue due to a phenomenon called **Rayleigh scattering**.  Sunlight is made up of"
+          }
+        ]
+      },
+      "finishReason": "MAX_TOKENS",
+      "score": -0.14310671389102936,
+      "avgLogprobs": -0.0071553356945514681
+    }
+  ],
+  "usageMetadata": {
+    "promptTokenCount": 6,
+    "candidatesTokenCount": 20,
+    "totalTokenCount": 26,
+    "billablePromptUsage": {
+      "textCount": 16
+    },
+    "trafficType": "ON_DEMAND",
+    "promptTokensDetails": [
+      {
+        "modality": "TEXT",
+        "tokenCount": 6
+      }
+    ],
+    "candidatesTokensDetails": [
+      {
+        "modality": "TEXT",
+        "tokenCount": 20
+      }
+    ]
+  },
+  "modelVersion": "gemini-1.5-flash-002",
+  "createTime": "2025-07-24T03:48:10.161858Z",
+  "responseId": "-qyBaMLwCaKgmecPss3J2AU"
+}

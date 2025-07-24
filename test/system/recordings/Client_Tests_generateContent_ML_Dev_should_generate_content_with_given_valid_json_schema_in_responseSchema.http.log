@@ -1,0 +1,68 @@
+1accc68aedfcd5ed99903b363767cf456e3e029a56a948e130e71de1a7d5b966.req 2194
+b4d6e60a9b97e7b98c63df9308728c5c88c0b40c398046772c63447b94608b4d
+Server Address: generativelanguage.googleapis.com
+Port: 443
+Protocol: https
+********************************************************************************
+POST /v1beta/models/gemini-1.5-flash:generateContent HTTP/1.1
+Accept: */*
+Accept-Encoding: gzip, deflate
+Accept-Language: *
+Connection: keep-alive
+Content-Length: 1632
+Content-Type: application/json
+Sec-Fetch-Mode: cors
+Test-Name: Client Tests generateContent ML Dev should generate content with given valid json schema in responseSchema
+
+
+{"contents":[{"parts":[{"text":"populate the following object"}],"role":"user"}],"generationConfig":{"responseMimeType":"application/json","responseJsonSchema":{"type":"object","properties":{"simpleString":{"type":"string","description":"This is a simple string"},"stringDatatime":{"type":"string","format":"date-time"},"stringWithEnum":{"type":"string","enum":["enumvalue1","enumvalue2","enumvalue3"]},"stringWithLength":{"type":"string","minLength":1,"maxLength":10},"simpleNumber":{"type":"number"},"simpleInteger":{"type":"integer"},"integerInt64":{"type":"integer"},"numberWithMinMax":{"type":"number","minimum":1,"maximum":10},"simpleBoolean":{"type":"boolean"},"arrayFiled":{"type":"array","items":{"type":"string"}},"unionField":{"type":["string","number"]},"nullableField":{"type":["string","null"]},"nullableArrayField":{"anyOf":[{"type":"array","items":{"type":"string"}},{"type":"null"}]},"nullableObjectField":{"anyOf":[{"type":"object","properties":{"innerString":{"type":"string"},"innerNumber":{"type":"number"}},"required":["innerString","innerNumber"],"additionalProperties":false},{"type":"null"}]},"inner":{"type":"object","properties":{"innerString":{"type":"string"},"innerNumber":{"type":"number"}},"required":["innerString","innerNumber"],"additionalProperties":false}},"required":["simpleString","stringDatatime","stringWithEnum","stringWithLength","simpleNumber","simpleInteger","integerInt64","numberWithMinMax","simpleBoolean","arrayFiled","unionField","nullableField","nullableArrayField","nullableObjectField","inner"],"additionalProperties":false,"$schema":"http://json-schema.org/draft-07/schema#"}}}
+1accc68aedfcd5ed99903b363767cf456e3e029a56a948e130e71de1a7d5b966.resp 1454
+Status code: 200 
+Vary: Origin
+Vary: X-Origin
+Vary: Referer
+Content-Encoding: gzip
+Date: Thu, 24 Jul 2025 03:48:03 GMT
+Server: scaffolding on HTTPServer2
+Content-Length: 501
+X-Xss-Protection: 0
+X-Frame-Options: SAMEORIGIN
+X-Content-Type-Options: nosniff
+Content-Type: application/json; charset=UTF-8
+Server-Timing: gfet4t7; dur=1689
+
+{
+  "candidates": [
+    {
+      "content": {
+        "parts": [
+          {
+            "text": "{\"arrayFiled\": [\"string\"], \"inner\": {\"innerNumber\": 1.23, \"innerString\": \"string\"}, \"integerInt64\": 123, \"nullableArrayField\": null, \"nullableField\": null, \"nullableObjectField\": null, \"numberWithMinMax\": 1.23, \"simpleBoolean\": true, \"simpleInteger\": 123, \"simpleNumber\": 1.23, \"simpleString\": \"string\", \"stringDatatime\": \"2024-01-16T12:00:00Z\", \"stringWithEnum\": \"enumvalue1\", \"stringWithLength\": \"string\", \"unionField\": 1.23}"
+          }
+        ],
+        "role": "model"
+      },
+      "finishReason": "STOP",
+      "avgLogprobs": -0.02287894334548559
+    }
+  ],
+  "usageMetadata": {
+    "promptTokenCount": 4,
+    "candidatesTokenCount": 156,
+    "totalTokenCount": 160,
+    "promptTokensDetails": [
+      {
+        "modality": "TEXT",
+        "tokenCount": 4
+      }
+    ],
+    "candidatesTokensDetails": [
+      {
+        "modality": "TEXT",
+        "tokenCount": 156
+      }
+    ]
+  },
+  "modelVersion": "gemini-1.5-flash",
+  "responseId": "8qyBaMHaDMuygLUP_4TLuA4"
+}

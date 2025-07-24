@@ -1,0 +1,74 @@
+56f30762352c443f5a5a36b580ab9527bad3dcffee93be07d0b04ce19307be0f.req 1146
+b4d6e60a9b97e7b98c63df9308728c5c88c0b40c398046772c63447b94608b4d
+Server Address: generativelanguage.googleapis.com
+Port: 443
+Protocol: https
+********************************************************************************
+POST /v1beta/models/gemini-1.5-flash:generateContent HTTP/1.1
+Accept: */*
+Accept-Encoding: gzip, deflate
+Accept-Language: *
+Connection: keep-alive
+Content-Length: 583
+Content-Type: application/json
+Sec-Fetch-Mode: cors
+Test-Name: Client Tests generateContent ML Dev can use JSON schema in parametersJsonSchema to build FunctionDeclaration
+
+
+{"contents":[{"parts":[{"text":"put word: hello and word: world into a string"}],"role":"user"}],"tools":[{"functionDeclarations":[{"description":"this is a concat string function","name":"concatStringFunction","parametersJsonSchema":{"type":"object","properties":{"firstString":{"type":"string"},"secondString":{"type":"string"}},"required":["firstString","secondString"],"additionalProperties":false,"$schema":"http://json-schema.org/draft-07/schema#"}}]}],"toolConfig":{"functionCallingConfig":{"mode":"ANY","allowedFunctionNames":["concatStringFunction"]}},"generationConfig":{}}
+56f30762352c443f5a5a36b580ab9527bad3dcffee93be07d0b04ce19307be0f.resp 1167
+Status code: 200 
+Content-Encoding: gzip
+Server: scaffolding on HTTPServer2
+Content-Length: 373
+X-Xss-Protection: 0
+X-Content-Type-Options: nosniff
+Server-Timing: gfet4t7; dur=1196
+Content-Type: application/json; charset=UTF-8
+Vary: Origin
+Vary: X-Origin
+Vary: Referer
+Date: Thu, 24 Jul 2025 03:47:55 GMT
+X-Frame-Options: SAMEORIGIN
+
+{
+  "candidates": [
+    {
+      "content": {
+        "parts": [
+          {
+            "functionCall": {
+              "name": "concatStringFunction",
+              "args": {
+                "firstString": "hello",
+                "secondString": "world"
+              }
+            }
+          }
+        ],
+        "role": "model"
+      },
+      "finishReason": "STOP",
+      "avgLogprobs": -3.130776652445396e-05
+    }
+  ],
+  "usageMetadata": {
+    "promptTokenCount": 20,
+    "candidatesTokenCount": 9,
+    "totalTokenCount": 29,
+    "promptTokensDetails": [
+      {
+        "modality": "TEXT",
+        "tokenCount": 20
+      }
+    ],
+    "candidatesTokensDetails": [
+      {
+        "modality": "TEXT",
+        "tokenCount": 9
+      }
+    ]
+  },
+  "modelVersion": "gemini-1.5-flash",
+  "responseId": "6qyBaPnfMbKU1dkP7PW48Qk"
+}

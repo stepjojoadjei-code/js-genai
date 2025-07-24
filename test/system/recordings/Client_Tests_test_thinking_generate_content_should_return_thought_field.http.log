@@ -1,0 +1,63 @@
+1850d898ed3f758ad8c53b17715fe06b6db04960a2cb9a59d279ad5ffce973f0.req 744
+b4d6e60a9b97e7b98c63df9308728c5c88c0b40c398046772c63447b94608b4d
+Server Address: generativelanguage.googleapis.com
+Port: 443
+Protocol: https
+********************************************************************************
+POST /v1alpha/models/gemini-2.0-flash-thinking-exp:generateContent HTTP/1.1
+Accept: */*
+Accept-Encoding: gzip, deflate
+Accept-Language: *
+Connection: keep-alive
+Content-Length: 204
+Content-Type: application/json
+Sec-Fetch-Mode: cors
+Test-Name: Client Tests test thinking generate content should return thought field
+
+
+{"contents":[{"parts":[{"text":"What is the sum of natural numbers from 1 to 100?"}],"role":"user"}],"generationConfig":{"candidateCount":1,"maxOutputTokens":20,"thinkingConfig":{"includeThoughts":true}}}
+1850d898ed3f758ad8c53b17715fe06b6db04960a2cb9a59d279ad5ffce973f0.resp 1576
+Status code: 200 
+Content-Type: application/json; charset=UTF-8
+Vary: Origin
+Vary: X-Origin
+Vary: Referer
+Date: Thu, 24 Jul 2025 03:47:49 GMT
+Server: scaffolding on HTTPServer2
+Content-Length: 682
+X-Xss-Protection: 0
+X-Content-Type-Options: nosniff
+Content-Encoding: gzip
+X-Frame-Options: SAMEORIGIN
+Server-Timing: gfet4t7; dur=2139
+
+{
+  "candidates": [
+    {
+      "content": {
+        "parts": [
+          {
+            "text": "**The Core Problem: Summing Natural Numbers**\n\nOkay, so the user wants the sum of natural numbers from, let's assume, some starting point to some endpoint.  This is a classic problem. It immediately makes me think of arithmetic series and the standard formulas associated with them. Depending on the specifics, there might be shortcuts or more efficient ways to compute this, but the core issue is clearly calculating the summation of a sequence of integers. It's a fundamental concept, but the context here will define the best approach.  I'll need more information from the user to determine the most efficient solution, but this is a straightforward problem at its heart.\n",
+            "thought": true
+          }
+        ],
+        "role": "model"
+      },
+      "finishReason": "MAX_TOKENS",
+      "index": 0
+    }
+  ],
+  "usageMetadata": {
+    "promptTokenCount": 17,
+    "totalTokenCount": 36,
+    "promptTokensDetails": [
+      {
+        "modality": "TEXT",
+        "tokenCount": 17
+      }
+    ],
+    "thoughtsTokenCount": 19
+  },
+  "modelVersion": "gemini-2.0-flash-thinking-exp-01-21",
+  "responseId": "5ayBaKP6BcWVjMcP-LHCgAI"
+}

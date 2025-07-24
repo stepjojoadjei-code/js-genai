@@ -1,0 +1,80 @@
+868786a30c69ed19f03372dbddae62c5d0d185a66d730094a0761a9111cb5421.req 1153
+b4d6e60a9b97e7b98c63df9308728c5c88c0b40c398046772c63447b94608b4d
+Server Address: generativelanguage.googleapis.com
+Port: 443
+Protocol: https
+********************************************************************************
+POST /v1beta/models/gemini-2.0-flash:generateContent HTTP/1.1
+Accept: */*
+Accept-Encoding: gzip, deflate
+Accept-Language: *
+Connection: keep-alive
+Content-Length: 595
+Content-Type: application/json
+Sec-Fetch-Mode: cors
+Test-Name: MCP related client Tests generateContent ML Dev will give FunctionDeclaration back when AFC is disabled
+
+
+{"contents":[{"parts":[{"text":"Use the printer to print a simple word: hello in blue, and beep with the beeper"}],"role":"user"}],"tools":[{"functionDeclarations":[{"name":"print","parametersJsonSchema":{"type":"object","properties":{"text":{"type":"string"},"color":{"type":"string","pattern":"red|blue|green|white"}},"required":["text","color"],"additionalProperties":false,"$schema":"http://json-schema.org/draft-07/schema#"}}]},{"functionDeclarations":[{"name":"beep","parametersJsonSchema":{"type":"object"}}]}],"toolConfig":{"functionCallingConfig":{"mode":"AUTO"}},"generationConfig":{}}
+868786a30c69ed19f03372dbddae62c5d0d185a66d730094a0761a9111cb5421.resp 1260
+Status code: 200 
+Content-Type: application/json; charset=UTF-8
+Vary: Origin
+Vary: X-Origin
+Vary: Referer
+Date: Thu, 24 Jul 2025 03:36:22 GMT
+Content-Length: 376
+X-Xss-Protection: 0
+X-Frame-Options: SAMEORIGIN
+X-Content-Type-Options: nosniff
+Server-Timing: gfet4t7; dur=714
+Content-Encoding: gzip
+Server: scaffolding on HTTPServer2
+
+{
+  "candidates": [
+    {
+      "content": {
+        "parts": [
+          {
+            "functionCall": {
+              "name": "print",
+              "args": {
+                "text": "hello",
+                "color": "blue"
+              }
+            }
+          },
+          {
+            "functionCall": {
+              "name": "beep",
+              "args": {}
+            }
+          }
+        ],
+        "role": "model"
+      },
+      "finishReason": "STOP",
+      "avgLogprobs": -0.0016857786104083061
+    }
+  ],
+  "usageMetadata": {
+    "promptTokenCount": 21,
+    "candidatesTokenCount": 6,
+    "totalTokenCount": 27,
+    "promptTokensDetails": [
+      {
+        "modality": "TEXT",
+        "tokenCount": 21
+      }
+    ],
+    "candidatesTokensDetails": [
+      {
+        "modality": "TEXT",
+        "tokenCount": 6
+      }
+    ]
+  },
+  "modelVersion": "gemini-2.0-flash",
+  "responseId": "NqqBaPO2FY6MmNAPxYqk6QU"
+}

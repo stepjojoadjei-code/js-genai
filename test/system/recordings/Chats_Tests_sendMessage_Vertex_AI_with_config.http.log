@@ -1,0 +1,73 @@
+d852ec8aa2ec8edf10ccc0e86162fee0bd7c8dd19976cf5da0f6a068e8135148.req 692
+b4d6e60a9b97e7b98c63df9308728c5c88c0b40c398046772c63447b94608b4d
+Server Address: us-central1-aiplatform.googleapis.com
+Port: 443
+Protocol: https
+********************************************************************************
+POST /v1beta1/projects/REDACTED/locations/REDACTED/publishers/google/models/gemini-2.0-flash:generateContent HTTP/1.1
+Accept: */*
+Accept-Encoding: gzip, deflate
+Accept-Language: *
+Connection: keep-alive
+Content-Length: 132
+Content-Type: application/json
+Sec-Fetch-Mode: cors
+Test-Name: Chats Tests sendMessage Vertex AI with config
+
+
+{"contents":[{"parts":[{"text":"why is the sky blue?"}],"role":"user"}],"generationConfig":{"temperature":0.5,"maxOutputTokens":20}}
+d852ec8aa2ec8edf10ccc0e86162fee0bd7c8dd19976cf5da0f6a068e8135148.resp 1212
+Status code: 200 
+X-Xss-Protection: 0
+X-Frame-Options: SAMEORIGIN
+Content-Encoding: gzip
+Server: scaffolding on HTTPServer2
+Content-Length: 479
+X-Content-Type-Options: nosniff
+Content-Type: application/json; charset=UTF-8
+Vary: Origin
+Vary: X-Origin
+Vary: Referer
+Date: Thu, 24 Jul 2025 03:03:24 GMT
+
+{
+  "candidates": [
+    {
+      "content": {
+        "role": "model",
+        "parts": [
+          {
+            "text": "The sky is blue due to a phenomenon called **Rayleigh scattering**. Here's a breakdown of"
+          }
+        ]
+      },
+      "finishReason": "MAX_TOKENS",
+      "score": -2.538928747177124,
+      "avgLogprobs": -0.12694643735885619
+    }
+  ],
+  "usageMetadata": {
+    "promptTokenCount": 6,
+    "candidatesTokenCount": 20,
+    "totalTokenCount": 26,
+    "billablePromptUsage": {
+      "textCount": 16
+    },
+    "trafficType": "ON_DEMAND",
+    "promptTokensDetails": [
+      {
+        "modality": "TEXT",
+        "tokenCount": 6
+      }
+    ],
+    "candidatesTokensDetails": [
+      {
+        "modality": "TEXT",
+        "tokenCount": 20
+      }
+    ]
+  },
+  "modelVersion": "gemini-2.0-flash",
+  "createTime": "2025-07-24T03:03:23.736615Z",
+  "responseId": "e6KBaOf6LLOVmecPjvaTyA0"
+}

@@ -1,0 +1,34 @@
+a6e4ab3f170784aa6444cbf6bbc2f9ac1dae81afda0474e86d005aba32ef94d6.req 939
+b4d6e60a9b97e7b98c63df9308728c5c88c0b40c398046772c63447b94608b4d
+Server Address: generativelanguage.googleapis.com
+Port: 443
+Protocol: https
+********************************************************************************
+POST /v1beta/models/gemini-2.0-flash:streamGenerateContent?alt=sse HTTP/1.1
+Accept: */*
+Accept-Encoding: gzip, deflate
+Accept-Language: *
+Connection: keep-alive
+Content-Length: 393
+Content-Type: application/json
+Sec-Fetch-Mode: cors
+Test-Name: AFC Streaming Tests generateContentStream afc disabled Google AI AFC disabled
+
+
+{"contents":[{"parts":[{"text":"Divide 10 by 2 using the customDivide function"}],"role":"user"}],"tools":[{"functionDeclarations":[{"description":"Custom divide function","name":"customDivide","parametersJsonSchema":{"type":"object","properties":{"numerator":{"type":"number"},"denominator":{"type":"number"}}}}]}],"toolConfig":{"functionCallingConfig":{"mode":"AUTO"}},"generationConfig":{}}
+a6e4ab3f170784aa6444cbf6bbc2f9ac1dae81afda0474e86d005aba32ef94d6.resp 780
+Status code: 200 
+Content-Type: text/event-stream
+Content-Disposition: attachment
+Date: Thu, 24 Jul 2025 05:32:34 GMT
+X-Xss-Protection: 0
+X-Frame-Options: SAMEORIGIN
+X-Content-Type-Options: nosniff
+Server-Timing: gfet4t7; dur=565
+Vary: Origin
+Vary: X-Origin
+Vary: Referer
+Server: scaffolding on HTTPServer2
+
+data: {"candidates": [{"content": {"parts": [{"functionCall": {"name": "customDivide","args": {"denominator": 2,"numerator": 10}}}],"role": "model"},"finishReason": "STOP"}],"usageMetadata": {"promptTokenCount": 17,"candidatesTokenCount": 6,"totalTokenCount": 23,"promptTokensDetails": [{"modality": "TEXT","tokenCount": 17}],"candidatesTokensDetails": [{"modality": "TEXT","tokenCount": 6}]},"modelVersion": "gemini-2.0-flash","responseId": "csWBaKPkJY2p1dkP8ZaNuAw"}
+

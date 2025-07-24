@@ -1,0 +1,68 @@
+fa922a72d3f8181048eec32d2b8caec7bcf679ac31bf3da3338fd840aeeda49f.req 683
+b4d6e60a9b97e7b98c63df9308728c5c88c0b40c398046772c63447b94608b4d
+Server Address: generativelanguage.googleapis.com
+Port: 443
+Protocol: https
+********************************************************************************
+POST /v1beta/models/gemini-2.0-flash:generateContent HTTP/1.1
+Accept: */*
+Accept-Encoding: gzip, deflate
+Accept-Language: *
+Connection: keep-alive
+Content-Length: 182
+Content-Type: application/json
+Sec-Fetch-Mode: cors
+Test-Name: Chats Tests sendMessage Google AI with history
+
+
+{"contents":[{"parts":[{"text":"a=5"}],"role":"user"},{"parts":[{"text":"b=10"}],"role":"user"},{"parts":[{"text":"what is the value of a+b?"}],"role":"user"}],"generationConfig":{}}
+fa922a72d3f8181048eec32d2b8caec7bcf679ac31bf3da3338fd840aeeda49f.resp 1001
+Status code: 200 
+Content-Type: application/json; charset=UTF-8
+Vary: Origin
+Vary: X-Origin
+Vary: Referer
+Content-Encoding: gzip
+Server: scaffolding on HTTPServer2
+Server-Timing: gfet4t7; dur=612
+Date: Thu, 24 Jul 2025 03:03:31 GMT
+Content-Length: 330
+X-Xss-Protection: 0
+X-Frame-Options: SAMEORIGIN
+X-Content-Type-Options: nosniff
+
+{
+  "candidates": [
+    {
+      "content": {
+        "parts": [
+          {
+            "text": "a + b = 5 + 10 = 15\n"
+          }
+        ],
+        "role": "model"
+      },
+      "finishReason": "STOP",
+      "avgLogprobs": -0.093456180890401211
+    }
+  ],
+  "usageMetadata": {
+    "promptTokenCount": 16,
+    "candidatesTokenCount": 15,
+    "totalTokenCount": 31,
+    "promptTokensDetails": [
+      {
+        "modality": "TEXT",
+        "tokenCount": 16
+      }
+    ],
+    "candidatesTokensDetails": [
+      {
+        "modality": "TEXT",
+        "tokenCount": 15
+      }
+    ]
+  },
+  "modelVersion": "gemini-2.0-flash",
+  "responseId": "gqKBaIK2NY6MmNAPxYqk6QU"
+}

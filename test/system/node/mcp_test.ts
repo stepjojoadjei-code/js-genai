@@ -14,6 +14,7 @@ import {GoogleGenAI} from '../../../src/node/node_client.js';
 import {
   FunctionCallingConfigMode,
   FunctionDeclaration,
+  HttpOptions,
   Type,
 } from '../../../src/types.js';
 import {setupTestServer, shutdownTestServer} from '../test_server.js';
@@ -44,12 +45,23 @@ const controlLightFunctionDeclaration: FunctionDeclaration = {
 };
 
 describe('MCP related client Tests', () => {
+  let testName: string = '';
+  let httpOptions: HttpOptions;
   beforeAll(async () => {
     await setupTestServer();
+    jasmine.getEnv().addReporter({
+      specStarted: function (result) {
+        testName = result.fullName;
+      },
+    });
   });
 
   afterAll(async () => {
     await shutdownTestServer();
+  });
+
+  beforeEach(() => {
+    httpOptions = {headers: {'Test-Name': testName}};
   });
 
   describe('generateContent', () => {
@@ -57,6 +69,7 @@ describe('MCP related client Tests', () => {
       const ai = new GoogleGenAI({
         vertexai: false,
         apiKey: GOOGLE_API_KEY,
+        httpOptions,
       });
       const mcpCallableTool = mcpToTool(
         await spinUpPrintingServer(),
@@ -81,7 +94,11 @@ describe('MCP related client Tests', () => {
       expect(consoleBeepSpy).toHaveBeenCalledWith('\u0007');
     });
     it('ML Dev test with greeter server (parameter as nullable union type)', async () => {
-      const ai = new GoogleGenAI({vertexai: false, apiKey: GOOGLE_API_KEY});
+      const ai = new GoogleGenAI({
+        vertexai: false,
+        apiKey: GOOGLE_API_KEY,
+        httpOptions,
+      });
       const mcpCallableTool = mcpToTool(await greetServer());
       const consoleLogSpy = spyOn(console, 'log').and.callThrough();
       await ai.models.generateContent({
@@ -111,6 +128,7 @@ describe('MCP related client Tests', () => {
         vertexai: true,
         project: GOOGLE_CLOUD_PROJECT,
         location: GOOGLE_CLOUD_LOCATION,
+        httpOptions,
       });
       const mcpCallableTool = mcpToTool(await greetServer());
       const consoleLogSpy = spyOn(console, 'log').and.callThrough();
@@ -140,6 +158,7 @@ describe('MCP related client Tests', () => {
       const ai = new GoogleGenAI({
         vertexai: false,
         apiKey: GOOGLE_API_KEY,
+        httpOptions,
       });
       const callableTool1 = mcpToTool(await spinUpPrintingServer());
       const callableTool2 = mcpToTool(await spinUpBeepingServer());
@@ -166,6 +185,7 @@ describe('MCP related client Tests', () => {
         vertexai: true,
         project: GOOGLE_CLOUD_PROJECT,
         location: GOOGLE_CLOUD_LOCATION,
+        httpOptions,
       });
       const mcpCallableTool = mcpToTool(await spinUpPrintingServer());
       const consoleLogSpy = spyOn(console, 'log').and.callThrough();
@@ -185,7 +205,11 @@ describe('MCP related client Tests', () => {
       expect(consoleLogSpy).toHaveBeenCalledWith('\x1b[31mhello');
     });
     it('ML Dev will give FunctionDeclaration back when AFC is disabled', async () => {
-      const ai = new GoogleGenAI({vertexai: false, apiKey: GOOGLE_API_KEY});
+      const ai = new GoogleGenAI({
+        vertexai: false,
+        apiKey: GOOGLE_API_KEY,
+        httpOptions,
+      });
       const callableTool1 = mcpToTool(await spinUpPrintingServer());
       const callableTool2 = mcpToTool(await spinUpBeepingServer());
       const consoleLogSpy = spyOn(console, 'log').and.callThrough();
@@ -228,6 +252,7 @@ describe('MCP related client Tests', () => {
         vertexai: true,
         project: GOOGLE_CLOUD_PROJECT,
         location: GOOGLE_CLOUD_LOCATION,
+        httpOptions,
       });
       const mcpCallableTool = mcpToTool(await spinUpPrintingServer());
       const consoleLogSpy = spyOn(console, 'log').and.callThrough();
@@ -259,7 +284,11 @@ describe('MCP related client Tests', () => {
       expect(consoleLogSpy).not.toHaveBeenCalled();
     });
     it('ML Dev can take mixed tools when AFC is disabled', async () => {
-      const ai = new GoogleGenAI({vertexai: false, apiKey: GOOGLE_API_KEY});
+      const ai = new GoogleGenAI({
+        vertexai: false,
+        apiKey: GOOGLE_API_KEY,
+        httpOptions,
+      });
       const callableTool1 = mcpToTool(await spinUpPrintingServer());
       const callableTool2 = mcpToTool(await spinUpBeepingServer());
       const consoleLogSpy = spyOn(console, 'log').and.callThrough();
@@ -313,6 +342,7 @@ describe('MCP related client Tests', () => {
         vertexai: true,
         project: GOOGLE_CLOUD_PROJECT,
         location: GOOGLE_CLOUD_LOCATION,
+        httpOptions,
       });
       const response = await ai.models.generateContent({
         model: 'gemini-2.0-flash',

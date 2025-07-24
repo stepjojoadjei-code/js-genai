@@ -1,0 +1,79 @@
+3aa750a83a1bc3bfee30321506206317c1abe6e212afc517dfa3cf5f1dad671c.req 1105
+b4d6e60a9b97e7b98c63df9308728c5c88c0b40c398046772c63447b94608b4d
+Server Address: us-central1-aiplatform.googleapis.com
+Port: 443
+Protocol: https
+********************************************************************************
+POST /v1beta1/projects/REDACTED/locations/REDACTED/publishers/google/models/gemini-2.0-flash:generateContent HTTP/1.1
+Accept: */*
+Accept-Encoding: gzip, deflate
+Accept-Language: *
+Connection: keep-alive
+Content-Length: 483
+Content-Type: application/json
+Sec-Fetch-Mode: cors
+Test-Name: non-streaming Tests chat AFC enabled AFC max calls exceeded Vertex AI can continue after max calls exceeded
+
+
+{"contents":[{"parts":[{"text":"Divide 10 by 2 using the customDivide function, then divide the result by 2 use the customDivide function again, then tell me the result"}],"role":"user"}],"tools":[{"functionDeclarations":[{"description":"Custom divide function","name":"customDivide","parametersJsonSchema":{"type":"object","properties":{"numerator":{"type":"number"},"denominator":{"type":"number"}}}}]}],"toolConfig":{"functionCallingConfig":{"mode":"AUTO"}},"generationConfig":{}}
+3aa750a83a1bc3bfee30321506206317c1abe6e212afc517dfa3cf5f1dad671c.resp 1288
+Status code: 200 
+Vary: Origin
+Vary: X-Origin
+Vary: Referer
+Content-Encoding: gzip
+Date: Thu, 24 Jul 2025 05:29:07 GMT
+X-Xss-Protection: 0
+X-Frame-Options: SAMEORIGIN
+X-Content-Type-Options: nosniff
+Content-Type: application/json; charset=UTF-8
+Server: scaffolding on HTTPServer2
+Content-Length: 466
+
+{
+  "candidates": [
+    {
+      "content": {
+        "role": "model",
+        "parts": [
+          {
+            "functionCall": {
+              "name": "customDivide",
+              "args": {
+                "numerator": 10,
+                "denominator": 2
+              }
+            }
+          }
+        ]
+      },
+      "finishReason": "STOP",
+      "score": -0.016318490728735924,
+      "avgLogprobs": -0.0027197484547893205
+    }
+  ],
+  "usageMetadata": {
+    "promptTokenCount": 37,
+    "candidatesTokenCount": 6,
+    "totalTokenCount": 43,
+    "billablePromptUsage": {
+      "textCount": 205
+    },
+    "trafficType": "ON_DEMAND",
+    "promptTokensDetails": [
+      {
+        "modality": "TEXT",
+        "tokenCount": 37
+      }
+    ],
+    "candidatesTokensDetails": [
+      {
+        "modality": "TEXT",
+        "tokenCount": 6
+      }
+    ]
+  },
+  "modelVersion": "gemini-2.0-flash",
+  "createTime": "2025-07-24T05:29:07.066926Z",
+  "responseId": "o8SBaO6KBPCKmecPtPO6oAQ"
+}

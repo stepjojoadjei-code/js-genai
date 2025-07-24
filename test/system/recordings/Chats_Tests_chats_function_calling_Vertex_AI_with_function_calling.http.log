@@ -1,0 +1,158 @@
+b0da495829f1a123bd9bf201cc7edfdf5aada8bad094a3bd6ea5100c3089d077.req 890
+b4d6e60a9b97e7b98c63df9308728c5c88c0b40c398046772c63447b94608b4d
+Server Address: us-central1-aiplatform.googleapis.com
+Port: 443
+Protocol: https
+********************************************************************************
+POST /v1beta1/projects/REDACTED/locations/REDACTED/publishers/google/models/gemini-2.0-flash:generateContent HTTP/1.1
+Accept: */*
+Accept-Encoding: gzip, deflate
+Accept-Language: *
+Connection: keep-alive
+Content-Length: 309
+Content-Type: application/json
+Sec-Fetch-Mode: cors
+Test-Name: Chats Tests chats function calling Vertex AI with function calling
+
+
+{"contents":[{"parts":[{"text":"what is the result of 100/2"}],"role":"user"}],"tools":[{"functionDeclarations":[{"description":"Custom divide function","name":"customDivide","parameters":{"type":"OBJECT","properties":{"numerator":{"type":"NUMBER"},"denominator":{"type":"NUMBER"}}}}]}],"generationConfig":{}}
+b0da495829f1a123bd9bf201cc7edfdf5aada8bad094a3bd6ea5100c3089d077.resp 1289
+Status code: 200 
+Vary: Origin
+Vary: X-Origin
+Vary: Referer
+Content-Encoding: gzip
+Server: scaffolding on HTTPServer2
+Content-Length: 468
+X-Xss-Protection: 0
+X-Frame-Options: SAMEORIGIN
+Content-Type: application/json; charset=UTF-8
+Date: Thu, 24 Jul 2025 03:04:00 GMT
+X-Content-Type-Options: nosniff
+
+{
+  "candidates": [
+    {
+      "content": {
+        "role": "model",
+        "parts": [
+          {
+            "functionCall": {
+              "name": "customDivide",
+              "args": {
+                "numerator": 100,
+                "denominator": 2
+              }
+            }
+          }
+        ]
+      },
+      "finishReason": "STOP",
+      "score": -0.0086962897330522537,
+      "avgLogprobs": -0.0014493816221753757
+    }
+  ],
+  "usageMetadata": {
+    "promptTokenCount": 21,
+    "candidatesTokenCount": 6,
+    "totalTokenCount": 27,
+    "billablePromptUsage": {
+      "textCount": 74
+    },
+    "trafficType": "ON_DEMAND",
+    "promptTokensDetails": [
+      {
+        "modality": "TEXT",
+        "tokenCount": 21
+      }
+    ],
+    "candidatesTokensDetails": [
+      {
+        "modality": "TEXT",
+        "tokenCount": 6
+      }
+    ]
+  },
+  "modelVersion": "gemini-2.0-flash",
+  "createTime": "2025-07-24T03:04:00.056491Z",
+  "responseId": "oKKBaKu5A6KgmecPss3J2AU"
+}
+c68924664143fd17845d9e0ca47029ff2ab68d74cc0c00389bd31b4d056bc2c2.req 1064
+b0da495829f1a123bd9bf201cc7edfdf5aada8bad094a3bd6ea5100c3089d077
+Server Address: us-central1-aiplatform.googleapis.com
+Port: 443
+Protocol: https
+********************************************************************************
+POST /v1beta1/projects/REDACTED/locations/REDACTED/publishers/google/models/gemini-2.0-flash:generateContent HTTP/1.1
+Accept: */*
+Accept-Encoding: gzip, deflate
+Accept-Language: *
+Connection: keep-alive
+Content-Length: 483
+Content-Type: application/json
+Sec-Fetch-Mode: cors
+Test-Name: Chats Tests chats function calling Vertex AI with function calling
+
+
+{"contents":[{"parts":[{"text":"what is the result of 100/2"}],"role":"user"},{"parts":[{"functionCall":{"name":"customDivide","args":{"numerator":100,"denominator":2}}}],"role":"model"},{"parts":[{"text":"what is the result of 50/2?"}],"role":"user"}],"tools":[{"functionDeclarations":[{"description":"Custom divide function","name":"customDivide","parameters":{"type":"OBJECT","properties":{"numerator":{"type":"NUMBER"},"denominator":{"type":"NUMBER"}}}}]}],"generationConfig":{}}
+c68924664143fd17845d9e0ca47029ff2ab68d74cc0c00389bd31b4d056bc2c2.resp 1284
+Status code: 200 
+Vary: Origin
+Vary: X-Origin
+Vary: Referer
+X-Xss-Protection: 0
+X-Frame-Options: SAMEORIGIN
+X-Content-Type-Options: nosniff
+Content-Type: application/json; charset=UTF-8
+Content-Encoding: gzip
+Date: Thu, 24 Jul 2025 03:04:01 GMT
+Server: scaffolding on HTTPServer2
+Content-Length: 468
+
+{
+  "candidates": [
+    {
+      "content": {
+        "role": "model",
+        "parts": [
+          {
+            "functionCall": {
+              "name": "customDivide",
+              "args": {
+                "denominator": 2,
+                "numerator": 50
+              }
+            }
+          }
+        ]
+      },
+      "finishReason": "STOP",
+      "score": -2.9506123065948486,
+      "avgLogprobs": -0.49176871776580811
+    }
+  ],
+  "usageMetadata": {
+    "promptTokenCount": 38,
+    "candidatesTokenCount": 6,
+    "totalTokenCount": 44,
+    "billablePromptUsage": {
+      "textCount": 142
+    },
+    "trafficType": "ON_DEMAND",
+    "promptTokensDetails": [
+      {
+        "modality": "TEXT",
+        "tokenCount": 38
+      }
+    ],
+    "candidatesTokensDetails": [
+      {
+        "modality": "TEXT",
+        "tokenCount": 6
+      }
+    ]
+  },
+  "modelVersion": "gemini-2.0-flash",
+  "createTime": "2025-07-24T03:04:00.781610Z",
+  "responseId": "oKKBaKraL6GOmecPtZyXmQc"
+}

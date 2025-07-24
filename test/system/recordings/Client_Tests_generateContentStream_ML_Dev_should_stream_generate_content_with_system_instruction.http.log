@@ -1,0 +1,46 @@
+5214501404f3b76af5a4b96e41a89b761415b40c8239f45938399ebb2cdce363.req 802
+b4d6e60a9b97e7b98c63df9308728c5c88c0b40c398046772c63447b94608b4d
+Server Address: generativelanguage.googleapis.com
+Port: 443
+Protocol: https
+********************************************************************************
+POST /v1beta/models/gemini-1.5-flash:streamGenerateContent?alt=sse HTTP/1.1
+Accept: */*
+Accept-Encoding: gzip, deflate
+Accept-Language: *
+Connection: keep-alive
+Content-Length: 237
+Content-Type: application/json
+Sec-Fetch-Mode: cors
+Test-Name: Client Tests generateContentStream ML Dev should stream generate content with system instruction
+
+
+{"contents":[{"parts":[{"text":"high"}],"role":"user"}],"systemInstruction":{"parts":[{"text":"I say high you say low, and then tell me why is the sky blue."}],"role":"user"},"generationConfig":{"candidateCount":1,"maxOutputTokens":200}}
+5214501404f3b76af5a4b96e41a89b761415b40c8239f45938399ebb2cdce363.resp 3175
+Status code: 200 
+Content-Disposition: attachment
+X-Xss-Protection: 0
+X-Frame-Options: SAMEORIGIN
+Content-Type: text/event-stream
+Vary: Origin
+Vary: X-Origin
+Vary: Referer
+Date: Thu, 24 Jul 2025 03:45:02 GMT
+Server: scaffolding on HTTPServer2
+X-Content-Type-Options: nosniff
+Server-Timing: gfet4t7; dur=1388
+
+data: {"candidates": [{"content": {"parts": [{"text": "low"}],"role": "model"}}],"usageMetadata": {"promptTokenCount": 20,"totalTokenCount": 20,"promptTokensDetails": [{"modality": "TEXT","tokenCount": 20}]},"modelVersion": "gemini-1.5-flash","responseId": "PayBaJLkHtivgLUP4ae62Q4"}
+
+data: {"candidates": [{"content": {"parts": [{"text": "\n\nThe sky is blue because of a phenomenon called Rayleigh scattering.  Sunlight is"}],"role": "model"}}],"usageMetadata": {"promptTokenCount": 20,"totalTokenCount": 20,"promptTokensDetails": [{"modality": "TEXT","tokenCount": 20}]},"modelVersion": "gemini-1.5-flash","responseId": "PayBaJLkHtivgLUP4ae62Q4"}
+
+data: {"candidates": [{"content": {"parts": [{"text": " made up of all the colors of the rainbow.  When sunlight enters the Earth"}],"role": "model"}}],"usageMetadata": {"promptTokenCount": 20,"totalTokenCount": 20,"promptTokensDetails": [{"modality": "TEXT","tokenCount": 20}]},"modelVersion": "gemini-1.5-flash","responseId": "PayBaJLkHtivgLUP4ae62Q4"}
+
+data: {"candidates": [{"content": {"parts": [{"text": "'s atmosphere, it collides with tiny air molecules (mostly nitrogen and oxygen).  These molecules are much smaller than the wavelengths of visible light.  Ray"}],"role": "model"}}],"usageMetadata": {"promptTokenCount": 20,"totalTokenCount": 20,"promptTokensDetails": [{"modality": "TEXT","tokenCount": 20}]},"modelVersion": "gemini-1.5-flash","responseId": "PayBaJLkHtivgLUP4ae62Q4"}
+
+data: {"candidates": [{"content": {"parts": [{"text": "leigh scattering affects shorter wavelengths of light more strongly than longer wavelengths.  Blue and violet light have the shortest wavelengths, so they are scattered much more than the other"}],"role": "model"}}],"usageMetadata": {"promptTokenCount": 20,"totalTokenCount": 20,"promptTokensDetails": [{"modality": "TEXT","tokenCount": 20}]},"modelVersion": "gemini-1.5-flash","responseId": "PayBaJLkHtivgLUP4ae62Q4"}
+
+data: {"candidates": [{"content": {"parts": [{"text": " colors.  This scattered blue light is what we see when we look at the sky.  Violet light is scattered even more than blue, but our eyes are less sensitive to violet, and the sun emits slightly less violet light, so we"}],"role": "model"}}],"usageMetadata": {"promptTokenCount": 20,"totalTokenCount": 20,"promptTokensDetails": [{"modality": "TEXT","tokenCount": 20}]},"modelVersion": "gemini-1.5-flash","responseId": "PayBaJLkHtivgLUP4ae62Q4"}
+
+data: {"candidates": [{"content": {"parts": [{"text": " perceive the sky as blue.\n"}],"role": "model"},"finishReason": "STOP"}],"usageMetadata": {"promptTokenCount": 18,"candidatesTokenCount": 152,"totalTokenCount": 170,"promptTokensDetails": [{"modality": "TEXT","tokenCount": 18}],"candidatesTokensDetails": [{"modality": "TEXT","tokenCount": 152}]},"modelVersion": "gemini-1.5-flash","responseId": "PayBaJLkHtivgLUP4ae62Q4"}
+

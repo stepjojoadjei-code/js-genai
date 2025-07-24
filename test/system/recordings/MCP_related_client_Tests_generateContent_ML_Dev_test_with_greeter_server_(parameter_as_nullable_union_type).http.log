@@ -1,0 +1,71 @@
+f4bdb2226868f8ba7711507f70c6ce15c7a4c9e4e1be70269e8f1cd3f0684d33.req 1049
+b4d6e60a9b97e7b98c63df9308728c5c88c0b40c398046772c63447b94608b4d
+Server Address: generativelanguage.googleapis.com
+Port: 443
+Protocol: https
+********************************************************************************
+POST /v1beta/models/gemini-2.5-flash:generateContent HTTP/1.1
+Accept: */*
+Accept-Encoding: gzip, deflate
+Accept-Language: *
+Connection: keep-alive
+Content-Length: 487
+Content-Type: application/json
+Sec-Fetch-Mode: cors
+Test-Name: MCP related client Tests generateContent ML Dev test with greeter server (parameter as nullable union type)
+
+
+{"contents":[{"parts":[{"text":"call the greeter once with name: jone smith, and greeting: Hello"}],"role":"user"}],"tools":[{"functionDeclarations":[{"name":"greet","parametersJsonSchema":{"type":"object","properties":{"name":{"type":["string","number","null"]},"greeting":{"type":"string"}},"required":["name","greeting"],"additionalProperties":false,"$schema":"http://json-schema.org/draft-07/schema#"}}]}],"toolConfig":{"functionCallingConfig":{"mode":"AUTO"}},"generationConfig":{}}
+f4bdb2226868f8ba7711507f70c6ce15c7a4c9e4e1be70269e8f1cd3f0684d33.resp 1478
+Status code: 200 
+Vary: Origin
+Vary: X-Origin
+Vary: Referer
+Date: Thu, 24 Jul 2025 03:36:23 GMT
+Content-Length: 674
+X-Xss-Protection: 0
+X-Frame-Options: SAMEORIGIN
+X-Content-Type-Options: nosniff
+Server-Timing: gfet4t7; dur=893
+Content-Type: application/json; charset=UTF-8
+Content-Encoding: gzip
+Server: scaffolding on HTTPServer2
+
+{
+  "candidates": [
+    {
+      "content": {
+        "parts": [
+          {
+            "functionCall": {
+              "name": "greet",
+              "args": {
+                "name": "jone smith",
+                "greeting": "Hello"
+              }
+            },
+            "thoughtSignature": "CvoBAVSoXO6WyfyO1MClZbZcM3iDwdH6np/4hwGKaISUB+cKdcy3KQpi4zYgDkkVNwtOucEGFrvYqTaicXrxnePxVxE3BUkzoDSmj30qk1j2TYS1tAuj9zlOfYK8nBsYc9gbZZMqo+w5m4qYF1vQPi3XdwUsriF2Sme4tz1nVH5GeQK+WXcSNNW+mz9k6nupuqyHQ1GZsZhQnV8nDDZQW8o+NRDyOhKihDB++T1/DzpRA7mu+ne1Ytz0XVfVtM3/wNx7bg7C7q80xfTkbjCCCI+k5XV691Yd2TtpKi2z61jlgNc+d1EEwe6X3ShIWhppjyNuUOF0c2It/kJqlQ=="
+          }
+        ],
+        "role": "model"
+      },
+      "finishReason": "STOP",
+      "index": 0,
+      "finishMessage": "Model generated function call(s)."
+    }
+  ],
+  "usageMetadata": {
+    "promptTokenCount": 60,
+    "candidatesTokenCount": 20,
+    "totalTokenCount": 143,
+    "promptTokensDetails": [
+      {
+        "modality": "TEXT",
+        "tokenCount": 60
+      }
+    ],
+    "thoughtsTokenCount": 63
+  },
+  "modelVersion": "gemini-2.5-flash",
+  "responseId": "N6qBaIvRJ72PjMcPzdr5gAQ"
+}
