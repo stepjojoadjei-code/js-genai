@@ -414,10 +414,12 @@ export class Models extends BaseModule {
         response = {
           generatedImages: generatedImages,
           positivePromptSafetyAttributes: positivePromptSafetyAttributes,
+          sdkHttpResponse: apiResponse.sdkHttpResponse,
         };
       } else {
         response = {
           generatedImages: generatedImages,
+          sdkHttpResponse: apiResponse.sdkHttpResponse,
         };
       }
       return response;
@@ -800,7 +802,13 @@ export class Models extends BaseModule {
           abortSignal: params.config?.abortSignal,
         })
         .then((httpResponse) => {
-          return httpResponse.json();
+          return httpResponse.json().then((jsonResponse) => {
+            const response = jsonResponse as types.EmbedContentResponse;
+            response.sdkHttpResponse = {
+              headers: httpResponse.headers,
+            } as types.HttpResponse;
+            return response;
+          });
         }) as Promise<types.EmbedContentResponse>;
 
       return response.then((apiResponse) => {
@@ -833,7 +841,13 @@ export class Models extends BaseModule {
           abortSignal: params.config?.abortSignal,
         })
         .then((httpResponse) => {
-          return httpResponse.json();
+          return httpResponse.json().then((jsonResponse) => {
+            const response = jsonResponse as types.EmbedContentResponse;
+            response.sdkHttpResponse = {
+              headers: httpResponse.headers,
+            } as types.HttpResponse;
+            return response;
+          });
         }) as Promise<types.EmbedContentResponse>;
 
       return response.then((apiResponse) => {
@@ -895,7 +909,13 @@ export class Models extends BaseModule {
           abortSignal: params.config?.abortSignal,
         })
         .then((httpResponse) => {
-          return httpResponse.json();
+          return httpResponse.json().then((jsonResponse) => {
+            const response = jsonResponse as types.GenerateImagesResponse;
+            response.sdkHttpResponse = {
+              headers: httpResponse.headers,
+            } as types.HttpResponse;
+            return response;
+          });
         }) as Promise<types.GenerateImagesResponse>;
 
       return response.then((apiResponse) => {
@@ -928,7 +948,13 @@ export class Models extends BaseModule {
           abortSignal: params.config?.abortSignal,
         })
         .then((httpResponse) => {
-          return httpResponse.json();
+          return httpResponse.json().then((jsonResponse) => {
+            const response = jsonResponse as types.GenerateImagesResponse;
+            response.sdkHttpResponse = {
+              headers: httpResponse.headers,
+            } as types.HttpResponse;
+            return response;
+          });
         }) as Promise<types.GenerateImagesResponse>;
 
       return response.then((apiResponse) => {
@@ -971,7 +997,13 @@ export class Models extends BaseModule {
           abortSignal: params.config?.abortSignal,
         })
         .then((httpResponse) => {
-          return httpResponse.json();
+          return httpResponse.json().then((jsonResponse) => {
+            const response = jsonResponse as types.EditImageResponse;
+            response.sdkHttpResponse = {
+              headers: httpResponse.headers,
+            } as types.HttpResponse;
+            return response;
+          });
         }) as Promise<types.EditImageResponse>;
 
       return response.then((apiResponse) => {
@@ -1016,7 +1048,13 @@ export class Models extends BaseModule {
           abortSignal: params.config?.abortSignal,
         })
         .then((httpResponse) => {
-          return httpResponse.json();
+          return httpResponse.json().then((jsonResponse) => {
+            const response = jsonResponse as types.UpscaleImageResponse;
+            response.sdkHttpResponse = {
+              headers: httpResponse.headers,
+            } as types.HttpResponse;
+            return response;
+          });
         }) as Promise<types.UpscaleImageResponse>;
 
       return response.then((apiResponse) => {
@@ -1418,7 +1456,13 @@ export class Models extends BaseModule {
           abortSignal: params.config?.abortSignal,
         })
         .then((httpResponse) => {
-          return httpResponse.json();
+          return httpResponse.json().then((jsonResponse) => {
+            const response = jsonResponse as types.CountTokensResponse;
+            response.sdkHttpResponse = {
+              headers: httpResponse.headers,
+            } as types.HttpResponse;
+            return response;
+          });
         }) as Promise<types.CountTokensResponse>;
 
       return response.then((apiResponse) => {
@@ -1451,7 +1495,13 @@ export class Models extends BaseModule {
           abortSignal: params.config?.abortSignal,
         })
         .then((httpResponse) => {
-          return httpResponse.json();
+          return httpResponse.json().then((jsonResponse) => {
+            const response = jsonResponse as types.CountTokensResponse;
+            response.sdkHttpResponse = {
+              headers: httpResponse.headers,
+            } as types.HttpResponse;
+            return response;
+          });
         }) as Promise<types.CountTokensResponse>;
 
       return response.then((apiResponse) => {
@@ -1512,7 +1562,13 @@ export class Models extends BaseModule {
           abortSignal: params.config?.abortSignal,
         })
         .then((httpResponse) => {
-          return httpResponse.json();
+          return httpResponse.json().then((jsonResponse) => {
+            const response = jsonResponse as types.ComputeTokensResponse;
+            response.sdkHttpResponse = {
+              headers: httpResponse.headers,
+            } as types.HttpResponse;
+            return response;
+          });
         }) as Promise<types.ComputeTokensResponse>;
 
       return response.then((apiResponse) => {

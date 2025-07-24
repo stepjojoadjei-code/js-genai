@@ -4442,6 +4442,13 @@ export function embedContentResponseFromMldev(
 ): Record<string, unknown> {
   const toObject: Record<string, unknown> = {};
 
+  const fromSdkHttpResponse = common.getValueByPath(fromObject, [
+    'sdkHttpResponse',
+  ]);
+  if (fromSdkHttpResponse != null) {
+    common.setValueByPath(toObject, ['sdkHttpResponse'], fromSdkHttpResponse);
+  }
+
   const fromEmbeddings = common.getValueByPath(fromObject, ['embeddings']);
   if (fromEmbeddings != null) {
     let transformedList = fromEmbeddings;
@@ -4551,6 +4558,13 @@ export function generateImagesResponseFromMldev(
   fromObject: types.GenerateImagesResponse,
 ): Record<string, unknown> {
   const toObject: Record<string, unknown> = {};
+
+  const fromSdkHttpResponse = common.getValueByPath(fromObject, [
+    'sdkHttpResponse',
+  ]);
+  if (fromSdkHttpResponse != null) {
+    common.setValueByPath(toObject, ['sdkHttpResponse'], fromSdkHttpResponse);
+  }
 
   const fromGeneratedImages = common.getValueByPath(fromObject, [
     'predictions',
@@ -4703,6 +4717,13 @@ export function countTokensResponseFromMldev(
   fromObject: types.CountTokensResponse,
 ): Record<string, unknown> {
   const toObject: Record<string, unknown> = {};
+
+  const fromSdkHttpResponse = common.getValueByPath(fromObject, [
+    'sdkHttpResponse',
+  ]);
+  if (fromSdkHttpResponse != null) {
+    common.setValueByPath(toObject, ['sdkHttpResponse'], fromSdkHttpResponse);
+  }
 
   const fromTotalTokens = common.getValueByPath(fromObject, ['totalTokens']);
   if (fromTotalTokens != null) {
@@ -5283,6 +5304,13 @@ export function embedContentResponseFromVertex(
 ): Record<string, unknown> {
   const toObject: Record<string, unknown> = {};
 
+  const fromSdkHttpResponse = common.getValueByPath(fromObject, [
+    'sdkHttpResponse',
+  ]);
+  if (fromSdkHttpResponse != null) {
+    common.setValueByPath(toObject, ['sdkHttpResponse'], fromSdkHttpResponse);
+  }
+
   const fromEmbeddings = common.getValueByPath(fromObject, [
     'predictions[]',
     'embeddings',
@@ -5406,6 +5434,13 @@ export function generateImagesResponseFromVertex(
 ): Record<string, unknown> {
   const toObject: Record<string, unknown> = {};
 
+  const fromSdkHttpResponse = common.getValueByPath(fromObject, [
+    'sdkHttpResponse',
+  ]);
+  if (fromSdkHttpResponse != null) {
+    common.setValueByPath(toObject, ['sdkHttpResponse'], fromSdkHttpResponse);
+  }
+
   const fromGeneratedImages = common.getValueByPath(fromObject, [
     'predictions',
   ]);
@@ -5438,6 +5473,13 @@ export function editImageResponseFromVertex(
 ): Record<string, unknown> {
   const toObject: Record<string, unknown> = {};
 
+  const fromSdkHttpResponse = common.getValueByPath(fromObject, [
+    'sdkHttpResponse',
+  ]);
+  if (fromSdkHttpResponse != null) {
+    common.setValueByPath(toObject, ['sdkHttpResponse'], fromSdkHttpResponse);
+  }
+
   const fromGeneratedImages = common.getValueByPath(fromObject, [
     'predictions',
   ]);
@@ -5458,6 +5500,13 @@ export function upscaleImageResponseFromVertex(
   fromObject: types.UpscaleImageResponse,
 ): Record<string, unknown> {
   const toObject: Record<string, unknown> = {};
+
+  const fromSdkHttpResponse = common.getValueByPath(fromObject, [
+    'sdkHttpResponse',
+  ]);
+  if (fromSdkHttpResponse != null) {
+    common.setValueByPath(toObject, ['sdkHttpResponse'], fromSdkHttpResponse);
+  }
 
   const fromGeneratedImages = common.getValueByPath(fromObject, [
     'predictions',
@@ -5663,6 +5712,13 @@ export function countTokensResponseFromVertex(
 ): Record<string, unknown> {
   const toObject: Record<string, unknown> = {};
 
+  const fromSdkHttpResponse = common.getValueByPath(fromObject, [
+    'sdkHttpResponse',
+  ]);
+  if (fromSdkHttpResponse != null) {
+    common.setValueByPath(toObject, ['sdkHttpResponse'], fromSdkHttpResponse);
+  }
+
   const fromTotalTokens = common.getValueByPath(fromObject, ['totalTokens']);
   if (fromTotalTokens != null) {
     common.setValueByPath(toObject, ['totalTokens'], fromTotalTokens);
@@ -5675,6 +5731,13 @@ export function computeTokensResponseFromVertex(
   fromObject: types.ComputeTokensResponse,
 ): Record<string, unknown> {
   const toObject: Record<string, unknown> = {};
+
+  const fromSdkHttpResponse = common.getValueByPath(fromObject, [
+    'sdkHttpResponse',
+  ]);
+  if (fromSdkHttpResponse != null) {
+    common.setValueByPath(toObject, ['sdkHttpResponse'], fromSdkHttpResponse);
+  }
 
   const fromTokensInfo = common.getValueByPath(fromObject, ['tokensInfo']);
   if (fromTokensInfo != null) {

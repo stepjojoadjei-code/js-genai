@@ -2549,6 +2549,8 @@ export declare interface EmbedContentMetadata {
 
 /** Response for the embed_content method. */
 export class EmbedContentResponse {
+  /** Used to retain the full HTTP response. */
+  sdkHttpResponse?: HttpResponse;
   /** The embeddings for each request, in the same order as provided in
       the batch request.
        */
@@ -2689,6 +2691,8 @@ export declare interface GeneratedImage {
 
 /** The output images response. */
 export class GenerateImagesResponse {
+  /** Used to retain the full HTTP response. */
+  sdkHttpResponse?: HttpResponse;
   /** List of generated images.
    */
   generatedImages?: GeneratedImage[];
@@ -2804,11 +2808,15 @@ export declare interface EditImageConfig {
 
 /** Response for the request to edit an image. */
 export class EditImageResponse {
+  /** Used to retain the full HTTP response. */
+  sdkHttpResponse?: HttpResponse;
   /** Generated images. */
   generatedImages?: GeneratedImage[];
 }
 
 export class UpscaleImageResponse {
+  /** Used to retain the full HTTP response. */
+  sdkHttpResponse?: HttpResponse;
   /** Generated images. */
   generatedImages?: GeneratedImage[];
 }
@@ -3061,6 +3069,8 @@ export declare interface CountTokensParameters {
 
 /** Response for counting tokens. */
 export class CountTokensResponse {
+  /** Used to retain the full HTTP response. */
+  sdkHttpResponse?: HttpResponse;
   /** Total number of tokens. */
   totalTokens?: number;
   /** Number of tokens in the cached part of the prompt (the cached content). */
@@ -3105,6 +3115,8 @@ export declare interface TokensInfo {
 
 /** Response for computing tokens. */
 export class ComputeTokensResponse {
+  /** Used to retain the full HTTP response. */
+  sdkHttpResponse?: HttpResponse;
   /** Lists of tokens info from the input. A ComputeTokensRequest could have multiple instances with a prompt in each instance. We also need to return lists of tokens info for the request with multiple instances. */
   tokensInfo?: TokensInfo[];
 }
@@ -4777,6 +4789,8 @@ export class GenerateVideosOperation
   error?: Record<string, unknown>;
   /** The response if the operation is successful. */
   response?: GenerateVideosResponse;
+  /** The full HTTP response. */
+  sdkHttpResponse?: HttpResponse;
 
   /**
    * Instantiates an Operation of the same type as the one being called with the fields set from the API response.
