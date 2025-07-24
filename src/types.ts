@@ -3456,6 +3456,8 @@ export declare interface DistillationSpec {
 
 /** A tuning job. */
 export declare interface TuningJob {
+  /** Used to retain the full HTTP response. */
+  sdkHttpResponse?: HttpResponse;
   /** Output only. Identifier. Resource name of a TuningJob. Format: `projects/{project}/locations/{location}/tuningJobs/{tuning_job}` */
   name?: string;
   /** Output only. The detailed state of the job. */
@@ -3600,6 +3602,8 @@ export declare interface CreateTuningJobParameters {
 
 /** A long-running operation. */
 export declare interface TuningOperation {
+  /** Used to retain the full HTTP response. */
+  sdkHttpResponse?: HttpResponse;
   /** The server-assigned name, which is only unique within the same service that originally returns it. If you use the default HTTP mapping, the `name` should be a resource name ending with `operations/{unique_id}`. */
   name?: string;
   /** Service-specific metadata associated with the operation. It typically contains progress information and common metadata such as create time. Some services might not provide such metadata.  Any method that returns a long-running operation should document the metadata type, if any. */
