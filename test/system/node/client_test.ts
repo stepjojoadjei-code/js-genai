@@ -13,6 +13,7 @@ import {
   FunctionCallingConfigMode,
   GenerateContentResponse,
   HttpOptions,
+  Modality,
   Part,
 } from '../../../src/types.js';
 import {createZeroFilledTempFile} from '../../_generate_test_file.js';
@@ -869,6 +870,79 @@ describe('Client Tests', () => {
             'x-content-type-options': 'nosniff',
             'x-xss-protection': '0',
           }),
+        );
+        i++;
+      }
+    });
+
+    it('ML Dev should stream generate content with image output', async () => {
+      const client = new GoogleGenAI({
+        vertexai: false,
+        apiKey: GOOGLE_API_KEY,
+        httpOptions,
+      });
+      const response = await client.models.generateContentStream({
+        model: 'gemini-2.0-flash-preview-image-generation',
+        contents:
+          'Generate an image of the Eiffel tower with fireworks in' +
+          '  the background.',
+        config: {responseModalities: [Modality.IMAGE, Modality.TEXT]},
+      });
+      let i = 1;
+      console.info('ML Dev should stream generate content with image output');
+      for await (const chunk of response) {
+        for (const candidate of chunk.candidates!) {
+          if (candidate.finishReason) {
+            continue;
+          }
+          for (const part of candidate.content!.parts!) {
+            expect(part.text || part.inlineData).toBeDefined();
+          }
+        }
+        if (chunk.text) {
+          console.info(`stream chunk ${i}`, chunk.text);
+        }
+        expect(chunk.candidates!.length).toBe(
+          1,
+          'Expected 1 candidate got ' + chunk.candidates!.length,
+        );
+        i++;
+      }
+    });
+
+    it('Vertex AI should stream generate content with image output', async () => {
+      const client = new GoogleGenAI({
+        vertexai: true,
+        project: GOOGLE_CLOUD_PROJECT,
+        location: GOOGLE_CLOUD_LOCATION,
+        httpOptions,
+      });
+      const response = await client.models.generateContentStream({
+        model: 'gemini-2.0-flash-preview-image-generation',
+        contents:
+          'Generate an image of the Eiffel tower with fireworks in' +
+          '  the background.',
+        config: {responseModalities: [Modality.IMAGE, Modality.TEXT]},
+      });
+      let i = 1;
+      console.info(
+        'Vertex AI should stream generate content with image output',
+      );
+      for await (const chunk of response) {
+        for (const candidate of chunk.candidates!) {
+          if (candidate.finishReason) {
+            continue;
+          }
+          for (const part of candidate.content!.parts!) {
+            expect(part.text || part.inlineData).toBeDefined();
+          }
+        }
+        if (chunk.text) {
+          console.info(`stream chunk ${i}`, chunk.text);
+        }
+        expect(chunk.candidates!.length).toBe(
+          1,
+          'Expected 1 candidate got ' + chunk.candidates!.length,
         );
         i++;
       }
