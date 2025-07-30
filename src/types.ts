@@ -4872,10 +4872,10 @@ export class GenerateVideosOperation
             } as GeneratedVideo;
           },
         );
-        operationResponse.raiMediaFilteredCount = response[
+        operationResponse.raiMediaFilteredCount = generatedVideoResponse?.[
           'raiMediaFilteredCount'
         ] as number | undefined;
-        operationResponse.raiMediaFilteredReasons = response[
+        operationResponse.raiMediaFilteredReasons = generatedVideoResponse?.[
           'raiMediaFilteredReasons'
         ] as string[] | undefined;
         operation.response = operationResponse;
