@@ -49,7 +49,8 @@
     "pages-release": "node --loader ts-node/esm scripts/generate_pages.ts release",
     "format": "prettier '**/*.ts' '**/*.mjs' '**/*.json' --write",
     "lint": "eslint '**/*.ts'",
-    "lint-fix": "eslint --fix '**/*.ts'"
+    "lint-fix": "eslint --fix '**/*.ts'",
+    "coverage-report": "./test/generate_report.sh"
   },
   "engines": {
     "node": ">=20.0.0"
@@ -77,6 +78,7 @@
     "@types/node": "^20.9.0",
     "@types/unist": "^3.0.3",
     "@types/ws": "^8.5.14",
+    "c8": "^10.1.3",
     "eslint": "8.57.0",
     "gts": "^5.2.0",
     "jasmine": "^5.5.0",
