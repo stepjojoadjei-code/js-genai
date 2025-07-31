@@ -1795,6 +1795,11 @@ export function generateContentResponseFromMldev(
     common.setValueByPath(toObject, ['promptFeedback'], fromPromptFeedback);
   }
 
+  const fromResponseId = common.getValueByPath(fromObject, ['responseId']);
+  if (fromResponseId != null) {
+    common.setValueByPath(toObject, ['responseId'], fromResponseId);
+  }
+
   const fromUsageMetadata = common.getValueByPath(fromObject, [
     'usageMetadata',
   ]);

@@ -2180,9 +2180,6 @@ export class GenerateContentResponse {
   /** Timestamp when the request is made to the server.
    */
   createTime?: string;
-  /** Identifier for each response.
-   */
-  responseId?: string;
   /** The history of automatic function calling.
    */
   automaticFunctionCallingHistory?: Content[];
@@ -2190,6 +2187,8 @@ export class GenerateContentResponse {
   modelVersion?: string;
   /** Output only. Content filter results for a prompt sent in the request. Note: Sent only in the first stream chunk. Only happens when no candidates were generated due to content violations. */
   promptFeedback?: GenerateContentResponsePromptFeedback;
+  /** Output only. response_id is used to identify each response. It is the encoding of the event_id. */
+  responseId?: string;
   /** Usage metadata about the response(s). */
   usageMetadata?: GenerateContentResponseUsageMetadata;
   /**

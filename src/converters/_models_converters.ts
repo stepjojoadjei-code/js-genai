@@ -4595,6 +4595,11 @@ export function generateContentResponseFromMldev(
     common.setValueByPath(toObject, ['promptFeedback'], fromPromptFeedback);
   }
 
+  const fromResponseId = common.getValueByPath(fromObject, ['responseId']);
+  if (fromResponseId != null) {
+    common.setValueByPath(toObject, ['responseId'], fromResponseId);
+  }
+
   const fromUsageMetadata = common.getValueByPath(fromObject, [
     'usageMetadata',
   ]);
@@ -5400,11 +5405,6 @@ export function generateContentResponseFromVertex(
     common.setValueByPath(toObject, ['createTime'], fromCreateTime);
   }
 
-  const fromResponseId = common.getValueByPath(fromObject, ['responseId']);
-  if (fromResponseId != null) {
-    common.setValueByPath(toObject, ['responseId'], fromResponseId);
-  }
-
   const fromModelVersion = common.getValueByPath(fromObject, ['modelVersion']);
   if (fromModelVersion != null) {
     common.setValueByPath(toObject, ['modelVersion'], fromModelVersion);
@@ -5415,6 +5415,11 @@ export function generateContentResponseFromVertex(
   ]);
   if (fromPromptFeedback != null) {
     common.setValueByPath(toObject, ['promptFeedback'], fromPromptFeedback);
+  }
+
+  const fromResponseId = common.getValueByPath(fromObject, ['responseId']);
+  if (fromResponseId != null) {
+    common.setValueByPath(toObject, ['responseId'], fromResponseId);
   }
 
   const fromUsageMetadata = common.getValueByPath(fromObject, [
