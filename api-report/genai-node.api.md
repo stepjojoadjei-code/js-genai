@@ -668,6 +668,7 @@ export interface DeleteResourceJob {
     error?: JobError;
     // (undocumented)
     name?: string;
+    sdkHttpResponse?: HttpResponse;
 }
 
 // @public
