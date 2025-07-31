@@ -1069,6 +1069,89 @@ export class Models extends BaseModule {
   }
 
   /**
+   * Recontextualizes an image.
+   *
+   * There are two types of recontextualization currently supported:
+   * 1) Imagen Product Recontext - Generate images of products in new scenes
+   *    and contexts.
+   * 2) Virtual Try-On: Generate images of persons modeling fashion products.
+   *
+   * @param params - The parameters for recontextualizing an image.
+   * @return The response from the API.
+   *
+   * @example
+   * ```ts
+   * const response1 = await ai.models.recontextImage({
+   *  model: 'imagen-product-recontext-preview-06-30',
+   *  source: {
+   *    prompt: 'In a modern kitchen setting.',
+   *    productImages: [productImage],
+   *  },
+   *  config: {
+   *    numberOfImages: 1,
+   *  },
+   * });
+   * console.log(response1?.generatedImages?.[0]?.image?.imageBytes);
+   *
+   * const response2 = await ai.models.recontextImage({
+   *  model: 'virtual-try-on-preview-08-04',
+   *  source: {
+   *    personImage: personImage,
+   *    productImages: [productImage],
+   *  },
+   *  config: {
+   *    numberOfImages: 1,
+   *  },
+   * });
+   * console.log(response2?.generatedImages?.[0]?.image?.imageBytes);
+   * ```
+   */
+  async recontextImage(
+    params: types.RecontextImageParameters,
+  ): Promise<types.RecontextImageResponse> {
+    let response: Promise<types.RecontextImageResponse>;
+
+    let path: string = '';
+    let queryParams: Record<string, string> = {};
+    if (this.apiClient.isVertexAI()) {
+      const body = converters.recontextImageParametersToVertex(
+        this.apiClient,
+        params,
+      );
+      path = common.formatMap(
+        '{model}:predict',
+        body['_url'] as Record<string, unknown>,
+      );
+      queryParams = body['_query'] as Record<string, string>;
+      delete body['config'];
+      delete body['_url'];
+      delete body['_query'];
+
+      response = this.apiClient
+        .request({
+          path: path,
+          queryParams: queryParams,
+          body: JSON.stringify(body),
+          httpMethod: 'POST',
+          httpOptions: params.config?.httpOptions,
+          abortSignal: params.config?.abortSignal,
+        })
+        .then((httpResponse) => {
+          return httpResponse.json();
+        }) as Promise<types.RecontextImageResponse>;
+
+      return response.then((apiResponse) => {
+        const resp = converters.recontextImageResponseFromVertex(apiResponse);
+        const typedResp = new types.RecontextImageResponse();
+        Object.assign(typedResp, resp);
+        return typedResp;
+      });
+    } else {
+      throw new Error('This method is only supported by the Vertex AI.');
+    }
+  }
+
+  /**
    * Fetches information about a model by name.
    *
    * @example

@@ -3581,6 +3581,193 @@ export function upscaleImageAPIParametersInternalToVertex(
   return toObject;
 }
 
+export function productImageToVertex(
+  fromObject: types.ProductImage,
+): Record<string, unknown> {
+  const toObject: Record<string, unknown> = {};
+
+  const fromProductImage = common.getValueByPath(fromObject, ['productImage']);
+  if (fromProductImage != null) {
+    common.setValueByPath(toObject, ['image'], imageToVertex(fromProductImage));
+  }
+
+  return toObject;
+}
+
+export function recontextImageSourceToVertex(
+  fromObject: types.RecontextImageSource,
+  parentObject: Record<string, unknown>,
+): Record<string, unknown> {
+  const toObject: Record<string, unknown> = {};
+
+  const fromPrompt = common.getValueByPath(fromObject, ['prompt']);
+  if (parentObject !== undefined && fromPrompt != null) {
+    common.setValueByPath(parentObject, ['instances[0]', 'prompt'], fromPrompt);
+  }
+
+  const fromPersonImage = common.getValueByPath(fromObject, ['personImage']);
+  if (parentObject !== undefined && fromPersonImage != null) {
+    common.setValueByPath(
+      parentObject,
+      ['instances[0]', 'personImage', 'image'],
+      imageToVertex(fromPersonImage),
+    );
+  }
+
+  const fromProductImages = common.getValueByPath(fromObject, [
+    'productImages',
+  ]);
+  if (parentObject !== undefined && fromProductImages != null) {
+    let transformedList = fromProductImages;
+    if (Array.isArray(transformedList)) {
+      transformedList = transformedList.map((item) => {
+        return productImageToVertex(item);
+      });
+    }
+    common.setValueByPath(
+      parentObject,
+      ['instances[0]', 'productImages'],
+      transformedList,
+    );
+  }
+
+  return toObject;
+}
+
+export function recontextImageConfigToVertex(
+  fromObject: types.RecontextImageConfig,
+  parentObject: Record<string, unknown>,
+): Record<string, unknown> {
+  const toObject: Record<string, unknown> = {};
+
+  const fromNumberOfImages = common.getValueByPath(fromObject, [
+    'numberOfImages',
+  ]);
+  if (parentObject !== undefined && fromNumberOfImages != null) {
+    common.setValueByPath(
+      parentObject,
+      ['parameters', 'sampleCount'],
+      fromNumberOfImages,
+    );
+  }
+
+  const fromBaseSteps = common.getValueByPath(fromObject, ['baseSteps']);
+  if (parentObject !== undefined && fromBaseSteps != null) {
+    common.setValueByPath(
+      parentObject,
+      ['parameters', 'editConfig', 'baseSteps'],
+      fromBaseSteps,
+    );
+  }
+
+  const fromOutputGcsUri = common.getValueByPath(fromObject, ['outputGcsUri']);
+  if (parentObject !== undefined && fromOutputGcsUri != null) {
+    common.setValueByPath(
+      parentObject,
+      ['parameters', 'storageUri'],
+      fromOutputGcsUri,
+    );
+  }
+
+  const fromSeed = common.getValueByPath(fromObject, ['seed']);
+  if (parentObject !== undefined && fromSeed != null) {
+    common.setValueByPath(parentObject, ['parameters', 'seed'], fromSeed);
+  }
+
+  const fromSafetyFilterLevel = common.getValueByPath(fromObject, [
+    'safetyFilterLevel',
+  ]);
+  if (parentObject !== undefined && fromSafetyFilterLevel != null) {
+    common.setValueByPath(
+      parentObject,
+      ['parameters', 'safetySetting'],
+      fromSafetyFilterLevel,
+    );
+  }
+
+  const fromPersonGeneration = common.getValueByPath(fromObject, [
+    'personGeneration',
+  ]);
+  if (parentObject !== undefined && fromPersonGeneration != null) {
+    common.setValueByPath(
+      parentObject,
+      ['parameters', 'personGeneration'],
+      fromPersonGeneration,
+    );
+  }
+
+  const fromOutputMimeType = common.getValueByPath(fromObject, [
+    'outputMimeType',
+  ]);
+  if (parentObject !== undefined && fromOutputMimeType != null) {
+    common.setValueByPath(
+      parentObject,
+      ['parameters', 'outputOptions', 'mimeType'],
+      fromOutputMimeType,
+    );
+  }
+
+  const fromOutputCompressionQuality = common.getValueByPath(fromObject, [
+    'outputCompressionQuality',
+  ]);
+  if (parentObject !== undefined && fromOutputCompressionQuality != null) {
+    common.setValueByPath(
+      parentObject,
+      ['parameters', 'outputOptions', 'compressionQuality'],
+      fromOutputCompressionQuality,
+    );
+  }
+
+  const fromEnhancePrompt = common.getValueByPath(fromObject, [
+    'enhancePrompt',
+  ]);
+  if (parentObject !== undefined && fromEnhancePrompt != null) {
+    common.setValueByPath(
+      parentObject,
+      ['parameters', 'enhancePrompt'],
+      fromEnhancePrompt,
+    );
+  }
+
+  return toObject;
+}
+
+export function recontextImageParametersToVertex(
+  apiClient: ApiClient,
+  fromObject: types.RecontextImageParameters,
+): Record<string, unknown> {
+  const toObject: Record<string, unknown> = {};
+
+  const fromModel = common.getValueByPath(fromObject, ['model']);
+  if (fromModel != null) {
+    common.setValueByPath(
+      toObject,
+      ['_url', 'model'],
+      t.tModel(apiClient, fromModel),
+    );
+  }
+
+  const fromSource = common.getValueByPath(fromObject, ['source']);
+  if (fromSource != null) {
+    common.setValueByPath(
+      toObject,
+      ['config'],
+      recontextImageSourceToVertex(fromSource, toObject),
+    );
+  }
+
+  const fromConfig = common.getValueByPath(fromObject, ['config']);
+  if (fromConfig != null) {
+    common.setValueByPath(
+      toObject,
+      ['config'],
+      recontextImageConfigToVertex(fromConfig, toObject),
+    );
+  }
+
+  return toObject;
+}
+
 export function getModelParametersToVertex(
   apiClient: ApiClient,
   fromObject: types.GetModelParameters,
@@ -5507,6 +5694,27 @@ export function upscaleImageResponseFromVertex(
   if (fromSdkHttpResponse != null) {
     common.setValueByPath(toObject, ['sdkHttpResponse'], fromSdkHttpResponse);
   }
+
+  const fromGeneratedImages = common.getValueByPath(fromObject, [
+    'predictions',
+  ]);
+  if (fromGeneratedImages != null) {
+    let transformedList = fromGeneratedImages;
+    if (Array.isArray(transformedList)) {
+      transformedList = transformedList.map((item) => {
+        return generatedImageFromVertex(item);
+      });
+    }
+    common.setValueByPath(toObject, ['generatedImages'], transformedList);
+  }
+
+  return toObject;
+}
+
+export function recontextImageResponseFromVertex(
+  fromObject: types.RecontextImageResponse,
+): Record<string, unknown> {
+  const toObject: Record<string, unknown> = {};
 
   const fromGeneratedImages = common.getValueByPath(fromObject, [
     'predictions',

@@ -2097,6 +2097,7 @@ export class Models extends BaseModule {
     get(params: types.GetModelParameters): Promise<types.Model>;
     // (undocumented)
     list: (params?: types.ListModelsParameters) => Promise<Pager<types.Model>>;
+    recontextImage(params: types.RecontextImageParameters): Promise<types.RecontextImageResponse>;
     update(params: types.UpdateModelParameters): Promise<types.Model>;
     upscaleImage: (params: types.UpscaleImageParameters) => Promise<types.UpscaleImageResponse>;
 }
@@ -2230,6 +2231,11 @@ export interface ProactivityConfig {
 }
 
 // @public
+export interface ProductImage {
+    productImage?: Image_2;
+}
+
+// @public
 export interface RagChunk {
     pageSpan?: RagChunkPageSpan;
     text?: string;
@@ -2290,6 +2296,40 @@ export interface RealtimeInputConfig {
     activityHandling?: ActivityHandling;
     automaticActivityDetection?: AutomaticActivityDetection;
     turnCoverage?: TurnCoverage;
+}
+
+// @public
+export interface RecontextImageConfig {
+    abortSignal?: AbortSignal;
+    baseSteps?: number;
+    enhancePrompt?: boolean;
+    httpOptions?: HttpOptions;
+    numberOfImages?: number;
+    outputCompressionQuality?: number;
+    outputGcsUri?: string;
+    outputMimeType?: string;
+    personGeneration?: PersonGeneration;
+    safetyFilterLevel?: SafetyFilterLevel;
+    seed?: number;
+}
+
+// @public
+export interface RecontextImageParameters {
+    config?: RecontextImageConfig;
+    model: string;
+    source: RecontextImageSource;
+}
+
+// @public
+export class RecontextImageResponse {
+    generatedImages?: GeneratedImage[];
+}
+
+// @public
+export interface RecontextImageSource {
+    personImage?: Image_2;
+    productImages?: ProductImage[];
+    prompt?: string;
 }
 
 // @public (undocumented)

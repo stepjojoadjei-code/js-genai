@@ -2821,6 +2821,75 @@ export class UpscaleImageResponse {
   generatedImages?: GeneratedImage[];
 }
 
+/** An image of the product. */
+export declare interface ProductImage {
+  /** An image of the product to be recontextualized. */
+  productImage?: Image;
+}
+
+/** A set of source input(s) for image recontextualization. */
+export declare interface RecontextImageSource {
+  /** A text prompt for guiding the model during image
+      recontextualization. Not supported for Virtual Try-On. */
+  prompt?: string;
+  /** Image of the person or subject who will be wearing the
+      product(s). */
+  personImage?: Image;
+  /** A list of product images. */
+  productImages?: ProductImage[];
+}
+
+/** Configuration for recontextualizing an image. */
+export declare interface RecontextImageConfig {
+  /** Used to override HTTP request options. */
+  httpOptions?: HttpOptions;
+  /** Abort signal which can be used to cancel the request.
+
+  NOTE: AbortSignal is a client-only operation. Using it to cancel an
+  operation will not cancel the request in the service. You will still
+  be charged usage for any applicable operations.
+       */
+  abortSignal?: AbortSignal;
+  /** Number of images to generate. */
+  numberOfImages?: number;
+  /** The number of sampling steps. A higher value has better image
+      quality, while a lower value has better latency. */
+  baseSteps?: number;
+  /** Cloud Storage URI used to store the generated images. */
+  outputGcsUri?: string;
+  /** Random seed for image generation. */
+  seed?: number;
+  /** Filter level for safety filtering. */
+  safetyFilterLevel?: SafetyFilterLevel;
+  /** Whether allow to generate person images, and restrict to specific
+      ages. */
+  personGeneration?: PersonGeneration;
+  /** MIME type of the generated image. */
+  outputMimeType?: string;
+  /** Compression quality of the generated image (for ``image/jpeg``
+      only). */
+  outputCompressionQuality?: number;
+  /** Whether to use the prompt rewriting logic. */
+  enhancePrompt?: boolean;
+}
+
+/** The parameters for recontextualizing an image. */
+export declare interface RecontextImageParameters {
+  /** ID of the model to use. For a list of models, see `Google models
+    <https://cloud.google.com/vertex-ai/generative-ai/docs/learn/models>`_. */
+  model: string;
+  /** A set of source input(s) for image recontextualization. */
+  source: RecontextImageSource;
+  /** Configuration for image recontextualization. */
+  config?: RecontextImageConfig;
+}
+
+/** The output images response. */
+export class RecontextImageResponse {
+  /** List of generated images. */
+  generatedImages?: GeneratedImage[];
+}
+
 /** Optional parameters for models.get method. */
 export declare interface GetModelConfig {
   /** Used to override HTTP request options. */
