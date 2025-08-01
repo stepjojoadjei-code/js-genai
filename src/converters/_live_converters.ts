@@ -1339,6 +1339,17 @@ export function liveMusicGenerationConfigToMldev(
     common.setValueByPath(toObject, ['onlyBassAndDrums'], fromOnlyBassAndDrums);
   }
 
+  const fromMusicGenerationMode = common.getValueByPath(fromObject, [
+    'musicGenerationMode',
+  ]);
+  if (fromMusicGenerationMode != null) {
+    common.setValueByPath(
+      toObject,
+      ['musicGenerationMode'],
+      fromMusicGenerationMode,
+    );
+  }
+
   return toObject;
 }
 
@@ -3512,6 +3523,17 @@ export function liveMusicGenerationConfigFromMldev(
   ]);
   if (fromOnlyBassAndDrums != null) {
     common.setValueByPath(toObject, ['onlyBassAndDrums'], fromOnlyBassAndDrums);
+  }
+
+  const fromMusicGenerationMode = common.getValueByPath(fromObject, [
+    'musicGenerationMode',
+  ]);
+  if (fromMusicGenerationMode != null) {
+    common.setValueByPath(
+      toObject,
+      ['musicGenerationMode'],
+      fromMusicGenerationMode,
+    );
   }
 
   return toObject;

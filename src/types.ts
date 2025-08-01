@@ -875,6 +875,29 @@ export enum Scale {
   B_MAJOR_A_FLAT_MINOR = 'B_MAJOR_A_FLAT_MINOR',
 }
 
+/** The mode of music generation. */
+export enum MusicGenerationMode {
+  /**
+   * Rely on the server default generation mode.
+   */
+  MUSIC_GENERATION_MODE_UNSPECIFIED = 'MUSIC_GENERATION_MODE_UNSPECIFIED',
+  /**
+   * Steer text prompts to regions of latent space with higher quality
+      music.
+   */
+  QUALITY = 'QUALITY',
+  /**
+   * Steer text prompts to regions of latent space with a larger
+      diversity of music.
+   */
+  DIVERSITY = 'DIVERSITY',
+  /**
+   * Steer text prompts to regions of latent space more likely to
+      generate music with vocals.
+   */
+  VOCALIZATION = 'VOCALIZATION',
+}
+
 /** The playback control signal to apply to the music generation. */
 export enum LiveMusicPlaybackControl {
   /**
@@ -5412,6 +5435,8 @@ export declare interface LiveMusicGenerationConfig {
   muteDrums?: boolean;
   /** Whether the audio output should contain only bass and drums. */
   onlyBassAndDrums?: boolean;
+  /** The mode of music generation. Default mode is QUALITY. */
+  musicGenerationMode?: MusicGenerationMode;
 }
 
 /** Messages sent by the client in the LiveMusicClientMessage call. */
