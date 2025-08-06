@@ -248,6 +248,14 @@ export enum UrlRetrievalStatus {
    * Url retrieval is failed due to error.
    */
   URL_RETRIEVAL_STATUS_ERROR = 'URL_RETRIEVAL_STATUS_ERROR',
+  /**
+   * Url retrieval is failed because the content is behind paywall.
+   */
+  URL_RETRIEVAL_STATUS_PAYWALL = 'URL_RETRIEVAL_STATUS_PAYWALL',
+  /**
+   * Url retrieval is failed because the content is unsafe.
+   */
+  URL_RETRIEVAL_STATUS_UNSAFE = 'URL_RETRIEVAL_STATUS_UNSAFE',
 }
 
 /** Output only. The reason why the model stopped generating tokens.
