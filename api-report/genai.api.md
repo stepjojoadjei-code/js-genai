@@ -831,12 +831,6 @@ export interface EnterpriseWebSearch {
 }
 
 // @public
-export enum Environment {
-    ENVIRONMENT_BROWSER = "ENVIRONMENT_BROWSER",
-    ENVIRONMENT_UNSPECIFIED = "ENVIRONMENT_UNSPECIFIED"
-}
-
-// @public
 export interface ExecutableCode {
     code?: string;
     language?: Language;
@@ -1018,6 +1012,18 @@ export enum FunctionResponseScheduling {
     SCHEDULING_UNSPECIFIED = "SCHEDULING_UNSPECIFIED",
     SILENT = "SILENT",
     WHEN_IDLE = "WHEN_IDLE"
+}
+
+// @public
+export interface GeminiPreferenceExample {
+    completions?: GeminiPreferenceExampleCompletion[];
+    contents?: Content[];
+}
+
+// @public
+export interface GeminiPreferenceExampleCompletion {
+    completion?: Content;
+    score?: number;
 }
 
 // @public
@@ -1390,8 +1396,40 @@ export interface GoogleTypeDate {
 
 // @public
 export interface GroundingChunk {
+    maps?: GroundingChunkMaps;
     retrievedContext?: GroundingChunkRetrievedContext;
     web?: GroundingChunkWeb;
+}
+
+// @public
+export interface GroundingChunkMaps {
+    placeAnswerSources?: GroundingChunkMapsPlaceAnswerSources;
+    placeId?: string;
+    text?: string;
+    title?: string;
+    uri?: string;
+}
+
+// @public
+export interface GroundingChunkMapsPlaceAnswerSources {
+    flagContentUri?: string;
+    reviewSnippets?: GroundingChunkMapsPlaceAnswerSourcesReviewSnippet[];
+}
+
+// @public
+export interface GroundingChunkMapsPlaceAnswerSourcesAuthorAttribution {
+    displayName?: string;
+    photoUri?: string;
+    uri?: string;
+}
+
+// @public
+export interface GroundingChunkMapsPlaceAnswerSourcesReviewSnippet {
+    authorAttribution?: GroundingChunkMapsPlaceAnswerSourcesAuthorAttribution;
+    flagContentUri?: string;
+    googleMapsUri?: string;
+    relativePublishTimeDescription?: string;
+    review?: string;
 }
 
 // @public
@@ -1411,6 +1449,7 @@ export interface GroundingChunkWeb {
 
 // @public
 export interface GroundingMetadata {
+    googleMapsWidgetContextToken?: string;
     groundingChunks?: GroundingChunk[];
     groundingSupports?: GroundingSupport[];
     retrievalMetadata?: RetrievalMetadata;
@@ -2235,6 +2274,40 @@ export interface PrebuiltVoiceConfig {
 }
 
 // @public
+export interface PreferenceOptimizationDataStats {
+    scoresDistribution?: DatasetDistribution;
+    scoreVariancePerExampleDistribution?: DatasetDistribution;
+    totalBillableTokenCount?: string;
+    tuningDatasetExampleCount?: string;
+    tuningStepCount?: string;
+    userDatasetExamples?: GeminiPreferenceExample[];
+    userInputTokenDistribution?: DatasetDistribution;
+    userOutputTokenDistribution?: DatasetDistribution;
+}
+
+// @public
+export interface PreferenceOptimizationHyperParameters {
+    adapterSize?: AdapterSize;
+    beta?: number;
+    epochCount?: string;
+    learningRateMultiplier?: number;
+}
+
+// @public
+export interface PreferenceOptimizationSpec {
+    hyperParameters?: PreferenceOptimizationHyperParameters;
+    trainingDatasetUri?: string;
+    validationDatasetUri?: string;
+}
+
+// @public
+export interface PreTunedModel {
+    baseModel?: string;
+    checkpointId?: string;
+    tunedModelName?: string;
+}
+
+// @public
 export interface ProactivityConfig {
     proactiveAudio?: boolean;
 }
@@ -2599,7 +2672,9 @@ export enum SubjectReferenceType {
 // @public
 export interface SupervisedHyperParameters {
     adapterSize?: AdapterSize;
+    batchSize?: string;
     epochCount?: string;
+    learningRate?: number;
     learningRateMultiplier?: number;
 }
 
@@ -2644,6 +2719,7 @@ export interface SupervisedTuningSpec {
     exportLastCheckpointOnly?: boolean;
     hyperParameters?: SupervisedHyperParameters;
     trainingDatasetUri?: string;
+    tuningMode?: TuningMode;
     validationDatasetUri?: string;
 }
 
@@ -2693,7 +2769,6 @@ export interface TokensInfo {
 // @public
 export interface Tool {
     codeExecution?: ToolCodeExecution;
-    computerUse?: ToolComputerUse;
     enterpriseWebSearch?: EnterpriseWebSearch;
     functionDeclarations?: FunctionDeclaration[];
     googleMaps?: GoogleMaps;
@@ -2705,11 +2780,6 @@ export interface Tool {
 
 // @public
 export interface ToolCodeExecution {
-}
-
-// @public
-export interface ToolComputerUse {
-    environment?: Environment;
 }
 
 // @public
@@ -2769,6 +2839,7 @@ export interface TuningDataset {
 // @public
 export interface TuningDataStats {
     distillationDataStats?: DistillationDataStats;
+    preferenceOptimizationDataStats?: PreferenceOptimizationDataStats;
     supervisedTuningDataStats?: SupervisedTuningDataStats;
 }
 
@@ -2782,6 +2853,7 @@ export interface TuningExample {
 export interface TuningJob {
     baseModel?: string;
     createTime?: string;
+    customBaseModel?: string;
     description?: string;
     distillationSpec?: DistillationSpec;
     encryptionSpec?: EncryptionSpec;
@@ -2790,8 +2862,11 @@ export interface TuningJob {
     experiment?: string;
     labels?: Record<string, string>;
     name?: string;
+    outputUri?: string;
     partnerModelTuningSpec?: PartnerModelTuningSpec;
     pipelineJob?: string;
+    preferenceOptimizationSpec?: PreferenceOptimizationSpec;
+    preTunedModel?: PreTunedModel;
     satisfiesPzi?: boolean;
     satisfiesPzs?: boolean;
     sdkHttpResponse?: HttpResponse;
@@ -2803,6 +2878,14 @@ export interface TuningJob {
     tunedModelDisplayName?: string;
     tuningDataStats?: TuningDataStats;
     updateTime?: string;
+    veoTuningSpec?: VeoTuningSpec;
+}
+
+// @public
+export enum TuningMode {
+    TUNING_MODE_FULL = "TUNING_MODE_FULL",
+    TUNING_MODE_PEFT_ADAPTER = "TUNING_MODE_PEFT_ADAPTER",
+    TUNING_MODE_UNSPECIFIED = "TUNING_MODE_UNSPECIFIED"
 }
 
 // @public
@@ -2812,6 +2895,13 @@ export interface TuningOperation {
     metadata?: Record<string, unknown>;
     name?: string;
     sdkHttpResponse?: HttpResponse;
+}
+
+// @public
+export enum TuningTask {
+    TUNING_TASK_I2V = "TUNING_TASK_I2V",
+    TUNING_TASK_T2V = "TUNING_TASK_T2V",
+    TUNING_TASK_UNSPECIFIED = "TUNING_TASK_UNSPECIFIED"
 }
 
 // @public (undocumented)
@@ -2950,6 +3040,20 @@ export interface UsageMetadata {
     toolUsePromptTokensDetails?: ModalityTokenCount[];
     totalTokenCount?: number;
     trafficType?: TrafficType;
+}
+
+// @public
+export interface VeoHyperParameters {
+    epochCount?: string;
+    learningRateMultiplier?: number;
+    tuningTask?: TuningTask;
+}
+
+// @public
+export interface VeoTuningSpec {
+    hyperParameters?: VeoHyperParameters;
+    trainingDatasetUri?: string;
+    validationDatasetUri?: string;
 }
 
 // @public

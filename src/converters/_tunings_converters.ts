@@ -551,6 +551,13 @@ export function tuningJobFromMldev(
     );
   }
 
+  const fromCustomBaseModel = common.getValueByPath(fromObject, [
+    'customBaseModel',
+  ]);
+  if (fromCustomBaseModel != null) {
+    common.setValueByPath(toObject, ['customBaseModel'], fromCustomBaseModel);
+  }
+
   const fromDistillationSpec = common.getValueByPath(fromObject, [
     'distillationSpec',
   ]);
@@ -568,9 +575,32 @@ export function tuningJobFromMldev(
     common.setValueByPath(toObject, ['labels'], fromLabels);
   }
 
+  const fromOutputUri = common.getValueByPath(fromObject, ['outputUri']);
+  if (fromOutputUri != null) {
+    common.setValueByPath(toObject, ['outputUri'], fromOutputUri);
+  }
+
   const fromPipelineJob = common.getValueByPath(fromObject, ['pipelineJob']);
   if (fromPipelineJob != null) {
     common.setValueByPath(toObject, ['pipelineJob'], fromPipelineJob);
+  }
+
+  const fromPreTunedModel = common.getValueByPath(fromObject, [
+    'preTunedModel',
+  ]);
+  if (fromPreTunedModel != null) {
+    common.setValueByPath(toObject, ['preTunedModel'], fromPreTunedModel);
+  }
+
+  const fromPreferenceOptimizationSpec = common.getValueByPath(fromObject, [
+    'preferenceOptimizationSpec',
+  ]);
+  if (fromPreferenceOptimizationSpec != null) {
+    common.setValueByPath(
+      toObject,
+      ['preferenceOptimizationSpec'],
+      fromPreferenceOptimizationSpec,
+    );
   }
 
   const fromSatisfiesPzi = common.getValueByPath(fromObject, ['satisfiesPzi']);
@@ -599,6 +629,13 @@ export function tuningJobFromMldev(
       ['tunedModelDisplayName'],
       fromTunedModelDisplayName,
     );
+  }
+
+  const fromVeoTuningSpec = common.getValueByPath(fromObject, [
+    'veoTuningSpec',
+  ]);
+  if (fromVeoTuningSpec != null) {
+    common.setValueByPath(toObject, ['veoTuningSpec'], fromVeoTuningSpec);
   }
 
   return toObject;
@@ -831,6 +868,13 @@ export function tuningJobFromVertex(
     );
   }
 
+  const fromCustomBaseModel = common.getValueByPath(fromObject, [
+    'customBaseModel',
+  ]);
+  if (fromCustomBaseModel != null) {
+    common.setValueByPath(toObject, ['customBaseModel'], fromCustomBaseModel);
+  }
+
   const fromDistillationSpec = common.getValueByPath(fromObject, [
     'distillationSpec',
   ]);
@@ -848,9 +892,32 @@ export function tuningJobFromVertex(
     common.setValueByPath(toObject, ['labels'], fromLabels);
   }
 
+  const fromOutputUri = common.getValueByPath(fromObject, ['outputUri']);
+  if (fromOutputUri != null) {
+    common.setValueByPath(toObject, ['outputUri'], fromOutputUri);
+  }
+
   const fromPipelineJob = common.getValueByPath(fromObject, ['pipelineJob']);
   if (fromPipelineJob != null) {
     common.setValueByPath(toObject, ['pipelineJob'], fromPipelineJob);
+  }
+
+  const fromPreTunedModel = common.getValueByPath(fromObject, [
+    'preTunedModel',
+  ]);
+  if (fromPreTunedModel != null) {
+    common.setValueByPath(toObject, ['preTunedModel'], fromPreTunedModel);
+  }
+
+  const fromPreferenceOptimizationSpec = common.getValueByPath(fromObject, [
+    'preferenceOptimizationSpec',
+  ]);
+  if (fromPreferenceOptimizationSpec != null) {
+    common.setValueByPath(
+      toObject,
+      ['preferenceOptimizationSpec'],
+      fromPreferenceOptimizationSpec,
+    );
   }
 
   const fromSatisfiesPzi = common.getValueByPath(fromObject, ['satisfiesPzi']);
@@ -879,6 +946,13 @@ export function tuningJobFromVertex(
       ['tunedModelDisplayName'],
       fromTunedModelDisplayName,
     );
+  }
+
+  const fromVeoTuningSpec = common.getValueByPath(fromObject, [
+    'veoTuningSpec',
+  ]);
+  if (fromVeoTuningSpec != null) {
+    common.setValueByPath(toObject, ['veoTuningSpec'], fromVeoTuningSpec);
   }
 
   return toObject;
