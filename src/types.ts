@@ -3425,6 +3425,16 @@ export declare interface GoogleRpcStatus {
   message?: string;
 }
 
+/** A pre-tuned model for continuous tuning. */
+export declare interface PreTunedModel {
+  /** Output only. The name of the base model this PreTunedModel was tuned from. */
+  baseModel?: string;
+  /** Optional. The source checkpoint id. If not specified, the default checkpoint will be used. */
+  checkpointId?: string;
+  /** The resource name of the Model. E.g., a model resource name with a specified version id or alias: `projects/{project}/locations/{location}/models/{model}@{version_id}` `projects/{project}/locations/{location}/models/{model}@{alias}` Or, omit the version id to use the default version: `projects/{project}/locations/{location}/models/{model}` */
+  tunedModelName?: string;
+}
+
 /** Hyperparameters for SFT. */
 export declare interface SupervisedHyperParameters {
   /** Optional. Adapter size for tuning. */
@@ -3659,16 +3669,6 @@ export declare interface DistillationSpec {
   validationDatasetUri?: string;
 }
 
-/** A pre-tuned model for continuous tuning. */
-export declare interface PreTunedModel {
-  /** Output only. The name of the base model this PreTunedModel was tuned from. */
-  baseModel?: string;
-  /** Optional. The source checkpoint id. If not specified, the default checkpoint will be used. */
-  checkpointId?: string;
-  /** The resource name of the Model. E.g., a model resource name with a specified version id or alias: `projects/{project}/locations/{location}/models/{model}@{version_id}` `projects/{project}/locations/{location}/models/{model}@{alias}` Or, omit the version id to use the default version: `projects/{project}/locations/{location}/models/{model}` */
-  tunedModelName?: string;
-}
-
 /** Hyperparameters for Preference Optimization. */
 export declare interface PreferenceOptimizationHyperParameters {
   /** Optional. Adapter size for preference optimization. */
@@ -3735,6 +3735,8 @@ export declare interface TuningJob {
   baseModel?: string;
   /** Output only. The tuned model resources associated with this TuningJob. */
   tunedModel?: TunedModel;
+  /** The pre-tuned model for continuous tuning. */
+  preTunedModel?: PreTunedModel;
   /** Tuning Spec for Supervised Fine Tuning. */
   supervisedTuningSpec?: SupervisedTuningSpec;
   /** Output only. The tuning data statistics associated with this TuningJob. */
@@ -3755,8 +3757,6 @@ export declare interface TuningJob {
   outputUri?: string;
   /** Output only. The resource name of the PipelineJob associated with the TuningJob. Format: `projects/{project}/locations/{location}/pipelineJobs/{pipeline_job}`. */
   pipelineJob?: string;
-  /** The pre-tuned model for continuous tuning. */
-  preTunedModel?: PreTunedModel;
   /** Tuning Spec for Preference Optimization. */
   preferenceOptimizationSpec?: PreferenceOptimizationSpec;
   /** Output only. Reserved for future use. */
@@ -3858,9 +3858,9 @@ export declare interface CreateTuningJobConfig {
 }
 
 /** Supervised fine-tuning job creation parameters - optional fields. */
-export declare interface CreateTuningJobParameters {
-  /** The base model that is being tuned, e.g., "gemini-1.0-pro-002". */
-  baseModel: string;
+export declare interface CreateTuningJobParametersPrivate {
+  /** The base model that is being tuned, e.g., "gemini-2.5-flash". */
+  baseModel?: string;
   /** Cloud Storage path to file containing training dataset for tuning. The dataset must be formatted as a JSONL file. */
   trainingDataset: TuningDataset;
   /** Configuration for the tuning job. */
@@ -5345,6 +5345,21 @@ The client can reopen the stream by sending an audio message.
   activityEnd?: ActivityEnd;
 }
 
+/** Client generated response to a `ToolCall` received from the server.
+
+  Individual `FunctionResponse` objects are matched to the respective
+  `FunctionCall` objects by the `id` field.
+
+  Note that in the unary and server-streaming GenerateContent APIs function
+  calling happens by exchanging the `Content` parts, while in the bidi
+  GenerateContent APIs function calling happens over this dedicated set of
+  messages.
+   */
+export class LiveClientToolResponse {
+  /** The response to the function calls. */
+  functionResponses?: FunctionResponse[];
+}
+
 /** Parameters for sending realtime input to the live API. */
 export declare interface LiveSendRealtimeInputParameters {
   /** Realtime input to send to the session. */
@@ -5369,21 +5384,6 @@ The client can reopen the stream by sending an audio message.
   activityStart?: ActivityStart;
   /** Marks the end of user activity. */
   activityEnd?: ActivityEnd;
-}
-
-/** Client generated response to a `ToolCall` received from the server.
-
-  Individual `FunctionResponse` objects are matched to the respective
-  `FunctionCall` objects by the `id` field.
-
-  Note that in the unary and server-streaming GenerateContent APIs function
-  calling happens by exchanging the `Content` parts, while in the bidi
-  GenerateContent APIs function calling happens over this dedicated set of
-  messages.
-   */
-export class LiveClientToolResponse {
-  /** The response to the function calls. */
-  functionResponses?: FunctionResponse[];
 }
 
 /** Messages sent by the client in the API call. */
@@ -5825,6 +5825,16 @@ export declare interface CreateAuthTokenConfig {
 export declare interface CreateAuthTokenParameters {
   /** Optional parameters for the request. */
   config?: CreateAuthTokenConfig;
+}
+
+/** Supervised fine-tuning job creation parameters - optional fields. */
+export declare interface CreateTuningJobParameters {
+  /** The base model that is being tuned, e.g., "gemini-2.5-flash". */
+  baseModel: string;
+  /** Cloud Storage path to file containing training dataset for tuning. The dataset must be formatted as a JSONL file. */
+  trainingDataset: TuningDataset;
+  /** Configuration for the tuning job. */
+  config?: CreateTuningJobConfig;
 }
 
 export type BlobImageUnion = Blob;

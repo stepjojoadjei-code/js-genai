@@ -566,6 +566,13 @@ export interface CreateTuningJobParameters {
 }
 
 // @public
+export interface CreateTuningJobParametersPrivate {
+    baseModel?: string;
+    config?: CreateTuningJobConfig;
+    trainingDataset: TuningDataset;
+}
+
+// @public
 export function createUserContent(partOrString: PartListUnion | string): Content;
 
 // @public

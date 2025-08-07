@@ -199,8 +199,8 @@ export function createTuningJobConfigToMldev(
   return toObject;
 }
 
-export function createTuningJobParametersToMldev(
-  fromObject: types.CreateTuningJobParameters,
+export function createTuningJobParametersPrivateToMldev(
+  fromObject: types.CreateTuningJobParametersPrivate,
 ): Record<string, unknown> {
   const toObject: Record<string, unknown> = {};
 
@@ -433,8 +433,8 @@ export function createTuningJobConfigToVertex(
   return toObject;
 }
 
-export function createTuningJobParametersToVertex(
-  fromObject: types.CreateTuningJobParameters,
+export function createTuningJobParametersPrivateToVertex(
+  fromObject: types.CreateTuningJobParametersPrivate,
 ): Record<string, unknown> {
   const toObject: Record<string, unknown> = {};
 
@@ -583,13 +583,6 @@ export function tuningJobFromMldev(
   const fromPipelineJob = common.getValueByPath(fromObject, ['pipelineJob']);
   if (fromPipelineJob != null) {
     common.setValueByPath(toObject, ['pipelineJob'], fromPipelineJob);
-  }
-
-  const fromPreTunedModel = common.getValueByPath(fromObject, [
-    'preTunedModel',
-  ]);
-  if (fromPreTunedModel != null) {
-    common.setValueByPath(toObject, ['preTunedModel'], fromPreTunedModel);
   }
 
   const fromPreferenceOptimizationSpec = common.getValueByPath(fromObject, [
@@ -832,6 +825,13 @@ export function tuningJobFromVertex(
     );
   }
 
+  const fromPreTunedModel = common.getValueByPath(fromObject, [
+    'preTunedModel',
+  ]);
+  if (fromPreTunedModel != null) {
+    common.setValueByPath(toObject, ['preTunedModel'], fromPreTunedModel);
+  }
+
   const fromSupervisedTuningSpec = common.getValueByPath(fromObject, [
     'supervisedTuningSpec',
   ]);
@@ -900,13 +900,6 @@ export function tuningJobFromVertex(
   const fromPipelineJob = common.getValueByPath(fromObject, ['pipelineJob']);
   if (fromPipelineJob != null) {
     common.setValueByPath(toObject, ['pipelineJob'], fromPipelineJob);
-  }
-
-  const fromPreTunedModel = common.getValueByPath(fromObject, [
-    'preTunedModel',
-  ]);
-  if (fromPreTunedModel != null) {
-    common.setValueByPath(toObject, ['preTunedModel'], fromPreTunedModel);
   }
 
   const fromPreferenceOptimizationSpec = common.getValueByPath(fromObject, [
