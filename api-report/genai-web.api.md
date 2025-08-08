@@ -838,6 +838,12 @@ export interface EnterpriseWebSearch {
 }
 
 // @public
+export enum Environment {
+    ENVIRONMENT_BROWSER = "ENVIRONMENT_BROWSER",
+    ENVIRONMENT_UNSPECIFIED = "ENVIRONMENT_UNSPECIFIED"
+}
+
+// @public
 export interface ExecutableCode {
     code?: string;
     language?: Language;
@@ -2776,6 +2782,7 @@ export interface TokensInfo {
 // @public
 export interface Tool {
     codeExecution?: ToolCodeExecution;
+    computerUse?: ToolComputerUse;
     enterpriseWebSearch?: EnterpriseWebSearch;
     functionDeclarations?: FunctionDeclaration[];
     googleMaps?: GoogleMaps;
@@ -2787,6 +2794,11 @@ export interface Tool {
 
 // @public
 export interface ToolCodeExecution {
+}
+
+// @public
+export interface ToolComputerUse {
+    environment?: Environment;
 }
 
 // @public

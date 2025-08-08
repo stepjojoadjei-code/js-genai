@@ -427,6 +427,19 @@ export function urlContextToMldev(): Record<string, unknown> {
   return toObject;
 }
 
+export function toolComputerUseToMldev(
+  fromObject: types.ToolComputerUse,
+): Record<string, unknown> {
+  const toObject: Record<string, unknown> = {};
+
+  const fromEnvironment = common.getValueByPath(fromObject, ['environment']);
+  if (fromEnvironment != null) {
+    common.setValueByPath(toObject, ['environment'], fromEnvironment);
+  }
+
+  return toObject;
+}
+
 export function toolToMldev(fromObject: types.Tool): Record<string, unknown> {
   const toObject: Record<string, unknown> = {};
 
@@ -482,6 +495,15 @@ export function toolToMldev(fromObject: types.Tool): Record<string, unknown> {
   const fromUrlContext = common.getValueByPath(fromObject, ['urlContext']);
   if (fromUrlContext != null) {
     common.setValueByPath(toObject, ['urlContext'], urlContextToMldev());
+  }
+
+  const fromComputerUse = common.getValueByPath(fromObject, ['computerUse']);
+  if (fromComputerUse != null) {
+    common.setValueByPath(
+      toObject,
+      ['computerUse'],
+      toolComputerUseToMldev(fromComputerUse),
+    );
   }
 
   const fromCodeExecution = common.getValueByPath(fromObject, [
@@ -1908,6 +1930,19 @@ export function urlContextToVertex(): Record<string, unknown> {
   return toObject;
 }
 
+export function toolComputerUseToVertex(
+  fromObject: types.ToolComputerUse,
+): Record<string, unknown> {
+  const toObject: Record<string, unknown> = {};
+
+  const fromEnvironment = common.getValueByPath(fromObject, ['environment']);
+  if (fromEnvironment != null) {
+    common.setValueByPath(toObject, ['environment'], fromEnvironment);
+  }
+
+  return toObject;
+}
+
 export function toolToVertex(fromObject: types.Tool): Record<string, unknown> {
   const toObject: Record<string, unknown> = {};
 
@@ -1972,6 +2007,15 @@ export function toolToVertex(fromObject: types.Tool): Record<string, unknown> {
   const fromUrlContext = common.getValueByPath(fromObject, ['urlContext']);
   if (fromUrlContext != null) {
     common.setValueByPath(toObject, ['urlContext'], urlContextToVertex());
+  }
+
+  const fromComputerUse = common.getValueByPath(fromObject, ['computerUse']);
+  if (fromComputerUse != null) {
+    common.setValueByPath(
+      toObject,
+      ['computerUse'],
+      toolComputerUseToVertex(fromComputerUse),
+    );
   }
 
   const fromCodeExecution = common.getValueByPath(fromObject, [

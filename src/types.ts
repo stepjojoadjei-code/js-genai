@@ -589,6 +589,18 @@ export enum DynamicRetrievalConfigMode {
   MODE_DYNAMIC = 'MODE_DYNAMIC',
 }
 
+/** The environment being operated. */
+export enum Environment {
+  /**
+   * Defaults to browser.
+   */
+  ENVIRONMENT_UNSPECIFIED = 'ENVIRONMENT_UNSPECIFIED',
+  /**
+   * Operates in a web browser.
+   */
+  ENVIRONMENT_BROWSER = 'ENVIRONMENT_BROWSER',
+}
+
 /** Config for the function calling config mode. */
 export enum FunctionCallingConfigMode {
   /**
@@ -1423,6 +1435,12 @@ export declare interface GoogleMaps {
 /** Tool to support URL context retrieval. */
 export declare interface UrlContext {}
 
+/** Tool to support computer use. */
+export declare interface ToolComputerUse {
+  /** Required. The environment being operated. */
+  environment?: Environment;
+}
+
 /** The API secret. */
 export declare interface ApiAuthApiKeyConfig {
   /** Required. The SecretManager secret version resource name storing API key. e.g. projects/{project}/secrets/{secret}/versions/{version} */
@@ -1594,6 +1612,10 @@ export declare interface Tool {
   googleMaps?: GoogleMaps;
   /** Optional. Tool to support URL context retrieval. */
   urlContext?: UrlContext;
+  /** Optional. Tool to support the model interacting directly with the
+      computer. If enabled, it automatically populates computer-use specific
+      Function Declarations. */
+  computerUse?: ToolComputerUse;
   /** Optional. CodeExecution tool type. Enables the model to execute code as part of generation. */
   codeExecution?: ToolCodeExecution;
 }
