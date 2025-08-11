@@ -2082,6 +2082,8 @@ export declare interface RagChunk {
 
 /** Chunk from context retrieved by the retrieval tools. */
 export declare interface GroundingChunkRetrievedContext {
+  /** Output only. The full document name for the referenced Vertex AI Search document. */
+  documentName?: string;
   /** Additional context for the RAG retrieval result. This is only populated when using the RAG retrieval tool. */
   ragChunk?: RagChunk;
   /** Text of the attribution. */

@@ -1447,6 +1447,7 @@ export interface GroundingChunkMapsPlaceAnswerSourcesReviewSnippet {
 
 // @public
 export interface GroundingChunkRetrievedContext {
+    documentName?: string;
     ragChunk?: RagChunk;
     text?: string;
     title?: string;
