@@ -554,6 +554,7 @@ export interface CreateTuningJobConfig {
     httpOptions?: HttpOptions;
     learningRate?: number;
     learningRateMultiplier?: number;
+    preTunedModelCheckpointId?: string;
     tunedModelDisplayName?: string;
     validationDataset?: TuningValidationDataset;
 }
@@ -569,6 +570,7 @@ export interface CreateTuningJobParameters {
 export interface CreateTuningJobParametersPrivate {
     baseModel?: string;
     config?: CreateTuningJobConfig;
+    preTunedModel?: PreTunedModel;
     trainingDataset: TuningDataset;
 }
 

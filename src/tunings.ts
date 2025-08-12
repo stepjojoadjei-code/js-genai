@@ -66,9 +66,27 @@ export class Tunings extends BaseModule {
     params: types.CreateTuningJobParameters,
   ): Promise<types.TuningJob> => {
     if (this.apiClient.isVertexAI()) {
-      return await this.tuneInternal(params);
+      if (params.baseModel.startsWith('projects/')) {
+        const preTunedModel: types.PreTunedModel = {
+          tunedModelName: params.baseModel,
+        };
+        const paramsPrivate: types.CreateTuningJobParametersPrivate = {
+          ...params,
+          preTunedModel: preTunedModel,
+        };
+        paramsPrivate.baseModel = undefined;
+        return await this.tuneInternal(paramsPrivate);
+      } else {
+        const paramsPrivate: types.CreateTuningJobParametersPrivate = {
+          ...params,
+        };
+        return await this.tuneInternal(paramsPrivate);
+      }
     } else {
-      const operation = await this.tuneMldevInternal(params);
+      const paramsPrivate: types.CreateTuningJobParametersPrivate = {
+        ...params,
+      };
+      const operation = await this.tuneMldevInternal(paramsPrivate);
       let tunedModelName = '';
       if (
         operation['metadata'] !== undefined &&

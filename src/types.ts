@@ -3873,6 +3873,8 @@ export declare interface CreateTuningJobConfig {
   learningRateMultiplier?: number;
   /** If set to true, disable intermediate checkpoints for SFT and only the last checkpoint will be exported. Otherwise, enable intermediate checkpoints for SFT. */
   exportLastCheckpointOnly?: boolean;
+  /** The optional checkpoint id of the pre-tuned model to use for tuning, if applicable. */
+  preTunedModelCheckpointId?: string;
   /** Adapter size for tuning. */
   adapterSize?: AdapterSize;
   /** The batch size hyperparameter for tuning. If not set, a default of 4 or 16 will be used based on the number of training examples. */
@@ -3885,6 +3887,8 @@ export declare interface CreateTuningJobConfig {
 export declare interface CreateTuningJobParametersPrivate {
   /** The base model that is being tuned, e.g., "gemini-2.5-flash". */
   baseModel?: string;
+  /** The PreTunedModel that is being tuned. */
+  preTunedModel?: PreTunedModel;
   /** Cloud Storage path to file containing training dataset for tuning. The dataset must be formatted as a JSONL file. */
   trainingDataset: TuningDataset;
   /** Configuration for the tuning job. */
