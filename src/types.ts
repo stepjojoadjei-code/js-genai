@@ -1357,6 +1357,9 @@ export declare interface GoogleSearch {
       If customers set a start time, they must set an end time (and vice versa).
        */
   timeRangeFilter?: Interval;
+  /** Optional. List of domains to be excluded from the search results.
+      The default limit is 2000 domains. */
+  excludeDomains?: string[];
 }
 
 /** Describes the options to customize dynamic retrieval. */
@@ -1374,7 +1377,10 @@ export declare interface GoogleSearchRetrieval {
 }
 
 /** Tool to search public web data, powered by Vertex AI Search and Sec4 compliance. */
-export declare interface EnterpriseWebSearch {}
+export declare interface EnterpriseWebSearch {
+  /** Optional. List of domains to be excluded from the search results. The default limit is 2000 domains. */
+  excludeDomains?: string[];
+}
 
 /** Config for authentication with API key. */
 export declare interface ApiKeyConfig {

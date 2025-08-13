@@ -271,6 +271,10 @@ export function googleSearchToMldev(
     );
   }
 
+  if (common.getValueByPath(fromObject, ['excludeDomains']) !== undefined) {
+    throw new Error('excludeDomains parameter is not supported in Gemini API.');
+  }
+
   return toObject;
 }
 
@@ -984,6 +988,13 @@ export function googleSearchToVertex(
     );
   }
 
+  const fromExcludeDomains = common.getValueByPath(fromObject, [
+    'excludeDomains',
+  ]);
+  if (fromExcludeDomains != null) {
+    common.setValueByPath(toObject, ['excludeDomains'], fromExcludeDomains);
+  }
+
   return toObject;
 }
 
@@ -1026,8 +1037,17 @@ export function googleSearchRetrievalToVertex(
   return toObject;
 }
 
-export function enterpriseWebSearchToVertex(): Record<string, unknown> {
+export function enterpriseWebSearchToVertex(
+  fromObject: types.EnterpriseWebSearch,
+): Record<string, unknown> {
   const toObject: Record<string, unknown> = {};
+
+  const fromExcludeDomains = common.getValueByPath(fromObject, [
+    'excludeDomains',
+  ]);
+  if (fromExcludeDomains != null) {
+    common.setValueByPath(toObject, ['excludeDomains'], fromExcludeDomains);
+  }
 
   return toObject;
 }
@@ -1183,7 +1203,7 @@ export function toolToVertex(fromObject: types.Tool): Record<string, unknown> {
     common.setValueByPath(
       toObject,
       ['enterpriseWebSearch'],
-      enterpriseWebSearchToVertex(),
+      enterpriseWebSearchToVertex(fromEnterpriseWebSearch),
     );
   }
 

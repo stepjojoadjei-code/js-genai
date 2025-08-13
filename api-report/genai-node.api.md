@@ -837,6 +837,7 @@ export enum EndSensitivity {
 
 // @public
 export interface EnterpriseWebSearch {
+    excludeDomains?: string[];
 }
 
 // @public
@@ -1394,6 +1395,7 @@ export interface GoogleRpcStatus {
 
 // @public
 export interface GoogleSearch {
+    excludeDomains?: string[];
     timeRangeFilter?: Interval;
 }
 

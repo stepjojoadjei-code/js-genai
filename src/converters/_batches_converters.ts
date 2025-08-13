@@ -417,6 +417,10 @@ export function googleSearchToMldev(
     );
   }
 
+  if (common.getValueByPath(fromObject, ['excludeDomains']) !== undefined) {
+    throw new Error('excludeDomains parameter is not supported in Gemini API.');
+  }
+
   return toObject;
 }
 
