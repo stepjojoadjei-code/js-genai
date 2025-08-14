@@ -823,6 +823,12 @@ export interface EnterpriseWebSearch {
 }
 
 // @public
+export interface EntityLabel {
+    label?: string;
+    score?: number;
+}
+
+// @public
 export enum Environment {
     ENVIRONMENT_BROWSER = "ENVIRONMENT_BROWSER",
     ENVIRONMENT_UNSPECIFIED = "ENVIRONMENT_UNSPECIFIED"
@@ -1110,6 +1116,12 @@ export interface GeneratedImage {
     image?: Image_2;
     raiFilteredReason?: string;
     safetyAttributes?: SafetyAttributes;
+}
+
+// @public
+export interface GeneratedImageMask {
+    labels?: EntityLabel[];
+    mask?: Image_2;
 }
 
 // @public
@@ -2138,6 +2150,7 @@ export class Models extends BaseModule {
     // (undocumented)
     list: (params?: types.ListModelsParameters) => Promise<Pager<types.Model>>;
     recontextImage(params: types.RecontextImageParameters): Promise<types.RecontextImageResponse>;
+    segmentImage(params: types.SegmentImageParameters): Promise<types.SegmentImageResponse>;
     update(params: types.UpdateModelParameters): Promise<types.Model>;
     upscaleImage: (params: types.UpscaleImageParameters) => Promise<types.UpscaleImageResponse>;
 }
@@ -2545,6 +2558,11 @@ export interface Schema {
 export type SchemaUnion = Schema | unknown;
 
 // @public
+export interface ScribbleImage {
+    image?: Image_2;
+}
+
+// @public
 export interface SearchEntryPoint {
     renderedContent?: string;
     sdkBlob?: string;
@@ -2556,6 +2574,50 @@ export interface Segment {
     partIndex?: number;
     startIndex?: number;
     text?: string;
+}
+
+// @public
+export interface SegmentImageConfig {
+    abortSignal?: AbortSignal;
+    binaryColorThreshold?: number;
+    confidenceThreshold?: number;
+    httpOptions?: HttpOptions;
+    maskDilation?: number;
+    maxPredictions?: number;
+    mode?: SegmentMode;
+}
+
+// @public
+export interface SegmentImageParameters {
+    config?: SegmentImageConfig;
+    model: string;
+    source: SegmentImageSource;
+}
+
+// @public
+export class SegmentImageResponse {
+    generatedMasks?: GeneratedImageMask[];
+}
+
+// @public
+export interface SegmentImageSource {
+    image?: Image_2;
+    prompt?: string;
+    scribbleImage?: ScribbleImage;
+}
+
+// @public
+export enum SegmentMode {
+    // (undocumented)
+    BACKGROUND = "BACKGROUND",
+    // (undocumented)
+    FOREGROUND = "FOREGROUND",
+    // (undocumented)
+    INTERACTIVE = "INTERACTIVE",
+    // (undocumented)
+    PROMPT = "PROMPT",
+    // (undocumented)
+    SEMANTIC = "SEMANTIC"
 }
 
 // @public
