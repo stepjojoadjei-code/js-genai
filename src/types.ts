@@ -3369,7 +3369,7 @@ export declare interface ComputeTokensParameters {
 
 /** Tokens info with a list of tokens and the corresponding list of token ids. */
 export declare interface TokensInfo {
-  /** Optional. Optional fields for the role from the corresponding Content. */
+  /** Optional fields for the role from the corresponding Content. */
   role?: string;
   /** A list of token ids from the input. */
   tokenIds?: string[];
