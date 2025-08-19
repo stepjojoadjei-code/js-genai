@@ -2382,6 +2382,7 @@ export interface RealtimeInputConfig {
 // @public
 export interface RecontextImageConfig {
     abortSignal?: AbortSignal;
+    addWatermark?: boolean;
     baseSteps?: number;
     enhancePrompt?: boolean;
     httpOptions?: HttpOptions;
