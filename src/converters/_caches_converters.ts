@@ -1605,11 +1605,17 @@ export function cachedContentFromMldev(
   return toObject;
 }
 
-export function deleteCachedContentResponseFromMldev(): Record<
-  string,
-  unknown
-> {
+export function deleteCachedContentResponseFromMldev(
+  fromObject: types.DeleteCachedContentResponse,
+): Record<string, unknown> {
   const toObject: Record<string, unknown> = {};
+
+  const fromSdkHttpResponse = common.getValueByPath(fromObject, [
+    'sdkHttpResponse',
+  ]);
+  if (fromSdkHttpResponse != null) {
+    common.setValueByPath(toObject, ['sdkHttpResponse'], fromSdkHttpResponse);
+  }
 
   return toObject;
 }
@@ -1694,11 +1700,17 @@ export function cachedContentFromVertex(
   return toObject;
 }
 
-export function deleteCachedContentResponseFromVertex(): Record<
-  string,
-  unknown
-> {
+export function deleteCachedContentResponseFromVertex(
+  fromObject: types.DeleteCachedContentResponse,
+): Record<string, unknown> {
   const toObject: Record<string, unknown> = {};
+
+  const fromSdkHttpResponse = common.getValueByPath(fromObject, [
+    'sdkHttpResponse',
+  ]);
+  if (fromSdkHttpResponse != null) {
+    common.setValueByPath(toObject, ['sdkHttpResponse'], fromSdkHttpResponse);
+  }
 
   return toObject;
 }

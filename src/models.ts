@@ -1519,11 +1519,17 @@ export class Models extends BaseModule {
           abortSignal: params.config?.abortSignal,
         })
         .then((httpResponse) => {
-          return httpResponse.json();
+          return httpResponse.json().then((jsonResponse) => {
+            const response = jsonResponse as types.DeleteModelResponse;
+            response.sdkHttpResponse = {
+              headers: httpResponse.headers,
+            } as types.HttpResponse;
+            return response;
+          });
         }) as Promise<types.DeleteModelResponse>;
 
-      return response.then(() => {
-        const resp = converters.deleteModelResponseFromVertex();
+      return response.then((apiResponse) => {
+        const resp = converters.deleteModelResponseFromVertex(apiResponse);
         const typedResp = new types.DeleteModelResponse();
         Object.assign(typedResp, resp);
         return typedResp;
@@ -1552,11 +1558,17 @@ export class Models extends BaseModule {
           abortSignal: params.config?.abortSignal,
         })
         .then((httpResponse) => {
-          return httpResponse.json();
+          return httpResponse.json().then((jsonResponse) => {
+            const response = jsonResponse as types.DeleteModelResponse;
+            response.sdkHttpResponse = {
+              headers: httpResponse.headers,
+            } as types.HttpResponse;
+            return response;
+          });
         }) as Promise<types.DeleteModelResponse>;
 
-      return response.then(() => {
-        const resp = converters.deleteModelResponseFromMldev();
+      return response.then((apiResponse) => {
+        const resp = converters.deleteModelResponseFromMldev(apiResponse);
         const typedResp = new types.DeleteModelResponse();
         Object.assign(typedResp, resp);
         return typedResp;

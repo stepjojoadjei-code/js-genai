@@ -354,8 +354,17 @@ export function createFileResponseFromMldev(
   return toObject;
 }
 
-export function deleteFileResponseFromMldev(): Record<string, unknown> {
+export function deleteFileResponseFromMldev(
+  fromObject: types.DeleteFileResponse,
+): Record<string, unknown> {
   const toObject: Record<string, unknown> = {};
+
+  const fromSdkHttpResponse = common.getValueByPath(fromObject, [
+    'sdkHttpResponse',
+  ]);
+  if (fromSdkHttpResponse != null) {
+    common.setValueByPath(toObject, ['sdkHttpResponse'], fromSdkHttpResponse);
+  }
 
   return toObject;
 }

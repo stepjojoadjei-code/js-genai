@@ -3241,7 +3241,10 @@ export declare interface DeleteModelParameters {
   config?: DeleteModelConfig;
 }
 
-export class DeleteModelResponse {}
+export class DeleteModelResponse {
+  /** Used to retain the full HTTP response. */
+  sdkHttpResponse?: HttpResponse;
+}
 
 /** Config for thinking features. */
 export declare interface GenerationConfigThinkingConfig {
@@ -4200,7 +4203,10 @@ export declare interface DeleteCachedContentParameters {
 }
 
 /** Empty response for caches.delete method. */
-export class DeleteCachedContentResponse {}
+export class DeleteCachedContentResponse {
+  /** Used to retain the full HTTP response. */
+  sdkHttpResponse?: HttpResponse;
+}
 
 /** Optional parameters for caches.update method. */
 export declare interface UpdateCachedContentConfig {
@@ -4407,7 +4413,10 @@ export declare interface DeleteFileParameters {
 }
 
 /** Response for the delete file method. */
-export class DeleteFileResponse {}
+export class DeleteFileResponse {
+  /** Used to retain the full HTTP response. */
+  sdkHttpResponse?: HttpResponse;
+}
 
 /** Config for inlined request. */
 export declare interface InlinedRequest {

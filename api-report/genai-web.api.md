@@ -634,6 +634,7 @@ export interface DeleteCachedContentParameters {
 
 // @public
 export class DeleteCachedContentResponse {
+    sdkHttpResponse?: HttpResponse;
 }
 
 // @public
@@ -650,6 +651,7 @@ export interface DeleteFileParameters {
 
 // @public
 export class DeleteFileResponse {
+    sdkHttpResponse?: HttpResponse;
 }
 
 // @public
@@ -667,6 +669,7 @@ export interface DeleteModelParameters {
 
 // @public (undocumented)
 export class DeleteModelResponse {
+    sdkHttpResponse?: HttpResponse;
 }
 
 // @public

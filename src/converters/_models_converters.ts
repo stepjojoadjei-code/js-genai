@@ -5214,8 +5214,17 @@ export function listModelsResponseFromMldev(
   return toObject;
 }
 
-export function deleteModelResponseFromMldev(): Record<string, unknown> {
+export function deleteModelResponseFromMldev(
+  fromObject: types.DeleteModelResponse,
+): Record<string, unknown> {
   const toObject: Record<string, unknown> = {};
+
+  const fromSdkHttpResponse = common.getValueByPath(fromObject, [
+    'sdkHttpResponse',
+  ]);
+  if (fromSdkHttpResponse != null) {
+    common.setValueByPath(toObject, ['sdkHttpResponse'], fromSdkHttpResponse);
+  }
 
   return toObject;
 }
@@ -6290,8 +6299,17 @@ export function listModelsResponseFromVertex(
   return toObject;
 }
 
-export function deleteModelResponseFromVertex(): Record<string, unknown> {
+export function deleteModelResponseFromVertex(
+  fromObject: types.DeleteModelResponse,
+): Record<string, unknown> {
   const toObject: Record<string, unknown> = {};
+
+  const fromSdkHttpResponse = common.getValueByPath(fromObject, [
+    'sdkHttpResponse',
+  ]);
+  if (fromSdkHttpResponse != null) {
+    common.setValueByPath(toObject, ['sdkHttpResponse'], fromSdkHttpResponse);
+  }
 
   return toObject;
 }
