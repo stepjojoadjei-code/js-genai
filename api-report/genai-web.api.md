@@ -1204,6 +1204,7 @@ export interface GenerateVideosParameters {
     image?: Image_2;
     model: string;
     prompt?: string;
+    source?: GenerateVideosSource;
     video?: Video;
 }
 
@@ -1212,6 +1213,13 @@ export class GenerateVideosResponse {
     generatedVideos?: GeneratedVideo[];
     raiMediaFilteredCount?: number;
     raiMediaFilteredReasons?: string[];
+}
+
+// @public
+export interface GenerateVideosSource {
+    image?: Image_2;
+    prompt?: string;
+    video?: Video;
 }
 
 // @public

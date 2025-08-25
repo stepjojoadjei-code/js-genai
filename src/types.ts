@@ -3399,6 +3399,19 @@ export declare interface Video {
   mimeType?: string;
 }
 
+/** A set of source input(s) for video generation. */
+export declare interface GenerateVideosSource {
+  /** The text prompt for generating the videos.
+      Optional if image or video is provided. */
+  prompt?: string;
+  /** The input image for generating the videos.
+      Optional if prompt or video is provided. */
+  image?: Image;
+  /** The input video for video extension use cases.
+      Optional if prompt or image is provided. */
+  video?: Video;
+}
+
 /** A reference image for video generation. */
 export declare interface VideoGenerationReferenceImage {
   /** The reference image.
@@ -3470,6 +3483,8 @@ export declare interface GenerateVideosParameters {
   /** The input video for video extension use cases.
       Optional if prompt or image is provided. */
   video?: Video;
+  /** A set of source input(s) for video generation. */
+  source?: GenerateVideosSource;
   /** Configuration for generating videos. */
   config?: GenerateVideosConfig;
 }

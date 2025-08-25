@@ -52,7 +52,7 @@ async function generateContentFromVertexAI() {
   });
   let operation = await ai.models.generateVideos({
     model: 'veo-2.0-generate-001',
-    prompt: 'Man with a dog',
+    source: {prompt: 'Man with a dog'},
   });
 
   while (!operation.done) {

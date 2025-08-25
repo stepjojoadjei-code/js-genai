@@ -550,7 +550,9 @@ export class Models extends BaseModule {
    * ```ts
    * const operation = await ai.models.generateVideos({
    *  model: 'veo-2.0-generate-001',
-   *  prompt: 'A neon hologram of a cat driving at top speed',
+   *  source: {
+   *    prompt: 'A neon hologram of a cat driving at top speed',
+   *  },
    *  config: {
    *    numberOfVideos: 1
    * });
@@ -567,6 +569,11 @@ export class Models extends BaseModule {
   generateVideos = async (
     params: types.GenerateVideosParameters,
   ): Promise<types.GenerateVideosOperation> => {
+    if ((params.prompt || params.image || params.video) && params.source) {
+      throw new Error(
+        'Source and prompt/image/video are mutually exclusive. Please only use source.',
+      );
+    }
     return await this.generateVideosInternal(params);
   };
 

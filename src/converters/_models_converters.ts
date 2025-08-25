@@ -1540,6 +1540,33 @@ export function imageToMldev(fromObject: types.Image): Record<string, unknown> {
   return toObject;
 }
 
+export function generateVideosSourceToMldev(
+  fromObject: types.GenerateVideosSource,
+  parentObject: Record<string, unknown>,
+): Record<string, unknown> {
+  const toObject: Record<string, unknown> = {};
+
+  const fromPrompt = common.getValueByPath(fromObject, ['prompt']);
+  if (parentObject !== undefined && fromPrompt != null) {
+    common.setValueByPath(parentObject, ['instances[0]', 'prompt'], fromPrompt);
+  }
+
+  const fromImage = common.getValueByPath(fromObject, ['image']);
+  if (parentObject !== undefined && fromImage != null) {
+    common.setValueByPath(
+      parentObject,
+      ['instances[0]', 'image'],
+      imageToMldev(fromImage),
+    );
+  }
+
+  if (common.getValueByPath(fromObject, ['video']) !== undefined) {
+    throw new Error('video parameter is not supported in Gemini API.');
+  }
+
+  return toObject;
+}
+
 export function generateVideosConfigToMldev(
   fromObject: types.GenerateVideosConfig,
   parentObject: Record<string, unknown>,
@@ -1684,6 +1711,15 @@ export function generateVideosParametersToMldev(
 
   if (common.getValueByPath(fromObject, ['video']) !== undefined) {
     throw new Error('video parameter is not supported in Gemini API.');
+  }
+
+  const fromSource = common.getValueByPath(fromObject, ['source']);
+  if (fromSource != null) {
+    common.setValueByPath(
+      toObject,
+      ['config'],
+      generateVideosSourceToMldev(fromSource, toObject),
+    );
   }
 
   const fromConfig = common.getValueByPath(fromObject, ['config']);
@@ -4271,6 +4307,38 @@ export function videoToVertex(
   return toObject;
 }
 
+export function generateVideosSourceToVertex(
+  fromObject: types.GenerateVideosSource,
+  parentObject: Record<string, unknown>,
+): Record<string, unknown> {
+  const toObject: Record<string, unknown> = {};
+
+  const fromPrompt = common.getValueByPath(fromObject, ['prompt']);
+  if (parentObject !== undefined && fromPrompt != null) {
+    common.setValueByPath(parentObject, ['instances[0]', 'prompt'], fromPrompt);
+  }
+
+  const fromImage = common.getValueByPath(fromObject, ['image']);
+  if (parentObject !== undefined && fromImage != null) {
+    common.setValueByPath(
+      parentObject,
+      ['instances[0]', 'image'],
+      imageToVertex(fromImage),
+    );
+  }
+
+  const fromVideo = common.getValueByPath(fromObject, ['video']);
+  if (parentObject !== undefined && fromVideo != null) {
+    common.setValueByPath(
+      parentObject,
+      ['instances[0]', 'video'],
+      videoToVertex(fromVideo),
+    );
+  }
+
+  return toObject;
+}
+
 export function videoGenerationReferenceImageToVertex(
   fromObject: types.VideoGenerationReferenceImage,
 ): Record<string, unknown> {
@@ -4484,6 +4552,15 @@ export function generateVideosParametersToVertex(
       toObject,
       ['instances[0]', 'video'],
       videoToVertex(fromVideo),
+    );
+  }
+
+  const fromSource = common.getValueByPath(fromObject, ['source']);
+  if (fromSource != null) {
+    common.setValueByPath(
+      toObject,
+      ['config'],
+      generateVideosSourceToVertex(fromSource, toObject),
     );
   }
 
