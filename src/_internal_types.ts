@@ -53,6 +53,8 @@ export declare interface UpscaleImageAPIConfigInternal {
   be charged usage for any applicable operations.
        */
   abortSignal?: AbortSignal;
+  /** Cloud Storage URI used to store the generated images. */
+  outputGcsUri?: string;
   /** Whether to include a reason for filtered-out images in the
       response. */
   includeRaiReason?: boolean;

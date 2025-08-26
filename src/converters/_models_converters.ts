@@ -3555,6 +3555,15 @@ export function upscaleImageAPIConfigInternalToVertex(
 ): Record<string, unknown> {
   const toObject: Record<string, unknown> = {};
 
+  const fromOutputGcsUri = common.getValueByPath(fromObject, ['outputGcsUri']);
+  if (parentObject !== undefined && fromOutputGcsUri != null) {
+    common.setValueByPath(
+      parentObject,
+      ['parameters', 'storageUri'],
+      fromOutputGcsUri,
+    );
+  }
+
   const fromIncludeRaiReason = common.getValueByPath(fromObject, [
     'includeRaiReason',
   ]);

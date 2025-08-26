@@ -3041,6 +3041,7 @@ export interface UpscaleImageConfig {
     imagePreservationFactor?: number;
     includeRaiReason?: boolean;
     outputCompressionQuality?: number;
+    outputGcsUri?: string;
     outputMimeType?: string;
 }
 
