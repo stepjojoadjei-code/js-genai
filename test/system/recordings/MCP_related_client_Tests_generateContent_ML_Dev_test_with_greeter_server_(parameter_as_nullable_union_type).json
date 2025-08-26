@@ -69,11 +69,11 @@
         "statusCode": 200,
         "headers": {
           "Content-Encoding": "gzip",
-          "Content-Length": "678",
+          "Content-Length": "768",
           "Content-Type": "application/json; charset=UTF-8",
-          "Date": "Sat, 16 Aug 2025 00:46:26 GMT",
+          "Date": "Tue, 26 Aug 2025 01:07:32 GMT",
           "Server": "scaffolding on HTTPServer2",
-          "Server-Timing": "gfet4t7; dur=848",
+          "Server-Timing": "gfet4t7; dur=1251",
           "Vary": "Origin, X-Origin, Referer",
           "X-Content-Type-Options": "nosniff",
           "X-Frame-Options": "SAMEORIGIN",
@@ -93,18 +93,17 @@
                         },
                         "name": "greet"
                       },
-                      "thoughtSignature": "CoICAVSoXO6cE/HTi/AlTL+r+tvf4DEeigzaZ72biNaoaUMpZFr84c80Gmx21gtpXsSdLrKvH/9ngn4IRf/2PEs8I5lkJzw3XqumtW1OhhyNkydTSB1C3aP2KifMP09BPzZIfKqmHory/YhpqeLEzGsQY71WY1pXOQ1hTwhOS13VVGI5e/DnQntSI0MMvsy8WCDurutk78EXM761qREXzsYAn/FIHaBEuR0RqZX2mc8ucRveRnMFoUXYdNuEnDk8hY7deLsIf7tJEeA7DksN30YDpiZU3aG51/fuTCB7A1JyS+zpvq10spCO9vKz1P1pUL4kKyBDVuNwE952/5t3fH0Imcg9"
+                      "thoughtSignature": "CvACAVSoXO6EOqI+WJsxZkpdhlwbOMPpXdUgQrfaoo7kSKptyw21ZS7xE30c7DvZ/uxV/URh3Verf1MvVTCc4tzMff7yqNTS9wpRa4fy/47Dn7n//ssDH6lqbMvkKC65+h450gpAXyQnPQDYDmU56vLLJO+DqaNW7MsMlHb0yg0oxd8+uGrS262r7KrV7p2QBeiZlRE5PZC+P2J6Wq2Ijs083nqoNr4xDPn3PB9K6k+iUvRrIVpja1qUZ3s7dP3Qm9IX8k8WC9W0g4v0ZySN1JF37ev4TkKXkZ/gYBCLUoc4weNWe6Mbc3GCEvn1FpIEdaU3lLFplhcHGdQveCNfzMgtXhEFgn13r7fYKcMLuHWKuGaRgyxrz02e0Lgz53x4FTxGiF99wbessVeceC7k++dmiWBb9poFdmv5EhZWl8zOfQglXokj3mX5S6jLN0pdYd5CGR5UokH1awQTWmNxngEpCjrGvEoCutKqCX1r+W84XOg="
                     }
                   ],
                   "role": "model"
                 },
-                "finishMessage": "Model generated function call(s).",
                 "finishReason": "STOP",
                 "index": 0
               }
             ],
             "modelVersion": "gemini-2.5-flash",
-            "responseId": "4tSfaL3kOaWgz7IP6IzYmQU",
+            "responseId": "1AitaIvTN4mq-8YPg7LfqAU",
             "usageMetadata": {
               "candidatesTokenCount": 20,
               "promptTokenCount": 60,
@@ -114,8 +113,8 @@
                   "tokenCount": 60
                 }
               ],
-              "thoughtsTokenCount": 65,
-              "totalTokenCount": 145
+              "thoughtsTokenCount": 88,
+              "totalTokenCount": 168
             }
           }
         ]

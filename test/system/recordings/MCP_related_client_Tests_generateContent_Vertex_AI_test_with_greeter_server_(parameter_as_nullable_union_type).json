@@ -69,9 +69,9 @@
         "statusCode": 200,
         "headers": {
           "Content-Encoding": "gzip",
-          "Content-Length": "886",
+          "Content-Length": "764",
           "Content-Type": "application/json; charset=UTF-8",
-          "Date": "Sat, 16 Aug 2025 00:46:34 GMT",
+          "Date": "Mon, 25 Aug 2025 22:45:42 GMT",
           "Server": "scaffolding on HTTPServer2",
           "Vary": "Origin, X-Origin, Referer",
           "X-Content-Type-Options": "nosniff",
@@ -82,7 +82,7 @@
           {
             "candidates": [
               {
-                "avgLogprobs": -2.885411126273019,
+                "avgLogprobs": -1.7723428181239538,
                 "content": {
                   "parts": [
                     {
@@ -93,18 +93,18 @@
                         },
                         "name": "greet"
                       },
-                      "thoughtSignature": "CuYCAcu98PAAfk4/jABkZnsx39t7D1wSVIMk0rRCrQQ/+BXQZTkyVFYmVvrWgOfuD/VBYFhpEGyWRWK5ZFgNvBzO3vD5d5MUFsgd2aTJG7f+mBqe6f2ma/63BhaCMRMCBjGWS3+o8HG0GgJZjkC/WlhQvm4c+d6GrEkk7yWb0tE/UwaJaukHfdHPKvvXn7yZOw3d1MnEAaoHxbnZ0ROzgN+Y9EMcLJ/otP15HLW05Maej9JW4NcBmFmp+uAQsQvFkEeXvU5cj/JQnuhCefcAwaXgqc0uGtFdF3af053GW2Eizr1o4JfVkREsV2oMpwUjbN/keAs4T51GFEtjUk80W5AZ0HEXujGCPzfzUNIeuy0oVsEn8Bg+TVqwrVvAcw/CfSPKwGV+BRpy8PLdYpD8ICpREi3f9+gfKj6uzuDFU5k+bKfa+DCFUZdA03aOlc0sKl5dMwEeZ6K3qcPGnMa4eTfrjWqaLOaQ3w=="
+                      "thoughtSignature": "CvUBAcu98PA/L/KIAVj/F4PPUqI4aW50HJGOc1XCw6kwfx7bJtx0h58u7/uVjyoR064D0+8nRtTw1hsAE4rT6HT0VM8Ms7QML1xwbTT0NDFGrqZjOcxY1D9wgLchEGCgdvjXCOXaEHINaDANlM469eCj7oqzjumcMVILHeoTmSJCPlwh7HZCSq4tf6pMUTrjc7CuUbz+qfUoJMZgu4EmGHEwiFoa5RAn4aCTzZMcETtDoFBf7diWiPTpoY8pUcuVOJkn/FbU9ALTLA/HVO0vfqnQFV60Avp5KRKvOpCBQjx+eWVRreXvl4pV9V3+4YO4ldCV4L7dgFo="
                     }
                   ],
                   "role": "model"
                 },
                 "finishReason": "STOP",
-                "score": -20.197877883911133
+                "score": -12.406399726867676
               }
             ],
-            "createTime": "2025-08-16T00:46:33.892717Z",
+            "createTime": "2025-08-25T22:45:42.348329Z",
             "modelVersion": "gemini-2.5-flash",
-            "responseId": "6dSfaK2-NqyWmecPoa-TkQM",
+            "responseId": "luesaKmhFZGOm9IP2MHq2QY",
             "usageMetadata": {
               "billablePromptUsage": {
                 "textCount": 212
@@ -123,8 +123,8 @@
                   "tokenCount": 17
                 }
               ],
-              "thoughtsTokenCount": 82,
-              "totalTokenCount": 106,
+              "thoughtsTokenCount": 57,
+              "totalTokenCount": 81,
               "trafficType": "ON_DEMAND"
             }
           }

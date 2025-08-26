@@ -4,8 +4,8 @@
     {
       "request": {
         "method": "POST",
-        "url": "/v1beta1/projects/REDACTED/locations/REDACTED/publishers/google/models/gemini-2.0-flash:generateContent",
-        "request": "POST /v1beta1/projects/REDACTED/locations/REDACTED/publishers/google/models/gemini-2.0-flash:generateContent HTTP/1.1",
+        "url": "/v1beta1/projects/REDACTED/locations/REDACTED/publishers/google/models/gemini-2.5-flash:generateContent",
+        "request": "POST /v1beta1/projects/REDACTED/locations/REDACTED/publishers/google/models/gemini-2.5-flash:generateContent HTTP/1.1",
         "headers": {
           "Accept": "*/*",
           "Accept-Encoding": "gzip, deflate",
@@ -65,14 +65,14 @@
         "port": 443,
         "protocol": "https"
       },
-      "shaSum": "8ae6fe90928114837e2ea7f4a2c036992896815c9cc4914a5ec7d325d8617d6b",
+      "shaSum": "41a405c90e2b37aeccfc5dab38397be45916d115817dc14659866e2ccc8e30a6",
       "response": {
         "statusCode": 200,
         "headers": {
           "Content-Encoding": "gzip",
-          "Content-Length": "466",
+          "Content-Length": "749",
           "Content-Type": "application/json; charset=UTF-8",
-          "Date": "Sat, 16 Aug 2025 00:46:30 GMT",
+          "Date": "Tue, 26 Aug 2025 01:08:20 GMT",
           "Server": "scaffolding on HTTPServer2",
           "Vary": "Origin, X-Origin, Referer",
           "X-Content-Type-Options": "nosniff",
@@ -83,7 +83,7 @@
           {
             "candidates": [
               {
-                "avgLogprobs": -0.000047906622057780623,
+                "avgLogprobs": -1.08555908203125,
                 "content": {
                   "parts": [
                     {
@@ -93,18 +93,19 @@
                           "text": "hello"
                         },
                         "name": "print"
-                      }
+                      },
+                      "thoughtSignature": "CusBAcu98PAc4JdBDjEVH0IPFd8TYmY9vH+BLdvNdmWwsKsoa5pB5AJdzzi6/Gkd9JmeTcKHTMMmJ426HoJXpHnTYtnJyEC7qqbgDT4krxQQ7XcuJwhIXNz+dHA+AW3XVdMypSFvFgKdhwMo6yJDeHnUhqInDjH84CnQVTTtMs3akJugqxc6itaxVxUVJ2HM3ZS/P2/lg/pkNh55TOystgi7bLJWgs0qkW+UuwDXArDjq+yprKPK4QUDfWNbCloY3poWYnE6NE6chsj6wWAJlx6K2Oi7p/Cv8ML0NKoCUjyWKJTRgLvTeAjGfIioHQ=="
                     }
                   ],
                   "role": "model"
                 },
                 "finishReason": "STOP",
-                "score": -0.00023953311028890312
+                "score": -5.42779541015625
               }
             ],
-            "createTime": "2025-08-16T00:46:29.754307Z",
-            "modelVersion": "gemini-2.0-flash",
-            "responseId": "5dSfaIOFLvmAm9IP_-LziQ0",
+            "createTime": "2025-08-26T01:08:19.747464Z",
+            "modelVersion": "gemini-2.5-flash",
+            "responseId": "AwmtaMjPLdinnvgPt7rbsQU",
             "usageMetadata": {
               "billablePromptUsage": {
                 "textCount": 211
@@ -123,7 +124,8 @@
                   "tokenCount": 13
                 }
               ],
-              "totalTokenCount": 18,
+              "thoughtsTokenCount": 55,
+              "totalTokenCount": 73,
               "trafficType": "ON_DEMAND"
             }
           }
@@ -133,14 +135,14 @@
     {
       "request": {
         "method": "POST",
-        "url": "/v1beta1/projects/REDACTED/locations/REDACTED/publishers/google/models/gemini-2.0-flash:generateContent",
-        "request": "POST /v1beta1/projects/REDACTED/locations/REDACTED/publishers/google/models/gemini-2.0-flash:generateContent HTTP/1.1",
+        "url": "/v1beta1/projects/REDACTED/locations/REDACTED/publishers/google/models/gemini-2.5-flash:generateContent",
+        "request": "POST /v1beta1/projects/REDACTED/locations/REDACTED/publishers/google/models/gemini-2.5-flash:generateContent HTTP/1.1",
         "headers": {
           "Accept": "*/*",
           "Accept-Encoding": "gzip, deflate",
           "Accept-Language": "*",
           "Connection": "keep-alive",
-          "Content-Length": "673",
+          "Content-Length": "1064",
           "Content-Type": "application/json",
           "Sec-Fetch-Mode": "cors",
           "Test-Name": "MCP related client Tests generateContent Vertex AI should take a list of MCPClients and conduct automated function calling"
@@ -165,7 +167,8 @@
                         "text": "hello"
                       },
                       "name": "print"
-                    }
+                    },
+                    "thoughtSignature": "CusBAcu98PAc4JdBDjEVH0IPFd8TYmY9vH+BLdvNdmWwsKsoa5pB5AJdzzi6/Gkd9JmeTcKHTMMmJ426HoJXpHnTYtnJyEC7qqbgDT4krxQQ7XcuJwhIXNz+dHA+AW3XVdMypSFvFgKdhwMo6yJDeHnUhqInDjH84CnQVTTtMs3akJugqxc6itaxVxUVJ2HM3ZS/P2/lg/pkNh55TOystgi7bLJWgs0qkW+UuwDXArDjq+yprKPK4QUDfWNbCloY3poWYnE6NE6chsj6wWAJlx6K2Oi7p/Cv8ML0NKoCUjyWKJTRgLvTeAjGfIioHQ=="
                   }
                 ],
                 "role": "model"
@@ -176,7 +179,12 @@
                     "functionResponse": {
                       "name": "print",
                       "response": {
-                        "content": []
+                        "content": [
+                          {
+                            "text": "\u001b[31mhello\u001b[0m",
+                            "type": "text"
+                          }
+                        ]
                       }
                     }
                   }
@@ -216,19 +224,19 @@
             ]
           }
         ],
-        "previousRequest": "8ae6fe90928114837e2ea7f4a2c036992896815c9cc4914a5ec7d325d8617d6b",
+        "previousRequest": "41a405c90e2b37aeccfc5dab38397be45916d115817dc14659866e2ccc8e30a6",
         "serverAddress": "us-central1-aiplatform.googleapis.com",
         "port": 443,
         "protocol": "https"
       },
-      "shaSum": "5121c27f9a6b76b6f60cc2ec168fd4c3058b9929c9d98a99af1b1ae4e1c4bcdd",
+      "shaSum": "3f306c32ed50ba583a2d8c5110acc7654f91213ed42a06ffece13d256952456b",
       "response": {
         "statusCode": 200,
         "headers": {
           "Content-Encoding": "gzip",
-          "Content-Length": "443",
+          "Content-Length": "447",
           "Content-Type": "application/json; charset=UTF-8",
-          "Date": "Sat, 16 Aug 2025 00:46:30 GMT",
+          "Date": "Tue, 26 Aug 2025 01:08:20 GMT",
           "Server": "scaffolding on HTTPServer2",
           "Vary": "Origin, X-Origin, Referer",
           "X-Content-Type-Options": "nosniff",
@@ -239,41 +247,41 @@
           {
             "candidates": [
               {
-                "avgLogprobs": -0.08676478495964637,
+                "avgLogprobs": -0.047058181329206986,
                 "content": {
                   "parts": [
                     {
-                      "text": "OK. I've printed \"hello\" in red.\n"
+                      "text": "The word \"hello\" has been printed in red."
                     }
                   ],
                   "role": "model"
                 },
                 "finishReason": "STOP",
-                "score": -1.1279422044754028
+                "score": -0.5176399946212769
               }
             ],
-            "createTime": "2025-08-16T00:46:30.190579Z",
-            "modelVersion": "gemini-2.0-flash",
-            "responseId": "5tSfaPPQC4yfmecP5IKC0Q8",
+            "createTime": "2025-08-26T01:08:20.470412Z",
+            "modelVersion": "gemini-2.5-flash",
+            "responseId": "BAmtaIzbHJPMnvgPrpiD-QQ",
             "usageMetadata": {
               "billablePromptUsage": {
-                "textCount": 245
+                "textCount": 271
               },
-              "candidatesTokenCount": 13,
+              "candidatesTokenCount": 11,
               "candidatesTokensDetails": [
                 {
                   "modality": "TEXT",
-                  "tokenCount": 13
+                  "tokenCount": 11
                 }
               ],
-              "promptTokenCount": 20,
+              "promptTokenCount": 33,
               "promptTokensDetails": [
                 {
                   "modality": "TEXT",
-                  "tokenCount": 20
+                  "tokenCount": 33
                 }
               ],
-              "totalTokenCount": 33,
+              "totalTokenCount": 44,
               "trafficType": "ON_DEMAND"
             }
           }

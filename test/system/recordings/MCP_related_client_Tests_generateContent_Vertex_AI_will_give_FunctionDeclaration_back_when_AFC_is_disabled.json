@@ -4,8 +4,8 @@
     {
       "request": {
         "method": "POST",
-        "url": "/v1beta1/projects/REDACTED/locations/REDACTED/publishers/google/models/gemini-2.0-flash:generateContent",
-        "request": "POST /v1beta1/projects/REDACTED/locations/REDACTED/publishers/google/models/gemini-2.0-flash:generateContent HTTP/1.1",
+        "url": "/v1beta1/projects/REDACTED/locations/REDACTED/publishers/google/models/gemini-2.5-flash:generateContent",
+        "request": "POST /v1beta1/projects/REDACTED/locations/REDACTED/publishers/google/models/gemini-2.5-flash:generateContent HTTP/1.1",
         "headers": {
           "Accept": "*/*",
           "Accept-Encoding": "gzip, deflate",
@@ -65,14 +65,14 @@
         "port": 443,
         "protocol": "https"
       },
-      "shaSum": "15aeae0e11ffa16edb6c7540f80c7bf8b1f4cb7fbf761fb5c6f99284756524db",
+      "shaSum": "1d8bb2d6aac813b55a67c9e3260d033c7a68f153e6ec10d68525b84ceb9eb248",
       "response": {
         "statusCode": 200,
         "headers": {
           "Content-Encoding": "gzip",
-          "Content-Length": "461",
+          "Content-Length": "740",
           "Content-Type": "application/json; charset=UTF-8",
-          "Date": "Sat, 16 Aug 2025 00:46:27 GMT",
+          "Date": "Tue, 26 Aug 2025 01:07:31 GMT",
           "Server": "scaffolding on HTTPServer2",
           "Vary": "Origin, X-Origin, Referer",
           "X-Content-Type-Options": "nosniff",
@@ -83,7 +83,7 @@
           {
             "candidates": [
               {
-                "avgLogprobs": -0.0004279362969100475,
+                "avgLogprobs": -1.0484058380126953,
                 "content": {
                   "parts": [
                     {
@@ -93,18 +93,19 @@
                           "text": "hello"
                         },
                         "name": "print"
-                      }
+                      },
+                      "thoughtSignature": "CuQBAcu98PBviaR9KrZO3FVz/ACc+GVnTvO1rHaP/IDuDvo5rA5KLh6FHQ4YkswsUzdXUSRDiJINK3ipoi7uhO+rIs7tu2THREepCFEFccfCKPIJazcmpzw86BfXlgmFogrOaaxgx8bfrFx4I+mmzFVeSR9NFV0bkNvlmiNHKNHvL3Vu8imnowWF0DobLhi+zSJcctSwnXzLZwz3RpKa/MPytlYrhTFDg3Oejej1SxPk1/cWb9HIySbxtvRg5lTYfv/x7sXmrHjIy8E+K8TgRs6DDEM20nyUWgZtyZNZVNrl4zc+nDDL"
                     }
                   ],
                   "role": "model"
                 },
                 "finishReason": "STOP",
-                "score": -0.0021396814845502377
+                "score": -5.242029190063477
               }
             ],
-            "createTime": "2025-08-16T00:46:27.550908Z",
-            "modelVersion": "gemini-2.0-flash",
-            "responseId": "49SfaPzPIaOrmecPu6_k0Qs",
+            "createTime": "2025-08-26T01:07:30.969569Z",
+            "modelVersion": "gemini-2.5-flash",
+            "responseId": "0gitaOGWO5b9ld8PkJyYkAQ",
             "usageMetadata": {
               "billablePromptUsage": {
                 "textCount": 212
@@ -123,7 +124,8 @@
                   "tokenCount": 13
                 }
               ],
-              "totalTokenCount": 18,
+              "thoughtsTokenCount": 54,
+              "totalTokenCount": 72,
               "trafficType": "ON_DEMAND"
             }
           }

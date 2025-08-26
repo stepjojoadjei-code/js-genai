@@ -75,12 +75,10 @@ describe('MCP related client Tests', () => {
         await spinUpPrintingServer(),
         await spinUpBeepingServer(),
       );
-      const consoleLogSpy = spyOn(console, 'log').and.callThrough();
-      const consoleBeepSpy = spyOn(process.stdout, 'write').and.callThrough();
-      await ai.models.generateContent({
-        model: 'gemini-2.0-flash',
+      const response = await ai.models.generateContent({
+        model: 'gemini-2.5-flash',
         contents:
-          'Use the printer to print a simple word: hello in blue, and beep with the beeper',
+          'Use the printer to print a simple word: hello in blue, and beep with the beeper, remember to print and beep',
         config: {
           tools: [mcpCallableTool],
           toolConfig: {
@@ -90,8 +88,40 @@ describe('MCP related client Tests', () => {
           },
         },
       });
-      expect(consoleLogSpy).toHaveBeenCalledWith('\x1b[34mhello');
-      expect(consoleBeepSpy).toHaveBeenCalledWith('\u0007');
+      const expectedFunctionResponse = {
+        role: 'user',
+        parts: [
+          {
+            functionResponse: {
+              name: 'print',
+              response: {
+                content: [
+                  {
+                    type: 'text',
+                    text: '\u001b[34mhello\u001b[0m',
+                  },
+                ],
+              },
+            },
+          },
+          {
+            functionResponse: {
+              name: 'beep',
+              response: {
+                content: [
+                  {
+                    type: 'text',
+                    text: 'beep',
+                  },
+                ],
+              },
+            },
+          },
+        ],
+      };
+      expect(response.automaticFunctionCallingHistory![2]).toEqual(
+        expectedFunctionResponse,
+      );
     });
     it('ML Dev test with greeter server (parameter as nullable union type)', async () => {
       const ai = new GoogleGenAI({
@@ -100,8 +130,7 @@ describe('MCP related client Tests', () => {
         httpOptions,
       });
       const mcpCallableTool = mcpToTool(await greetServer());
-      const consoleLogSpy = spyOn(console, 'log').and.callThrough();
-      await ai.models.generateContent({
+      const response = await ai.models.generateContent({
         model: 'gemini-2.5-flash',
         contents:
           'call the greeter once with name: jone smith, and greeting: Hello',
@@ -117,10 +146,26 @@ describe('MCP related client Tests', () => {
           },
         },
       });
-      expect(consoleLogSpy).toHaveBeenCalledWith(
-        'user give name as a string: ',
-        'jone smith',
-        'Hello',
+      const expectedFunctionResponse = {
+        role: 'user',
+        parts: [
+          {
+            functionResponse: {
+              name: 'greet',
+              response: {
+                content: [
+                  {
+                    type: 'text',
+                    text: 'User give name as a string: Hello jone smith: Hello',
+                  },
+                ],
+              },
+            },
+          },
+        ],
+      };
+      expect(response.automaticFunctionCallingHistory![2]).toEqual(
+        expectedFunctionResponse,
       );
     });
     it('Vertex AI test with greeter server (parameter as nullable union type)', async () => {
@@ -131,8 +176,7 @@ describe('MCP related client Tests', () => {
         httpOptions,
       });
       const mcpCallableTool = mcpToTool(await greetServer());
-      const consoleLogSpy = spyOn(console, 'log').and.callThrough();
-      await ai.models.generateContent({
+      const response = await ai.models.generateContent({
         model: 'gemini-2.5-flash',
         contents:
           'call the greeter once with name: jone smith, and greeting: Hello',
@@ -148,10 +192,26 @@ describe('MCP related client Tests', () => {
           },
         },
       });
-      expect(consoleLogSpy).toHaveBeenCalledWith(
-        'user give name as a string: ',
-        'jone smith',
-        'Hello',
+      const expectedFunctionResponse = {
+        role: 'user',
+        parts: [
+          {
+            functionResponse: {
+              name: 'greet',
+              response: {
+                content: [
+                  {
+                    type: 'text',
+                    text: 'User give name as a string: Hello jone smith: Hello',
+                  },
+                ],
+              },
+            },
+          },
+        ],
+      };
+      expect(response.automaticFunctionCallingHistory![2]).toEqual(
+        expectedFunctionResponse,
       );
     });
     it('ML Dev Multiple CallableTool with MCPClients and conduct automated function calling', async () => {
@@ -162,12 +222,10 @@ describe('MCP related client Tests', () => {
       });
       const callableTool1 = mcpToTool(await spinUpPrintingServer());
       const callableTool2 = mcpToTool(await spinUpBeepingServer());
-      const consoleLogSpy = spyOn(console, 'log').and.callThrough();
-      const consoleBeepSpy = spyOn(process.stdout, 'write').and.callThrough();
-      await ai.models.generateContent({
+      const response = await ai.models.generateContent({
         model: 'gemini-2.0-flash',
         contents:
-          'Use the printer to print a simple word: hello in blue, and beep with the beeper',
+          'Use the printer to print a simple word: hello in blue, and beep with the beeper, make sure you beep',
         config: {
           tools: [callableTool1, callableTool2],
           toolConfig: {
@@ -177,8 +235,40 @@ describe('MCP related client Tests', () => {
           },
         },
       });
-      expect(consoleLogSpy).toHaveBeenCalledWith('\x1b[34mhello');
-      expect(consoleBeepSpy).toHaveBeenCalledWith('\u0007');
+      const expectedFunctionResponse = {
+        role: 'user',
+        parts: [
+          {
+            functionResponse: {
+              name: 'print',
+              response: {
+                content: [
+                  {
+                    type: 'text',
+                    text: '\u001b[34mhello\u001b[0m',
+                  },
+                ],
+              },
+            },
+          },
+          {
+            functionResponse: {
+              name: 'beep',
+              response: {
+                content: [
+                  {
+                    type: 'text',
+                    text: 'beep',
+                  },
+                ],
+              },
+            },
+          },
+        ],
+      };
+      expect(response.automaticFunctionCallingHistory![2]).toEqual(
+        expectedFunctionResponse,
+      );
     });
     it('Vertex AI should take a list of MCPClients and conduct automated function calling', async () => {
       const ai = new GoogleGenAI({
@@ -188,9 +278,8 @@ describe('MCP related client Tests', () => {
         httpOptions,
       });
       const mcpCallableTool = mcpToTool(await spinUpPrintingServer());
-      const consoleLogSpy = spyOn(console, 'log').and.callThrough();
-      await ai.models.generateContent({
-        model: 'gemini-2.0-flash',
+      const response = await ai.models.generateContent({
+        model: 'gemini-2.5-flash',
         contents: 'Use the printer to print a simple word: hello in red',
         config: {
           tools: [mcpCallableTool],
@@ -202,7 +291,27 @@ describe('MCP related client Tests', () => {
           },
         },
       });
-      expect(consoleLogSpy).toHaveBeenCalledWith('\x1b[31mhello');
+      const expectedFunctionResponse = {
+        role: 'user',
+        parts: [
+          {
+            functionResponse: {
+              name: 'print',
+              response: {
+                content: [
+                  {
+                    type: 'text',
+                    text: '\u001b[31mhello\u001b[0m',
+                  },
+                ],
+              },
+            },
+          },
+        ],
+      };
+      expect(response.automaticFunctionCallingHistory![2]).toEqual(
+        expectedFunctionResponse,
+      );
     });
     it('ML Dev will give FunctionDeclaration back when AFC is disabled', async () => {
       const ai = new GoogleGenAI({
@@ -212,8 +321,6 @@ describe('MCP related client Tests', () => {
       });
       const callableTool1 = mcpToTool(await spinUpPrintingServer());
       const callableTool2 = mcpToTool(await spinUpBeepingServer());
-      const consoleLogSpy = spyOn(console, 'log').and.callThrough();
-      const consoleBeepSpy = spyOn(process.stdout, 'write').and.callThrough();
       const response = await ai.models.generateContent({
         model: 'gemini-2.0-flash',
         contents:
@@ -244,8 +351,6 @@ describe('MCP related client Tests', () => {
         },
       ];
       expect(response.functionCalls).toEqual(expectedFunctionCalls);
-      expect(consoleLogSpy).not.toHaveBeenCalled();
-      expect(consoleBeepSpy).not.toHaveBeenCalledWith('\u0007');
     });
     it('Vertex AI will give FunctionDeclaration back when AFC is disabled', async () => {
       const ai = new GoogleGenAI({
@@ -255,9 +360,8 @@ describe('MCP related client Tests', () => {
         httpOptions,
       });
       const mcpCallableTool = mcpToTool(await spinUpPrintingServer());
-      const consoleLogSpy = spyOn(console, 'log').and.callThrough();
       const response = await ai.models.generateContent({
-        model: 'gemini-2.0-flash',
+        model: 'gemini-2.5-flash',
         contents: 'Use the printer to print a simple word: hello in blue',
         config: {
           tools: [mcpCallableTool],
@@ -281,7 +385,6 @@ describe('MCP related client Tests', () => {
         },
       ];
       expect(response.functionCalls).toEqual(expectedFunctionCalls);
-      expect(consoleLogSpy).not.toHaveBeenCalled();
     });
     it('ML Dev can take mixed tools when AFC is disabled', async () => {
       const ai = new GoogleGenAI({
@@ -345,7 +448,7 @@ describe('MCP related client Tests', () => {
         httpOptions,
       });
       const response = await ai.models.generateContent({
-        model: 'gemini-2.0-flash',
+        model: 'gemini-2.5-flash',
         contents: 'control the light to warm, 50',
         config: {
           tools: [{functionDeclarations: [controlLightFunctionDeclaration]}],
@@ -402,7 +505,12 @@ async function spinUpPrintingServer(): Promise<McpClient> {
       }
 
       return {
-        content: [],
+        content: [
+          {
+            type: 'text',
+            text: colorMap[color] + text + colorMap.reset,
+          },
+        ],
       };
     },
   );
@@ -428,7 +536,12 @@ async function spinUpBeepingServer(): Promise<McpClient> {
   server.tool('beep', async () => {
     process.stdout.write('\u0007');
     return {
-      content: [],
+      content: [
+        {
+          type: 'text',
+          text: 'beep',
+        },
+      ],
     };
   });
 
@@ -457,13 +570,19 @@ async function greetServer(): Promise<McpClient> {
       greeting: z.string(),
     },
     async ({name, greeting}) => {
+      let greetMessage = '';
       if (typeof name === 'string') {
-        console.log('user give name as a string: ', name, greeting);
+        greetMessage = `User give name as a string: Hello ${name}: ${greeting}`;
       } else {
-        console.log('user give name as a number', name, greeting);
+        greetMessage = `User give name as a number: Hello ${name}: ${greeting}`;
       }
       return {
-        content: [],
+        content: [
+          {
+            type: 'text',
+            text: greetMessage,
+          },
+        ],
       };
     },
   );

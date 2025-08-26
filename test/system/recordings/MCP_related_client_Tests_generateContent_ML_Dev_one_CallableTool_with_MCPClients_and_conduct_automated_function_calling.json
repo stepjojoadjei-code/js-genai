@@ -4,14 +4,14 @@
     {
       "request": {
         "method": "POST",
-        "url": "/v1beta/models/gemini-2.0-flash:generateContent",
-        "request": "POST /v1beta/models/gemini-2.0-flash:generateContent HTTP/1.1",
+        "url": "/v1beta/models/gemini-2.5-flash:generateContent",
+        "request": "POST /v1beta/models/gemini-2.5-flash:generateContent HTTP/1.1",
         "headers": {
           "Accept": "*/*",
           "Accept-Encoding": "gzip, deflate",
           "Accept-Language": "*",
           "Connection": "keep-alive",
-          "Content-Length": "568",
+          "Content-Length": "596",
           "Content-Type": "application/json",
           "Sec-Fetch-Mode": "cors",
           "Test-Name": "MCP related client Tests generateContent ML Dev one CallableTool with MCPClients and conduct automated function calling"
@@ -22,7 +22,7 @@
               {
                 "parts": [
                   {
-                    "text": "Use the printer to print a simple word: hello in blue, and beep with the beeper"
+                    "text": "Use the printer to print a simple word: hello in blue, and beep with the beeper, remember to print and beep"
                   }
                 ],
                 "role": "user"
@@ -71,16 +71,16 @@
         "port": 443,
         "protocol": "https"
       },
-      "shaSum": "78530e7ede53600888f840d7c844ac2102aad16c6ff7c3a1b2091ef2a26fc83d",
+      "shaSum": "a20782c7d877325e54edf7102809def360176e068f16b9306861833338f65732",
       "response": {
         "statusCode": 200,
         "headers": {
           "Content-Encoding": "gzip",
-          "Content-Length": "375",
+          "Content-Length": "808",
           "Content-Type": "application/json; charset=UTF-8",
-          "Date": "Sat, 16 Aug 2025 00:46:28 GMT",
+          "Date": "Tue, 26 Aug 2025 01:17:00 GMT",
           "Server": "scaffolding on HTTPServer2",
-          "Server-Timing": "gfet4t7; dur=539",
+          "Server-Timing": "gfet4t7; dur=1320",
           "Vary": "Origin, X-Origin, Referer",
           "X-Content-Type-Options": "nosniff",
           "X-Frame-Options": "SAMEORIGIN",
@@ -90,7 +90,6 @@
           {
             "candidates": [
               {
-                "avgLogprobs": -0.00041472182298700017,
                 "content": {
                   "parts": [
                     {
@@ -100,7 +99,8 @@
                           "text": "hello"
                         },
                         "name": "print"
-                      }
+                      },
+                      "thoughtSignature": "CokDAVSoXO4oBhobOM8wwAz5btHRdKUSAQvGf7KT8rlHb/3XuGYejVBeyLxjwuDZnD1WJJUXwwP2tjv2NaCm6ro2kFW0UHlVRXBcc7+Ap8shqGQtugaO7dk58oHTUZ3V9EPuJe4lWf8FK98KewrwaYjd/QRS4BCrl3I+/mQB5LUBQvXkZ4dCCxf+u48SGgpHdVPKIFSOPRlaTCFq70cDbvjMv3SWjGbglx0LcHhvoLN1QHptsqwGVVgJZZDzHXxTarbQsaubu/fYCr8fSuF8uomRtqfEanwZUpjaX3MCTAigU/A5MmVaMXOpxCTZNBvt1qZORBgyvQ3ahzZfk6ytCj7SYnP8BTeoGshR3RhCoCL2UCWQ9uXPMH100pcSjtWx6XR6k9hW8lmN0vyW1Fh/gqNLok2KmkRjgatNi13SlGM6qW+bHinbFcVyKwl13DFWAvnFn3inuWEBNdIH6NKliPz+Kcal/EY20IZOpMiAY9F/4C0hME1bqx150CHe7X6r+RNXLShX++esf4hx"
                     },
                     {
                       "functionCall": {
@@ -111,27 +111,23 @@
                   ],
                   "role": "model"
                 },
-                "finishReason": "STOP"
+                "finishReason": "STOP",
+                "index": 0
               }
             ],
-            "modelVersion": "gemini-2.0-flash",
-            "responseId": "5NSfaMF__tef2Q-v9_voAg",
+            "modelVersion": "gemini-2.5-flash",
+            "responseId": "DAutaI6CGbvvjrEP2JnCyQk",
             "usageMetadata": {
-              "candidatesTokenCount": 6,
-              "candidatesTokensDetails": [
-                {
-                  "modality": "TEXT",
-                  "tokenCount": 6
-                }
-              ],
-              "promptTokenCount": 21,
+              "candidatesTokenCount": 26,
+              "promptTokenCount": 86,
               "promptTokensDetails": [
                 {
                   "modality": "TEXT",
-                  "tokenCount": 21
+                  "tokenCount": 86
                 }
               ],
-              "totalTokenCount": 27
+              "thoughtsTokenCount": 101,
+              "totalTokenCount": 213
             }
           }
         ]
@@ -140,14 +136,14 @@
     {
       "request": {
         "method": "POST",
-        "url": "/v1beta/models/gemini-2.0-flash:generateContent",
-        "request": "POST /v1beta/models/gemini-2.0-flash:generateContent HTTP/1.1",
+        "url": "/v1beta/models/gemini-2.5-flash:generateContent",
+        "request": "POST /v1beta/models/gemini-2.5-flash:generateContent HTTP/1.1",
         "headers": {
           "Accept": "*/*",
           "Accept-Encoding": "gzip, deflate",
           "Accept-Language": "*",
           "Connection": "keep-alive",
-          "Content-Length": "864",
+          "Content-Length": "1520",
           "Content-Type": "application/json",
           "Sec-Fetch-Mode": "cors",
           "Test-Name": "MCP related client Tests generateContent ML Dev one CallableTool with MCPClients and conduct automated function calling"
@@ -158,7 +154,7 @@
               {
                 "parts": [
                   {
-                    "text": "Use the printer to print a simple word: hello in blue, and beep with the beeper"
+                    "text": "Use the printer to print a simple word: hello in blue, and beep with the beeper, remember to print and beep"
                   }
                 ],
                 "role": "user"
@@ -172,7 +168,8 @@
                         "text": "hello"
                       },
                       "name": "print"
-                    }
+                    },
+                    "thoughtSignature": "CokDAVSoXO4oBhobOM8wwAz5btHRdKUSAQvGf7KT8rlHb/3XuGYejVBeyLxjwuDZnD1WJJUXwwP2tjv2NaCm6ro2kFW0UHlVRXBcc7+Ap8shqGQtugaO7dk58oHTUZ3V9EPuJe4lWf8FK98KewrwaYjd/QRS4BCrl3I+/mQB5LUBQvXkZ4dCCxf+u48SGgpHdVPKIFSOPRlaTCFq70cDbvjMv3SWjGbglx0LcHhvoLN1QHptsqwGVVgJZZDzHXxTarbQsaubu/fYCr8fSuF8uomRtqfEanwZUpjaX3MCTAigU/A5MmVaMXOpxCTZNBvt1qZORBgyvQ3ahzZfk6ytCj7SYnP8BTeoGshR3RhCoCL2UCWQ9uXPMH100pcSjtWx6XR6k9hW8lmN0vyW1Fh/gqNLok2KmkRjgatNi13SlGM6qW+bHinbFcVyKwl13DFWAvnFn3inuWEBNdIH6NKliPz+Kcal/EY20IZOpMiAY9F/4C0hME1bqx150CHe7X6r+RNXLShX++esf4hx"
                   },
                   {
                     "functionCall": {
@@ -189,7 +186,12 @@
                     "functionResponse": {
                       "name": "print",
                       "response": {
-                        "content": []
+                        "content": [
+                          {
+                            "text": "\u001b[34mhello\u001b[0m",
+                            "type": "text"
+                          }
+                        ]
                       }
                     }
                   },
@@ -197,7 +199,12 @@
                     "functionResponse": {
                       "name": "beep",
                       "response": {
-                        "content": []
+                        "content": [
+                          {
+                            "text": "beep",
+                            "type": "text"
+                          }
+                        ]
                       }
                     }
                   }
@@ -243,21 +250,21 @@
             ]
           }
         ],
-        "previousRequest": "78530e7ede53600888f840d7c844ac2102aad16c6ff7c3a1b2091ef2a26fc83d",
+        "previousRequest": "a20782c7d877325e54edf7102809def360176e068f16b9306861833338f65732",
         "serverAddress": "generativelanguage.googleapis.com",
         "port": 443,
         "protocol": "https"
       },
-      "shaSum": "35215b4ae760b2ece2edd0135e4466594a9fa104815cc035866de6cf6fcd2f58",
+      "shaSum": "ca30be48e0ce4b033880b82889ab0fb931ea057fdb5b30e1ef71159d10c4b1a3",
       "response": {
         "statusCode": 200,
         "headers": {
           "Content-Encoding": "gzip",
-          "Content-Length": "349",
+          "Content-Length": "314",
           "Content-Type": "application/json; charset=UTF-8",
-          "Date": "Sat, 16 Aug 2025 00:46:28 GMT",
+          "Date": "Tue, 26 Aug 2025 01:17:01 GMT",
           "Server": "scaffolding on HTTPServer2",
-          "Server-Timing": "gfet4t7; dur=520",
+          "Server-Timing": "gfet4t7; dur=653",
           "Vary": "Origin, X-Origin, Referer",
           "X-Content-Type-Options": "nosniff",
           "X-Frame-Options": "SAMEORIGIN",
@@ -267,36 +274,30 @@
           {
             "candidates": [
               {
-                "avgLogprobs": -0.02855221231778463,
                 "content": {
                   "parts": [
                     {
-                      "text": "OK. I have printed \"hello\" in blue and beeped.\n"
+                      "text": "Hello printed in blue and a beep sound was made."
                     }
                   ],
                   "role": "model"
                 },
-                "finishReason": "STOP"
+                "finishReason": "STOP",
+                "index": 0
               }
             ],
-            "modelVersion": "gemini-2.0-flash",
-            "responseId": "5NSfaNreIf7Xn9kPr_f76AI",
+            "modelVersion": "gemini-2.5-flash",
+            "responseId": "DQutaIKLBbWR-8YPh5ekkQY",
             "usageMetadata": {
-              "candidatesTokenCount": 15,
-              "candidatesTokensDetails": [
-                {
-                  "modality": "TEXT",
-                  "tokenCount": 15
-                }
-              ],
-              "promptTokenCount": 31,
+              "candidatesTokenCount": 11,
+              "promptTokenCount": 172,
               "promptTokensDetails": [
                 {
                   "modality": "TEXT",
-                  "tokenCount": 31
+                  "tokenCount": 172
                 }
               ],
-              "totalTokenCount": 46
+              "totalTokenCount": 183
             }
           }
         ]
