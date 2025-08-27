@@ -715,6 +715,21 @@ export enum SegmentMode {
   INTERACTIVE = 'INTERACTIVE',
 }
 
+/** Enum for the reference type of a video generation reference image. */
+export enum VideoGenerationReferenceType {
+  /**
+   * A reference image that provides assets to the generated video,
+      such as the scene, an object, a character, etc.
+   */
+  ASSET = 'ASSET',
+  /**
+   * A reference image that provides aesthetics including colors,
+      lighting, texture, etc., to be used as the style of the generated video,
+      such as 'anime', 'photography', 'origami', etc.
+   */
+  STYLE = 'STYLE',
+}
+
 /** Enum that controls the compression quality of the generated videos. */
 export enum VideoCompressionQuality {
   /**
@@ -3425,9 +3440,8 @@ export declare interface VideoGenerationReferenceImage {
    */
   image?: Image;
   /** The type of the reference image, which defines how the reference
-      image will be used to generate the video. Supported values are 'asset'
-      or 'style'. */
-  referenceType?: string;
+      image will be used to generate the video. */
+  referenceType?: VideoGenerationReferenceType;
 }
 
 /** Configuration for generating videos. */

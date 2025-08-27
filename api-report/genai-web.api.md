@@ -3157,7 +3157,13 @@ export enum VideoCompressionQuality {
 // @public
 export interface VideoGenerationReferenceImage {
     image?: Image_2;
-    referenceType?: string;
+    referenceType?: VideoGenerationReferenceType;
+}
+
+// @public
+export enum VideoGenerationReferenceType {
+    ASSET = "ASSET",
+    STYLE = "STYLE"
 }
 
 // @public
