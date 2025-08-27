@@ -69,6 +69,24 @@ export function listTuningJobsParametersToMldev(
   return toObject;
 }
 
+export function cancelTuningJobParametersToMldev(
+  fromObject: types.CancelTuningJobParameters,
+): Record<string, unknown> {
+  const toObject: Record<string, unknown> = {};
+
+  const fromName = common.getValueByPath(fromObject, ['name']);
+  if (fromName != null) {
+    common.setValueByPath(toObject, ['_url', 'name'], fromName);
+  }
+
+  const fromConfig = common.getValueByPath(fromObject, ['config']);
+  if (fromConfig != null) {
+    common.setValueByPath(toObject, ['config'], fromConfig);
+  }
+
+  return toObject;
+}
+
 export function tuningExampleToMldev(
   fromObject: types.TuningExample,
 ): Record<string, unknown> {
@@ -302,6 +320,24 @@ export function listTuningJobsParametersToVertex(
       ['config'],
       listTuningJobsConfigToVertex(fromConfig, toObject),
     );
+  }
+
+  return toObject;
+}
+
+export function cancelTuningJobParametersToVertex(
+  fromObject: types.CancelTuningJobParameters,
+): Record<string, unknown> {
+  const toObject: Record<string, unknown> = {};
+
+  const fromName = common.getValueByPath(fromObject, ['name']);
+  if (fromName != null) {
+    common.setValueByPath(toObject, ['_url', 'name'], fromName);
+  }
+
+  const fromConfig = common.getValueByPath(fromObject, ['config']);
+  if (fromConfig != null) {
+    common.setValueByPath(toObject, ['config'], fromConfig);
   }
 
   return toObject;

@@ -3994,6 +3994,27 @@ export class ListTuningJobsResponse {
   tuningJobs?: TuningJob[];
 }
 
+/** Optional parameters for tunings.cancel method. */
+export declare interface CancelTuningJobConfig {
+  /** Used to override HTTP request options. */
+  httpOptions?: HttpOptions;
+  /** Abort signal which can be used to cancel the request.
+
+  NOTE: AbortSignal is a client-only operation. Using it to cancel an
+  operation will not cancel the request in the service. You will still
+  be charged usage for any applicable operations.
+       */
+  abortSignal?: AbortSignal;
+}
+
+/** Parameters for the cancel method. */
+export declare interface CancelTuningJobParameters {
+  /** The resource name of the tuning job. */
+  name: string;
+  /** Optional parameters for the request. */
+  config?: CancelTuningJobConfig;
+}
+
 export declare interface TuningExample {
   /** Text model input. */
   textInput?: string;

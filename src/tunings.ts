@@ -270,6 +270,61 @@ export class Tunings extends BaseModule {
     }
   }
 
+  /**
+   * Cancels a tuning job.
+   *
+   * @param params - The parameters for the cancel request.
+   * @return The empty response returned by the API.
+   *
+   * @example
+   * ```ts
+   * await ai.tunings.cancel({name: '...'}); // The server-generated resource name.
+   * ```
+   */
+  async cancel(params: types.CancelTuningJobParameters): Promise<void> {
+    let path: string = '';
+    let queryParams: Record<string, string> = {};
+    if (this.apiClient.isVertexAI()) {
+      const body = converters.cancelTuningJobParametersToVertex(params);
+      path = common.formatMap(
+        '{name}:cancel',
+        body['_url'] as Record<string, unknown>,
+      );
+      queryParams = body['_query'] as Record<string, string>;
+      delete body['config'];
+      delete body['_url'];
+      delete body['_query'];
+
+      await this.apiClient.request({
+        path: path,
+        queryParams: queryParams,
+        body: JSON.stringify(body),
+        httpMethod: 'POST',
+        httpOptions: params.config?.httpOptions,
+        abortSignal: params.config?.abortSignal,
+      });
+    } else {
+      const body = converters.cancelTuningJobParametersToMldev(params);
+      path = common.formatMap(
+        '{name}:cancel',
+        body['_url'] as Record<string, unknown>,
+      );
+      queryParams = body['_query'] as Record<string, string>;
+      delete body['config'];
+      delete body['_url'];
+      delete body['_query'];
+
+      await this.apiClient.request({
+        path: path,
+        queryParams: queryParams,
+        body: JSON.stringify(body),
+        httpMethod: 'POST',
+        httpOptions: params.config?.httpOptions,
+        abortSignal: params.config?.abortSignal,
+      });
+    }
+  }
+
   private async tuneInternal(
     params: types.CreateTuningJobParametersPrivate,
   ): Promise<types.TuningJob> {

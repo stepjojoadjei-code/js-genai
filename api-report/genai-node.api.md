@@ -288,6 +288,18 @@ export interface CancelBatchJobParameters {
 }
 
 // @public
+export interface CancelTuningJobConfig {
+    abortSignal?: AbortSignal;
+    httpOptions?: HttpOptions;
+}
+
+// @public
+export interface CancelTuningJobParameters {
+    config?: CancelTuningJobConfig;
+    name: string;
+}
+
+// @public
 export interface Candidate {
     avgLogprobs?: number;
     citationMetadata?: CitationMetadata;
