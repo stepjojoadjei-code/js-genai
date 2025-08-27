@@ -402,7 +402,9 @@ Ask the model to return a response in JSON format.
 
 The recommended way is to configure a `responseSchema` for the expected output.
 
-See the available types below that can be used in the `responseSchema`. ```
+See the available types below that can be used in the `responseSchema`.
+
+```javascript
 export enum Type {
   /**
    *   Not specified, should not be used.
@@ -439,7 +441,7 @@ export enum Type {
 }
 ```
 
-Type.OBJECT cannot be empty; it must contain other properties.
+`Type.OBJECT` cannot be empty; it must contain other properties.
 
 ```javascript
 import { GoogleGenAI, Type } from "@google/genai";
@@ -476,7 +478,9 @@ const response = await ai.models.generateContent({
 let jsonStr = response.text.trim();
 ```
 
-The `jsonStr` might look like this: ```
+The `jsonStr` might look like this:
+
+```javascript
 [
   {
     "recipeName": "Chocolate Chip Cookies",
@@ -546,10 +550,10 @@ const ai = new GoogleGenAI({});
 
 async function run() {
     const response = await ai.models.generateImages({
-        model: 'imagen-3.0-generate-002',
+        model: 'imagen-4.0-fast-generate-001',
         prompt: 'A friendly robot holding a red skateboard, minimalist vector art',
         config: {
-          numberOfImages: 1,
+          numberOfImages: 1, // 1 to 4 (always 1 for the ultra model)
           outputMimeType: 'image/jpeg',
           aspectRatio: '1:1', // "1:1", "3:4", "4:3", "9:16", or "16:9"
         },
