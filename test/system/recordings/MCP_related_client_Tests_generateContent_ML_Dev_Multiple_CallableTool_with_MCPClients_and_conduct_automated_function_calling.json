@@ -11,7 +11,7 @@
           "Accept-Encoding": "gzip, deflate",
           "Accept-Language": "*",
           "Connection": "keep-alive",
-          "Content-Length": "615",
+          "Content-Length": "631",
           "Content-Type": "application/json",
           "Sec-Fetch-Mode": "cors",
           "Test-Name": "MCP related client Tests generateContent ML Dev Multiple CallableTool with MCPClients and conduct automated function calling"
@@ -62,6 +62,7 @@
                   {
                     "name": "beep",
                     "parametersJsonSchema": {
+                      "properties": {},
                       "type": "object"
                     }
                   }
@@ -75,16 +76,16 @@
         "port": 443,
         "protocol": "https"
       },
-      "shaSum": "47070cda44cc08cd1056421170648bd5b9ed7100bb7fac7db97010f76ab097e8",
+      "shaSum": "0d9f168fce0ab4581cb8d0236f54cd6ab59cc797aa2fba41cc854f3148f15cb6",
       "response": {
         "statusCode": 200,
         "headers": {
           "Content-Encoding": "gzip",
-          "Content-Length": "373",
+          "Content-Length": "374",
           "Content-Type": "application/json; charset=UTF-8",
-          "Date": "Tue, 26 Aug 2025 01:20:09 GMT",
+          "Date": "Tue, 26 Aug 2025 03:58:19 GMT",
           "Server": "scaffolding on HTTPServer2",
-          "Server-Timing": "gfet4t7; dur=761",
+          "Server-Timing": "gfet4t7; dur=740",
           "Vary": "Origin, X-Origin, Referer",
           "X-Content-Type-Options": "nosniff",
           "X-Frame-Options": "SAMEORIGIN",
@@ -119,7 +120,7 @@
               }
             ],
             "modelVersion": "gemini-2.0-flash",
-            "responseId": "yQutaJyoCM2ljrEPnsGX4Qk",
+            "responseId": "2jCtaKShOomq-8YPg7LfqAU",
             "usageMetadata": {
               "candidatesTokenCount": 6,
               "candidatesTokensDetails": [
@@ -151,7 +152,7 @@
           "Accept-Encoding": "gzip, deflate",
           "Accept-Language": "*",
           "Connection": "keep-alive",
-          "Content-Length": "989",
+          "Content-Length": "1005",
           "Content-Type": "application/json",
           "Sec-Fetch-Mode": "cors",
           "Test-Name": "MCP related client Tests generateContent ML Dev Multiple CallableTool with MCPClients and conduct automated function calling"
@@ -253,6 +254,7 @@
                   {
                     "name": "beep",
                     "parametersJsonSchema": {
+                      "properties": {},
                       "type": "object"
                     }
                   }
@@ -261,21 +263,21 @@
             ]
           }
         ],
-        "previousRequest": "47070cda44cc08cd1056421170648bd5b9ed7100bb7fac7db97010f76ab097e8",
+        "previousRequest": "0d9f168fce0ab4581cb8d0236f54cd6ab59cc797aa2fba41cc854f3148f15cb6",
         "serverAddress": "generativelanguage.googleapis.com",
         "port": 443,
         "protocol": "https"
       },
-      "shaSum": "dd833c22de2a7175bb106e81d80e2ac7362a7f147754fa74b3365e7bf5590bea",
+      "shaSum": "cadf9ff5e596562722962c7a1e7d74036712075874be2a20aad22ac63c2d886a",
       "response": {
         "statusCode": 200,
         "headers": {
           "Content-Encoding": "gzip",
           "Content-Length": "344",
           "Content-Type": "application/json; charset=UTF-8",
-          "Date": "Tue, 26 Aug 2025 01:20:10 GMT",
+          "Date": "Tue, 26 Aug 2025 03:58:20 GMT",
           "Server": "scaffolding on HTTPServer2",
-          "Server-Timing": "gfet4t7; dur=477",
+          "Server-Timing": "gfet4t7; dur=559",
           "Vary": "Origin, X-Origin, Referer",
           "X-Content-Type-Options": "nosniff",
           "X-Frame-Options": "SAMEORIGIN",
@@ -298,7 +300,7 @@
               }
             ],
             "modelVersion": "gemini-2.0-flash",
-            "responseId": "yQutaPWmLdrL-8YPw9TtsA0",
+            "responseId": "2zCtaMyuIM2jjrEP1d-B6Ak",
             "usageMetadata": {
               "candidatesTokenCount": 13,
               "candidatesTokensDetails": [

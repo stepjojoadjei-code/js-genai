@@ -1,20 +1,20 @@
 {
-  "recordID": "MCP_related_client_Tests_generateContent_ML_Dev_will_give_FunctionDeclaration_back_when_AFC_is_disabled",
+  "recordID": "MCP_related_client_Tests_generateContent_ML_Dev_test_with_greeter_server_(structured_output)_mcp_error",
   "interactions": [
     {
       "request": {
         "method": "POST",
-        "url": "/v1beta/models/gemini-2.0-flash:generateContent",
-        "request": "POST /v1beta/models/gemini-2.0-flash:generateContent HTTP/1.1",
+        "url": "/v1beta/models/gemini-2.5-flash:generateContent",
+        "request": "POST /v1beta/models/gemini-2.5-flash:generateContent HTTP/1.1",
         "headers": {
           "Accept": "*/*",
           "Accept-Encoding": "gzip, deflate",
           "Accept-Language": "*",
           "Connection": "keep-alive",
-          "Content-Length": "611",
+          "Content-Length": "788",
           "Content-Type": "application/json",
           "Sec-Fetch-Mode": "cors",
-          "Test-Name": "MCP related client Tests generateContent ML Dev will give FunctionDeclaration back when AFC is disabled"
+          "Test-Name": "MCP related client Tests generateContent ML Dev test with greeter server (structured output) mcp error"
         },
         "bodySegments": [
           {
@@ -22,7 +22,7 @@
               {
                 "parts": [
                   {
-                    "text": "Use the printer to print a simple word: hello in blue, and beep with the beeper"
+                    "text": "call the greeter once with name: jone smith, and greeting: noNeedToPassMessage"
                   }
                 ],
                 "role": "user"
@@ -38,31 +38,37 @@
               {
                 "functionDeclarations": [
                   {
-                    "name": "print",
+                    "description": "Greet the user",
+                    "name": "greet",
                     "parametersJsonSchema": {
                       "$schema": "http://json-schema.org/draft-07/schema#",
                       "additionalProperties": false,
                       "properties": {
-                        "color": {
-                          "pattern": "red|blue|green|white",
+                        "greeting": {
                           "type": "string"
                         },
-                        "text": {
+                        "name": {
                           "type": "string"
                         }
                       },
-                      "required": ["text", "color"],
+                      "required": ["name", "greeting"],
                       "type": "object"
-                    }
-                  }
-                ]
-              },
-              {
-                "functionDeclarations": [
-                  {
-                    "name": "beep",
-                    "parametersJsonSchema": {
-                      "properties": {},
+                    },
+                    "responseJsonSchema": {
+                      "$schema": "http://json-schema.org/draft-07/schema#",
+                      "additionalProperties": false,
+                      "properties": {
+                        "completeMessage": {
+                          "type": "string"
+                        },
+                        "greeting": {
+                          "type": "string"
+                        },
+                        "name": {
+                          "type": "string"
+                        }
+                      },
+                      "required": ["name", "greeting", "completeMessage"],
                       "type": "object"
                     }
                   }
@@ -76,16 +82,16 @@
         "port": 443,
         "protocol": "https"
       },
-      "shaSum": "7306a19bfe7981e84a99619941d173e8721110c0f28b00b2178e46166f883296",
+      "shaSum": "88c52070b177c645157e1882d9c105ee52480cfe68462cf0a05cb0af837e5ea9",
       "response": {
         "statusCode": 200,
         "headers": {
           "Content-Encoding": "gzip",
-          "Content-Length": "374",
+          "Content-Length": "621",
           "Content-Type": "application/json; charset=UTF-8",
-          "Date": "Tue, 26 Aug 2025 03:54:49 GMT",
+          "Date": "Mon, 25 Aug 2025 20:59:53 GMT",
           "Server": "scaffolding on HTTPServer2",
-          "Server-Timing": "gfet4t7; dur=668",
+          "Server-Timing": "gfet4t7; dur=746",
           "Vary": "Origin, X-Origin, Referer",
           "X-Content-Type-Options": "nosniff",
           "X-Frame-Options": "SAMEORIGIN",
@@ -95,48 +101,38 @@
           {
             "candidates": [
               {
-                "avgLogprobs": -0.00041472182298700017,
                 "content": {
                   "parts": [
                     {
                       "functionCall": {
                         "args": {
-                          "color": "blue",
-                          "text": "hello"
+                          "greeting": "noNeedToPassMessage",
+                          "name": "jone smith"
                         },
-                        "name": "print"
-                      }
-                    },
-                    {
-                      "functionCall": {
-                        "args": {},
-                        "name": "beep"
-                      }
+                        "name": "greet"
+                      },
+                      "thoughtSignature": "Ct0BAVSoXO7lJsyiewiPZLMTPpiZ1LjbQVArPcHo5B6pOOQtfnAwNb0nn38S/+Jk31asrTRO2s+QzMUN/+rleNst6jaHMD8Kc0UVFIqi/xQzwD/XCMiAJg1YLdAfls7DhMMiC/SZ3aEC/gvahZbhqYUWrC9ivxp7ffU5h5kqqJgqkcoSe1NEIiardyTNYA3MBZSxB4hy5iUcIqccGTZyfEltChRT9nc0Le6UWvV/c+/XAjREqfw9I26vcD1SBINBOxmVpBQof8dxHGGuae5vtkUQejS7p2vaxTuicnE1OKw="
                     }
                   ],
                   "role": "model"
                 },
-                "finishReason": "STOP"
+                "finishReason": "STOP",
+                "index": 0
               }
             ],
-            "modelVersion": "gemini-2.0-flash",
-            "responseId": "CTCtaLDkH4qH-8YP1_DmmQ0",
+            "modelVersion": "gemini-2.5-flash",
+            "responseId": "yc6saITOA7rI-8YP2ZDt8Qs",
             "usageMetadata": {
-              "candidatesTokenCount": 6,
-              "candidatesTokensDetails": [
-                {
-                  "modality": "TEXT",
-                  "tokenCount": 6
-                }
-              ],
-              "promptTokenCount": 21,
+              "candidatesTokenCount": 24,
+              "promptTokenCount": 129,
               "promptTokensDetails": [
                 {
                   "modality": "TEXT",
-                  "tokenCount": 21
+                  "tokenCount": 129
                 }
               ],
-              "totalTokenCount": 27
+              "thoughtsTokenCount": 54,
+              "totalTokenCount": 207
             }
           }
         ]

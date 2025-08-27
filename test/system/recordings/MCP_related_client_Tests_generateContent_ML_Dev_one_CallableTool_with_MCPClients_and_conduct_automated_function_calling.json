@@ -11,7 +11,7 @@
           "Accept-Encoding": "gzip, deflate",
           "Accept-Language": "*",
           "Connection": "keep-alive",
-          "Content-Length": "596",
+          "Content-Length": "584",
           "Content-Type": "application/json",
           "Sec-Fetch-Mode": "cors",
           "Test-Name": "MCP related client Tests generateContent ML Dev one CallableTool with MCPClients and conduct automated function calling"
@@ -22,7 +22,7 @@
               {
                 "parts": [
                   {
-                    "text": "Use the printer to print a simple word: hello in blue, and beep with the beeper, remember to print and beep"
+                    "text": "Use the printer to print a simple word: hello in blue, and beep with the beeper"
                   }
                 ],
                 "role": "user"
@@ -58,6 +58,7 @@
                   {
                     "name": "beep",
                     "parametersJsonSchema": {
+                      "properties": {},
                       "type": "object"
                     }
                   }
@@ -71,16 +72,16 @@
         "port": 443,
         "protocol": "https"
       },
-      "shaSum": "a20782c7d877325e54edf7102809def360176e068f16b9306861833338f65732",
+      "shaSum": "7cd19a946fd42fbcb17b6db9f6f13fe4b443aea57e3acc63b12cbbe55a6e0ca8",
       "response": {
         "statusCode": 200,
         "headers": {
           "Content-Encoding": "gzip",
-          "Content-Length": "808",
+          "Content-Length": "724",
           "Content-Type": "application/json; charset=UTF-8",
-          "Date": "Tue, 26 Aug 2025 01:17:00 GMT",
+          "Date": "Tue, 26 Aug 2025 04:00:59 GMT",
           "Server": "scaffolding on HTTPServer2",
-          "Server-Timing": "gfet4t7; dur=1320",
+          "Server-Timing": "gfet4t7; dur=1136",
           "Vary": "Origin, X-Origin, Referer",
           "X-Content-Type-Options": "nosniff",
           "X-Frame-Options": "SAMEORIGIN",
@@ -100,7 +101,7 @@
                         },
                         "name": "print"
                       },
-                      "thoughtSignature": "CokDAVSoXO4oBhobOM8wwAz5btHRdKUSAQvGf7KT8rlHb/3XuGYejVBeyLxjwuDZnD1WJJUXwwP2tjv2NaCm6ro2kFW0UHlVRXBcc7+Ap8shqGQtugaO7dk58oHTUZ3V9EPuJe4lWf8FK98KewrwaYjd/QRS4BCrl3I+/mQB5LUBQvXkZ4dCCxf+u48SGgpHdVPKIFSOPRlaTCFq70cDbvjMv3SWjGbglx0LcHhvoLN1QHptsqwGVVgJZZDzHXxTarbQsaubu/fYCr8fSuF8uomRtqfEanwZUpjaX3MCTAigU/A5MmVaMXOpxCTZNBvt1qZORBgyvQ3ahzZfk6ytCj7SYnP8BTeoGshR3RhCoCL2UCWQ9uXPMH100pcSjtWx6XR6k9hW8lmN0vyW1Fh/gqNLok2KmkRjgatNi13SlGM6qW+bHinbFcVyKwl13DFWAvnFn3inuWEBNdIH6NKliPz+Kcal/EY20IZOpMiAY9F/4C0hME1bqx150CHe7X6r+RNXLShX++esf4hx"
+                      "thoughtSignature": "CrkCAVSoXO4IxPbe07cSWnruH678BViamh2LXYQVis23MVa8O61Z6zZ/nZ6BJ97CwWQ44cGhnwxkTmwOOwFOiZoIYVw9ujwbr6ASBU40e9rJ4LxqT4rJMRmI2Y536PTd9PGg9q8cr06jPryYCyiNodxUKuDI5qVd/vT25S08BULBeamEgLwnoZxZ4tMrb1Ko2HqArj5w+PhDu/ngrjnbxRdPMzP7uOnx58Tgl2gNiI70Yrg2ZEG8B9xzfkVHh7l5CD1S3opu8h9S8ijkrZn9n+6+OWRo+htv14qU/strJMlVF6y6oUoDpr0HsqeDhEnczrFZISszuXcVF8ZhLYikGrr4sFGjCNgJBX3Ie2oHnMq0Z9AF0VHmAbo6MIk1Yz36XtrZtbFIaghVzGfxYa6Kua0VTCEFUD8vw+cLQw=="
                     },
                     {
                       "functionCall": {
@@ -116,18 +117,18 @@
               }
             ],
             "modelVersion": "gemini-2.5-flash",
-            "responseId": "DAutaI6CGbvvjrEP2JnCyQk",
+            "responseId": "ezGtaKXGHZenjrEP2uWAEQ",
             "usageMetadata": {
               "candidatesTokenCount": 26,
-              "promptTokenCount": 86,
+              "promptTokenCount": 80,
               "promptTokensDetails": [
                 {
                   "modality": "TEXT",
-                  "tokenCount": 86
+                  "tokenCount": 80
                 }
               ],
-              "thoughtsTokenCount": 101,
-              "totalTokenCount": 213
+              "thoughtsTokenCount": 76,
+              "totalTokenCount": 182
             }
           }
         ]
@@ -143,7 +144,7 @@
           "Accept-Encoding": "gzip, deflate",
           "Accept-Language": "*",
           "Connection": "keep-alive",
-          "Content-Length": "1520",
+          "Content-Length": "1404",
           "Content-Type": "application/json",
           "Sec-Fetch-Mode": "cors",
           "Test-Name": "MCP related client Tests generateContent ML Dev one CallableTool with MCPClients and conduct automated function calling"
@@ -154,7 +155,7 @@
               {
                 "parts": [
                   {
-                    "text": "Use the printer to print a simple word: hello in blue, and beep with the beeper, remember to print and beep"
+                    "text": "Use the printer to print a simple word: hello in blue, and beep with the beeper"
                   }
                 ],
                 "role": "user"
@@ -169,7 +170,7 @@
                       },
                       "name": "print"
                     },
-                    "thoughtSignature": "CokDAVSoXO4oBhobOM8wwAz5btHRdKUSAQvGf7KT8rlHb/3XuGYejVBeyLxjwuDZnD1WJJUXwwP2tjv2NaCm6ro2kFW0UHlVRXBcc7+Ap8shqGQtugaO7dk58oHTUZ3V9EPuJe4lWf8FK98KewrwaYjd/QRS4BCrl3I+/mQB5LUBQvXkZ4dCCxf+u48SGgpHdVPKIFSOPRlaTCFq70cDbvjMv3SWjGbglx0LcHhvoLN1QHptsqwGVVgJZZDzHXxTarbQsaubu/fYCr8fSuF8uomRtqfEanwZUpjaX3MCTAigU/A5MmVaMXOpxCTZNBvt1qZORBgyvQ3ahzZfk6ytCj7SYnP8BTeoGshR3RhCoCL2UCWQ9uXPMH100pcSjtWx6XR6k9hW8lmN0vyW1Fh/gqNLok2KmkRjgatNi13SlGM6qW+bHinbFcVyKwl13DFWAvnFn3inuWEBNdIH6NKliPz+Kcal/EY20IZOpMiAY9F/4C0hME1bqx150CHe7X6r+RNXLShX++esf4hx"
+                    "thoughtSignature": "CrkCAVSoXO4IxPbe07cSWnruH678BViamh2LXYQVis23MVa8O61Z6zZ/nZ6BJ97CwWQ44cGhnwxkTmwOOwFOiZoIYVw9ujwbr6ASBU40e9rJ4LxqT4rJMRmI2Y536PTd9PGg9q8cr06jPryYCyiNodxUKuDI5qVd/vT25S08BULBeamEgLwnoZxZ4tMrb1Ko2HqArj5w+PhDu/ngrjnbxRdPMzP7uOnx58Tgl2gNiI70Yrg2ZEG8B9xzfkVHh7l5CD1S3opu8h9S8ijkrZn9n+6+OWRo+htv14qU/strJMlVF6y6oUoDpr0HsqeDhEnczrFZISszuXcVF8ZhLYikGrr4sFGjCNgJBX3Ie2oHnMq0Z9AF0VHmAbo6MIk1Yz36XtrZtbFIaghVzGfxYa6Kua0VTCEFUD8vw+cLQw=="
                   },
                   {
                     "functionCall": {
@@ -242,6 +243,7 @@
                   {
                     "name": "beep",
                     "parametersJsonSchema": {
+                      "properties": {},
                       "type": "object"
                     }
                   }
@@ -250,21 +252,21 @@
             ]
           }
         ],
-        "previousRequest": "a20782c7d877325e54edf7102809def360176e068f16b9306861833338f65732",
+        "previousRequest": "7cd19a946fd42fbcb17b6db9f6f13fe4b443aea57e3acc63b12cbbe55a6e0ca8",
         "serverAddress": "generativelanguage.googleapis.com",
         "port": 443,
         "protocol": "https"
       },
-      "shaSum": "ca30be48e0ce4b033880b82889ab0fb931ea057fdb5b30e1ef71159d10c4b1a3",
+      "shaSum": "6f36de0817144a406255ef44353fd4a51ee8f081bd62642fad7726f75c84c138",
       "response": {
         "statusCode": 200,
         "headers": {
           "Content-Encoding": "gzip",
-          "Content-Length": "314",
+          "Content-Length": "290",
           "Content-Type": "application/json; charset=UTF-8",
-          "Date": "Tue, 26 Aug 2025 01:17:01 GMT",
+          "Date": "Tue, 26 Aug 2025 04:01:00 GMT",
           "Server": "scaffolding on HTTPServer2",
-          "Server-Timing": "gfet4t7; dur=653",
+          "Server-Timing": "gfet4t7; dur=502",
           "Vary": "Origin, X-Origin, Referer",
           "X-Content-Type-Options": "nosniff",
           "X-Frame-Options": "SAMEORIGIN",
@@ -277,7 +279,7 @@
                 "content": {
                   "parts": [
                     {
-                      "text": "Hello printed in blue and a beep sound was made."
+                      "text": "hello \nbeep"
                     }
                   ],
                   "role": "model"
@@ -287,17 +289,17 @@
               }
             ],
             "modelVersion": "gemini-2.5-flash",
-            "responseId": "DQutaIKLBbWR-8YPh5ekkQY",
+            "responseId": "fDGtaMFGifGOsQ_kgNXJDQ",
             "usageMetadata": {
-              "candidatesTokenCount": 11,
-              "promptTokenCount": 172,
+              "candidatesTokenCount": 4,
+              "promptTokenCount": 166,
               "promptTokensDetails": [
                 {
                   "modality": "TEXT",
-                  "tokenCount": 172
+                  "tokenCount": 166
                 }
               ],
-              "totalTokenCount": 183
+              "totalTokenCount": 170
             }
           }
         ]

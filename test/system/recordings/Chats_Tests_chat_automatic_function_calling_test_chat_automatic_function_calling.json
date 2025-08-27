@@ -11,7 +11,7 @@
           "Accept-Encoding": "gzip, deflate",
           "Accept-Language": "*",
           "Connection": "keep-alive",
-          "Content-Length": "545",
+          "Content-Length": "561",
           "Content-Type": "application/json",
           "Sec-Fetch-Mode": "cors",
           "Test-Name": "Chats Tests chat automatic function calling test chat automatic function calling"
@@ -58,6 +58,7 @@
                   {
                     "name": "beep",
                     "parametersJsonSchema": {
+                      "properties": {},
                       "type": "object"
                     }
                   }
@@ -71,16 +72,16 @@
         "port": 443,
         "protocol": "https"
       },
-      "shaSum": "2f6f7ed7e859964be3d8d2701a4b04735a57c34781475e86fe2e3b08be9c3185",
+      "shaSum": "7968b3f64856512d301678b5f6a71973b7853dd1a59a2e0cd4bb5f604e6946bb",
       "response": {
         "statusCode": 200,
         "headers": {
           "Content-Encoding": "gzip",
-          "Content-Length": "362",
+          "Content-Length": "364",
           "Content-Type": "application/json; charset=UTF-8",
-          "Date": "Sat, 16 Aug 2025 00:45:54 GMT",
+          "Date": "Tue, 26 Aug 2025 01:37:29 GMT",
           "Server": "scaffolding on HTTPServer2",
-          "Server-Timing": "gfet4t7; dur=552",
+          "Server-Timing": "gfet4t7; dur=669",
           "Vary": "Origin, X-Origin, Referer",
           "X-Content-Type-Options": "nosniff",
           "X-Frame-Options": "SAMEORIGIN",
@@ -90,7 +91,7 @@
           {
             "candidates": [
               {
-                "avgLogprobs": -0.00671910068818501,
+                "avgLogprobs": -0.0007742211621786867,
                 "content": {
                   "parts": [
                     {
@@ -109,7 +110,7 @@
               }
             ],
             "modelVersion": "gemini-2.0-flash",
-            "responseId": "wdSfaKnFNP7Xn9kPr_f76AI",
+            "responseId": "2Q-taO_YHrunjrEP8p7RwQk",
             "usageMetadata": {
               "candidatesTokenCount": 7,
               "candidatesTokensDetails": [
@@ -141,7 +142,7 @@
           "Accept-Encoding": "gzip, deflate",
           "Accept-Language": "*",
           "Connection": "keep-alive",
-          "Content-Length": "738",
+          "Content-Length": "754",
           "Content-Type": "application/json",
           "Sec-Fetch-Mode": "cors",
           "Test-Name": "Chats Tests chat automatic function calling test chat automatic function calling"
@@ -215,6 +216,7 @@
                   {
                     "name": "beep",
                     "parametersJsonSchema": {
+                      "properties": {},
                       "type": "object"
                     }
                   }
@@ -223,21 +225,21 @@
             ]
           }
         ],
-        "previousRequest": "2f6f7ed7e859964be3d8d2701a4b04735a57c34781475e86fe2e3b08be9c3185",
+        "previousRequest": "7968b3f64856512d301678b5f6a71973b7853dd1a59a2e0cd4bb5f604e6946bb",
         "serverAddress": "generativelanguage.googleapis.com",
         "port": 443,
         "protocol": "https"
       },
-      "shaSum": "7067d41095d10ae6ebd9ea92cb10f83a681e632e132d7b905448d7a8a365136d",
+      "shaSum": "7f9d65e163a8d5f71f7d1ae9616766a762cbf3739095e9cd6aedeead8df428ba",
       "response": {
         "statusCode": 200,
         "headers": {
           "Content-Encoding": "gzip",
-          "Content-Length": "344",
+          "Content-Length": "345",
           "Content-Type": "application/json; charset=UTF-8",
-          "Date": "Sat, 16 Aug 2025 00:45:54 GMT",
+          "Date": "Tue, 26 Aug 2025 01:37:30 GMT",
           "Server": "scaffolding on HTTPServer2",
-          "Server-Timing": "gfet4t7; dur=513",
+          "Server-Timing": "gfet4t7; dur=448",
           "Vary": "Origin, X-Origin, Referer",
           "X-Content-Type-Options": "nosniff",
           "X-Frame-Options": "SAMEORIGIN",
@@ -247,7 +249,7 @@
           {
             "candidates": [
               {
-                "avgLogprobs": -0.01953579698290144,
+                "avgLogprobs": -0.0028860409344945636,
                 "content": {
                   "parts": [
                     {
@@ -260,7 +262,7 @@
               }
             ],
             "modelVersion": "gemini-2.0-flash",
-            "responseId": "wtSfaLP5GcmagbUPt96I0QI",
+            "responseId": "2Q-taO7pPLjjjrEPiOCsqA0",
             "usageMetadata": {
               "candidatesTokenCount": 14,
               "candidatesTokensDetails": [
@@ -292,7 +294,7 @@
           "Accept-Encoding": "gzip, deflate",
           "Accept-Language": "*",
           "Connection": "keep-alive",
-          "Content-Length": "912",
+          "Content-Length": "928",
           "Content-Type": "application/json",
           "Sec-Fetch-Mode": "cors",
           "Test-Name": "Chats Tests chat automatic function calling test chat automatic function calling"
@@ -382,6 +384,7 @@
                   {
                     "name": "beep",
                     "parametersJsonSchema": {
+                      "properties": {},
                       "type": "object"
                     }
                   }
@@ -390,21 +393,21 @@
             ]
           }
         ],
-        "previousRequest": "7067d41095d10ae6ebd9ea92cb10f83a681e632e132d7b905448d7a8a365136d",
+        "previousRequest": "7f9d65e163a8d5f71f7d1ae9616766a762cbf3739095e9cd6aedeead8df428ba",
         "serverAddress": "generativelanguage.googleapis.com",
         "port": 443,
         "protocol": "https"
       },
-      "shaSum": "7d10ea6a4bfed7b066832dacc7a9143fff99593ab03c969cd07916920b9d2a4d",
+      "shaSum": "6638f98bc4e1d7b4c5e22e3cfd3062238da80b3bc3a725ddfb304f157b36a1cd",
       "response": {
         "statusCode": 200,
         "headers": {
           "Content-Encoding": "gzip",
-          "Content-Length": "365",
+          "Content-Length": "364",
           "Content-Type": "application/json; charset=UTF-8",
-          "Date": "Sat, 16 Aug 2025 00:45:55 GMT",
+          "Date": "Tue, 26 Aug 2025 01:37:30 GMT",
           "Server": "scaffolding on HTTPServer2",
-          "Server-Timing": "gfet4t7; dur=490",
+          "Server-Timing": "gfet4t7; dur=386",
           "Vary": "Origin, X-Origin, Referer",
           "X-Content-Type-Options": "nosniff",
           "X-Frame-Options": "SAMEORIGIN",
@@ -414,7 +417,7 @@
           {
             "candidates": [
               {
-                "avgLogprobs": -0.0001479864918759891,
+                "avgLogprobs": -3.0600598880222864e-7,
                 "content": {
                   "parts": [
                     {
@@ -433,7 +436,7 @@
               }
             ],
             "modelVersion": "gemini-2.0-flash",
-            "responseId": "wtSfaKOyNqP-qsMP4tWGiQc",
+            "responseId": "2g-taJW3HJykjrEPtKjg6Qk",
             "usageMetadata": {
               "candidatesTokenCount": 7,
               "candidatesTokensDetails": [
@@ -465,7 +468,7 @@
           "Accept-Encoding": "gzip, deflate",
           "Accept-Language": "*",
           "Connection": "keep-alive",
-          "Content-Length": "1104",
+          "Content-Length": "1120",
           "Content-Type": "application/json",
           "Sec-Fetch-Mode": "cors",
           "Test-Name": "Chats Tests chat automatic function calling test chat automatic function calling"
@@ -582,6 +585,7 @@
                   {
                     "name": "beep",
                     "parametersJsonSchema": {
+                      "properties": {},
                       "type": "object"
                     }
                   }
@@ -590,21 +594,21 @@
             ]
           }
         ],
-        "previousRequest": "7d10ea6a4bfed7b066832dacc7a9143fff99593ab03c969cd07916920b9d2a4d",
+        "previousRequest": "6638f98bc4e1d7b4c5e22e3cfd3062238da80b3bc3a725ddfb304f157b36a1cd",
         "serverAddress": "generativelanguage.googleapis.com",
         "port": 443,
         "protocol": "https"
       },
-      "shaSum": "2daaf73c3e390c6f050451d6886dfde9a7af7c082e7549c2231f6cce6b8728c1",
+      "shaSum": "1930c43f5f7c8023dfc2407d36da2056eee02771c550d3a16f7e39b761334f84",
       "response": {
         "statusCode": 200,
         "headers": {
           "Content-Encoding": "gzip",
-          "Content-Length": "346",
+          "Content-Length": "344",
           "Content-Type": "application/json; charset=UTF-8",
-          "Date": "Sat, 16 Aug 2025 00:45:55 GMT",
+          "Date": "Tue, 26 Aug 2025 01:37:31 GMT",
           "Server": "scaffolding on HTTPServer2",
-          "Server-Timing": "gfet4t7; dur=339",
+          "Server-Timing": "gfet4t7; dur=302",
           "Vary": "Origin, X-Origin, Referer",
           "X-Content-Type-Options": "nosniff",
           "X-Frame-Options": "SAMEORIGIN",
@@ -614,7 +618,7 @@
           {
             "candidates": [
               {
-                "avgLogprobs": -0.000012931480471576964,
+                "avgLogprobs": -0.0000038120862362640243,
                 "content": {
                   "parts": [
                     {
@@ -627,7 +631,7 @@
               }
             ],
             "modelVersion": "gemini-2.0-flash",
-            "responseId": "w9SfaOLFF_GqqsMPq9PUaQ",
+            "responseId": "2g-taK-nNMyE-8YP46TEwQk",
             "usageMetadata": {
               "candidatesTokenCount": 14,
               "candidatesTokensDetails": [

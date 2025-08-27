@@ -728,6 +728,9 @@ export function mcpToGeminiTool(
     description: mcpToolSchema['description'],
     parametersJsonSchema: mcpToolSchema['inputSchema'],
   };
+  if (mcpToolSchema['outputSchema']) {
+    functionDeclaration['responseJsonSchema'] = mcpToolSchema['outputSchema'];
+  }
   if (config.behavior) {
     functionDeclaration['behavior'] = config.behavior;
   }

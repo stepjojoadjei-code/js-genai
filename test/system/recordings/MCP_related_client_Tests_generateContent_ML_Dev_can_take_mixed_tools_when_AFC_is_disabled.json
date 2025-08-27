@@ -11,7 +11,7 @@
           "Accept-Encoding": "gzip, deflate",
           "Accept-Language": "*",
           "Connection": "keep-alive",
-          "Content-Length": "1096",
+          "Content-Length": "1112",
           "Content-Type": "application/json",
           "Sec-Fetch-Mode": "cors",
           "Test-Name": "MCP related client Tests generateContent ML Dev can take mixed tools when AFC is disabled"
@@ -62,6 +62,7 @@
                   {
                     "name": "beep",
                     "parametersJsonSchema": {
+                      "properties": {},
                       "type": "object"
                     }
                   }
@@ -97,16 +98,16 @@
         "port": 443,
         "protocol": "https"
       },
-      "shaSum": "19b1b24c2857bff73c0cc326e7a5d1857e04832467799a8bc551eb84c124b0de",
+      "shaSum": "7be33435698959cd9401e70fa4cd95e4a0b4f6e8284e5707a6c36f8827a7a8d4",
       "response": {
         "statusCode": 200,
         "headers": {
           "Content-Encoding": "gzip",
-          "Content-Length": "414",
+          "Content-Length": "415",
           "Content-Type": "application/json; charset=UTF-8",
-          "Date": "Tue, 26 Aug 2025 01:07:33 GMT",
+          "Date": "Tue, 26 Aug 2025 03:57:23 GMT",
           "Server": "scaffolding on HTTPServer2",
-          "Server-Timing": "gfet4t7; dur=641",
+          "Server-Timing": "gfet4t7; dur=755",
           "Vary": "Origin, X-Origin, Referer",
           "X-Content-Type-Options": "nosniff",
           "X-Frame-Options": "SAMEORIGIN",
@@ -116,7 +117,7 @@
           {
             "candidates": [
               {
-                "avgLogprobs": -0.03483845178897564,
+                "avgLogprobs": -0.04113555871523344,
                 "content": {
                   "parts": [
                     {
@@ -150,7 +151,7 @@
               }
             ],
             "modelVersion": "gemini-2.0-flash",
-            "responseId": "1QitaKUNssz7xg-MprWgDQ",
+            "responseId": "ojCtaMv-M-H9jrEP_aiggAo",
             "usageMetadata": {
               "candidatesTokenCount": 13,
               "candidatesTokensDetails": [
