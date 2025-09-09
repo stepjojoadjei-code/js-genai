@@ -1159,6 +1159,154 @@ export function createBatchJobParametersToMldev(
   return toObject;
 }
 
+export function embedContentConfigToMldev(
+  fromObject: types.EmbedContentConfig,
+  parentObject: Record<string, unknown>,
+): Record<string, unknown> {
+  const toObject: Record<string, unknown> = {};
+
+  const fromTaskType = common.getValueByPath(fromObject, ['taskType']);
+  if (parentObject !== undefined && fromTaskType != null) {
+    common.setValueByPath(
+      parentObject,
+      ['requests[]', 'taskType'],
+      fromTaskType,
+    );
+  }
+
+  const fromTitle = common.getValueByPath(fromObject, ['title']);
+  if (parentObject !== undefined && fromTitle != null) {
+    common.setValueByPath(parentObject, ['requests[]', 'title'], fromTitle);
+  }
+
+  const fromOutputDimensionality = common.getValueByPath(fromObject, [
+    'outputDimensionality',
+  ]);
+  if (parentObject !== undefined && fromOutputDimensionality != null) {
+    common.setValueByPath(
+      parentObject,
+      ['requests[]', 'outputDimensionality'],
+      fromOutputDimensionality,
+    );
+  }
+
+  if (common.getValueByPath(fromObject, ['mimeType']) !== undefined) {
+    throw new Error('mimeType parameter is not supported in Gemini API.');
+  }
+
+  if (common.getValueByPath(fromObject, ['autoTruncate']) !== undefined) {
+    throw new Error('autoTruncate parameter is not supported in Gemini API.');
+  }
+
+  return toObject;
+}
+
+export function embedContentBatchToMldev(
+  apiClient: ApiClient,
+  fromObject: types.EmbedContentBatch,
+): Record<string, unknown> {
+  const toObject: Record<string, unknown> = {};
+
+  const fromContents = common.getValueByPath(fromObject, ['contents']);
+  if (fromContents != null) {
+    common.setValueByPath(
+      toObject,
+      ['requests[]', 'request', 'content'],
+      t.tContentsForEmbed(apiClient, fromContents),
+    );
+  }
+
+  const fromConfig = common.getValueByPath(fromObject, ['config']);
+  if (fromConfig != null) {
+    common.setValueByPath(
+      toObject,
+      ['config'],
+      embedContentConfigToMldev(fromConfig, toObject),
+    );
+  }
+
+  return toObject;
+}
+
+export function embeddingsBatchJobSourceToMldev(
+  apiClient: ApiClient,
+  fromObject: types.EmbeddingsBatchJobSource,
+): Record<string, unknown> {
+  const toObject: Record<string, unknown> = {};
+
+  const fromFileName = common.getValueByPath(fromObject, ['fileName']);
+  if (fromFileName != null) {
+    common.setValueByPath(toObject, ['file_name'], fromFileName);
+  }
+
+  const fromInlinedRequests = common.getValueByPath(fromObject, [
+    'inlinedRequests',
+  ]);
+  if (fromInlinedRequests != null) {
+    common.setValueByPath(
+      toObject,
+      ['requests'],
+      embedContentBatchToMldev(apiClient, fromInlinedRequests),
+    );
+  }
+
+  return toObject;
+}
+
+export function createEmbeddingsBatchJobConfigToMldev(
+  fromObject: types.CreateEmbeddingsBatchJobConfig,
+  parentObject: Record<string, unknown>,
+): Record<string, unknown> {
+  const toObject: Record<string, unknown> = {};
+
+  const fromDisplayName = common.getValueByPath(fromObject, ['displayName']);
+  if (parentObject !== undefined && fromDisplayName != null) {
+    common.setValueByPath(
+      parentObject,
+      ['batch', 'displayName'],
+      fromDisplayName,
+    );
+  }
+
+  return toObject;
+}
+
+export function createEmbeddingsBatchJobParametersToMldev(
+  apiClient: ApiClient,
+  fromObject: types.CreateEmbeddingsBatchJobParameters,
+): Record<string, unknown> {
+  const toObject: Record<string, unknown> = {};
+
+  const fromModel = common.getValueByPath(fromObject, ['model']);
+  if (fromModel != null) {
+    common.setValueByPath(
+      toObject,
+      ['_url', 'model'],
+      t.tModel(apiClient, fromModel),
+    );
+  }
+
+  const fromSrc = common.getValueByPath(fromObject, ['src']);
+  if (fromSrc != null) {
+    common.setValueByPath(
+      toObject,
+      ['batch', 'inputConfig'],
+      embeddingsBatchJobSourceToMldev(apiClient, fromSrc),
+    );
+  }
+
+  const fromConfig = common.getValueByPath(fromObject, ['config']);
+  if (fromConfig != null) {
+    common.setValueByPath(
+      toObject,
+      ['config'],
+      createEmbeddingsBatchJobConfigToMldev(fromConfig, toObject),
+    );
+  }
+
+  return toObject;
+}
+
 export function getBatchJobParametersToMldev(
   apiClient: ApiClient,
   fromObject: types.GetBatchJobParameters,
@@ -1338,6 +1486,15 @@ export function batchJobDestinationToVertex(
   if (common.getValueByPath(fromObject, ['inlinedResponses']) !== undefined) {
     throw new Error(
       'inlinedResponses parameter is not supported in Vertex AI.',
+    );
+  }
+
+  if (
+    common.getValueByPath(fromObject, ['inlinedEmbedContentResponses']) !==
+    undefined
+  ) {
+    throw new Error(
+      'inlinedEmbedContentResponses parameter is not supported in Vertex AI.',
     );
   }
 
@@ -2011,6 +2168,24 @@ export function batchJobDestinationFromMldev(
       });
     }
     common.setValueByPath(toObject, ['inlinedResponses'], transformedList);
+  }
+
+  const fromInlinedEmbedContentResponses = common.getValueByPath(fromObject, [
+    'inlinedEmbedContentResponses',
+    'inlinedResponses',
+  ]);
+  if (fromInlinedEmbedContentResponses != null) {
+    let transformedList = fromInlinedEmbedContentResponses;
+    if (Array.isArray(transformedList)) {
+      transformedList = transformedList.map((item) => {
+        return inlinedEmbedContentResponseFromMldev(item);
+      });
+    }
+    common.setValueByPath(
+      toObject,
+      ['inlinedEmbedContentResponses'],
+      transformedList,
+    );
   }
 
   return toObject;

@@ -4525,6 +4525,11 @@ export declare interface BatchJobDestination {
       the input requests.
        */
   inlinedResponses?: InlinedResponse[];
+  /** The responses to the requests in the batch. Returned when the batch was
+      built using inlined requests. The responses will be in the same order as
+      the input requests.
+       */
+  inlinedEmbedContentResponses?: InlinedEmbedContentResponse[];
 }
 
 /** Config for optional parameters. */
@@ -4594,6 +4599,55 @@ export declare interface BatchJob {
   /** Configuration for the output data.
    */
   dest?: BatchJobDestination;
+}
+
+/** Parameters for the embed_content method. */
+export declare interface EmbedContentBatch {
+  /** The content to embed. Only the `parts.text` fields will be counted.
+   */
+  contents?: ContentListUnion;
+  /** Configuration that contains optional parameters.
+   */
+  config?: EmbedContentConfig;
+}
+
+export declare interface EmbeddingsBatchJobSource {
+  /** The Gemini Developer API's file resource name of the input data
+      (e.g. "files/12345").
+       */
+  fileName?: string;
+  /** The Gemini Developer API's inlined input data to run batch job.
+   */
+  inlinedRequests?: EmbedContentBatch;
+}
+
+/** Config for optional parameters. */
+export declare interface CreateEmbeddingsBatchJobConfig {
+  /** Used to override HTTP request options. */
+  httpOptions?: HttpOptions;
+  /** Abort signal which can be used to cancel the request.
+
+  NOTE: AbortSignal is a client-only operation. Using it to cancel an
+  operation will not cancel the request in the service. You will still
+  be charged usage for any applicable operations.
+       */
+  abortSignal?: AbortSignal;
+  /** The user-defined name of this BatchJob.
+   */
+  displayName?: string;
+}
+
+/** Config for batches.create parameters. */
+export declare interface CreateEmbeddingsBatchJobParameters {
+  /** The name of the model to produces the predictions via the BatchJob.
+   */
+  model?: string;
+  /** input data to run batch job".
+   */
+  src: EmbeddingsBatchJobSource;
+  /** Optional parameters for creating a BatchJob.
+   */
+  config?: CreateEmbeddingsBatchJobConfig;
 }
 
 /** Optional parameters. */
@@ -5034,16 +5088,6 @@ export class SubjectReferenceImage {
     };
     return referenceImageAPI;
   }
-}
-
-/** Parameters for the embed_content method. */
-export declare interface EmbedContentBatch {
-  /** The content to embed. Only the `parts.text` fields will be counted.
-   */
-  contents?: ContentListUnion;
-  /** Configuration that contains optional parameters.
-   */
-  config?: EmbedContentConfig;
 }
 
 /** Sent in response to a `LiveGenerateContentSetup` message from the client. */

@@ -161,6 +161,7 @@ export class Batches extends BaseModule {
     cancel(params: types.CancelBatchJobParameters): Promise<void>;
     // Warning: (ae-forgotten-export) The symbol "types" needs to be exported by the entry point index.d.ts
     create: (params: types.CreateBatchJobParameters) => Promise<types.BatchJob>;
+    createEmbeddings: (params: types.CreateEmbeddingsBatchJobParameters) => Promise<types.BatchJob>;
     delete(params: types.DeleteBatchJobParameters): Promise<types.DeleteResourceJob>;
     get(params: types.GetBatchJobParameters): Promise<types.BatchJob>;
     list: (params?: types.ListBatchJobsParameters) => Promise<Pager<types.BatchJob>>;
@@ -187,6 +188,7 @@ export interface BatchJobDestination {
     fileName?: string;
     format?: string;
     gcsUri?: string;
+    inlinedEmbedContentResponses?: InlinedEmbedContentResponse[];
     inlinedResponses?: InlinedResponse[];
 }
 
@@ -515,6 +517,20 @@ export interface CreateChatParameters {
 }
 
 // @public
+export interface CreateEmbeddingsBatchJobConfig {
+    abortSignal?: AbortSignal;
+    displayName?: string;
+    httpOptions?: HttpOptions;
+}
+
+// @public
+export interface CreateEmbeddingsBatchJobParameters {
+    config?: CreateEmbeddingsBatchJobConfig;
+    model?: string;
+    src: EmbeddingsBatchJobSource;
+}
+
+// @public
 export interface CreateFileConfig {
     abortSignal?: AbortSignal;
     httpOptions?: HttpOptions;
@@ -818,6 +834,12 @@ export class EmbedContentResponse {
     embeddings?: ContentEmbedding[];
     metadata?: EmbedContentMetadata;
     sdkHttpResponse?: HttpResponse;
+}
+
+// @public (undocumented)
+export interface EmbeddingsBatchJobSource {
+    fileName?: string;
+    inlinedRequests?: EmbedContentBatch;
 }
 
 // @public
