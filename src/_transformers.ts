@@ -842,6 +842,10 @@ export function tBatchJobDestination(
   }
 }
 
+export function tRecvBatchJobDestination(dest: object): object {
+  return dest;
+}
+
 export function tBatchJobName(apiClient: ApiClient, name: unknown): string {
   const nameString = name as string;
   if (!apiClient.isVertexAI()) {

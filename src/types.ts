@@ -4481,6 +4481,26 @@ export class InlinedResponse {
   error?: JobError;
 }
 
+/** Config for `response` parameter. */
+export class SingleEmbedContentResponse {
+  /** The response to the request.
+   */
+  embedding?: ContentEmbedding;
+  /** The error encountered while processing the request.
+   */
+  tokenCount?: string;
+}
+
+/** Config for `inlined_embedding_responses` parameter. */
+export class InlinedEmbedContentResponse {
+  /** The response to the request.
+   */
+  response?: SingleEmbedContentResponse;
+  /** The error encountered while processing the request.
+   */
+  error?: JobError;
+}
+
 /** Config for `des` parameter. */
 export declare interface BatchJobDestination {
   /** Storage format of the output files. Must be one of:
@@ -5014,6 +5034,16 @@ export class SubjectReferenceImage {
     };
     return referenceImageAPI;
   }
+}
+
+/** Parameters for the embed_content method. */
+export declare interface EmbedContentBatch {
+  /** The content to embed. Only the `parts.text` fields will be counted.
+   */
+  contents?: ContentListUnion;
+  /** Configuration that contains optional parameters.
+   */
+  config?: EmbedContentConfig;
 }
 
 /** Sent in response to a `LiveGenerateContentSetup` message from the client. */

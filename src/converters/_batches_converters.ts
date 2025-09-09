@@ -1932,6 +1932,63 @@ export function inlinedResponseFromMldev(
   return toObject;
 }
 
+export function contentEmbeddingFromMldev(
+  fromObject: types.ContentEmbedding,
+): Record<string, unknown> {
+  const toObject: Record<string, unknown> = {};
+
+  const fromValues = common.getValueByPath(fromObject, ['values']);
+  if (fromValues != null) {
+    common.setValueByPath(toObject, ['values'], fromValues);
+  }
+
+  return toObject;
+}
+
+export function singleEmbedContentResponseFromMldev(
+  fromObject: types.SingleEmbedContentResponse,
+): Record<string, unknown> {
+  const toObject: Record<string, unknown> = {};
+
+  const fromEmbedding = common.getValueByPath(fromObject, ['embedding']);
+  if (fromEmbedding != null) {
+    common.setValueByPath(
+      toObject,
+      ['embedding'],
+      contentEmbeddingFromMldev(fromEmbedding),
+    );
+  }
+
+  const fromTokenCount = common.getValueByPath(fromObject, ['tokenCount']);
+  if (fromTokenCount != null) {
+    common.setValueByPath(toObject, ['tokenCount'], fromTokenCount);
+  }
+
+  return toObject;
+}
+
+export function inlinedEmbedContentResponseFromMldev(
+  fromObject: types.InlinedEmbedContentResponse,
+): Record<string, unknown> {
+  const toObject: Record<string, unknown> = {};
+
+  const fromResponse = common.getValueByPath(fromObject, ['response']);
+  if (fromResponse != null) {
+    common.setValueByPath(
+      toObject,
+      ['response'],
+      singleEmbedContentResponseFromMldev(fromResponse),
+    );
+  }
+
+  const fromError = common.getValueByPath(fromObject, ['error']);
+  if (fromError != null) {
+    common.setValueByPath(toObject, ['error'], jobErrorFromMldev(fromError));
+  }
+
+  return toObject;
+}
+
 export function batchJobDestinationFromMldev(
   fromObject: types.BatchJobDestination,
 ): Record<string, unknown> {
@@ -2016,7 +2073,7 @@ export function batchJobFromMldev(
     common.setValueByPath(
       toObject,
       ['dest'],
-      batchJobDestinationFromMldev(fromDest),
+      batchJobDestinationFromMldev(t.tRecvBatchJobDestination(fromDest)),
     );
   }
 
@@ -2224,7 +2281,7 @@ export function batchJobFromVertex(
     common.setValueByPath(
       toObject,
       ['dest'],
-      batchJobDestinationFromVertex(fromDest),
+      batchJobDestinationFromVertex(t.tRecvBatchJobDestination(fromDest)),
     );
   }
 

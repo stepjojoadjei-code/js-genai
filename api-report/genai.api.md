@@ -785,6 +785,12 @@ export enum EditMode {
 }
 
 // @public
+export interface EmbedContentBatch {
+    config?: EmbedContentConfig;
+    contents?: ContentListUnion;
+}
+
+// @public
 export interface EmbedContentConfig {
     abortSignal?: AbortSignal;
     autoTruncate?: boolean;
@@ -1587,6 +1593,12 @@ export enum ImagePromptLanguage {
     ko = "ko",
     pt = "pt",
     zh = "zh"
+}
+
+// @public
+export class InlinedEmbedContentResponse {
+    error?: JobError;
+    response?: SingleEmbedContentResponse;
 }
 
 // @public
@@ -2671,6 +2683,12 @@ export interface SessionResumptionConfig {
 
 // @public
 export function setDefaultBaseUrls(baseUrlParams: BaseUrlParameters): void;
+
+// @public
+export class SingleEmbedContentResponse {
+    embedding?: ContentEmbedding;
+    tokenCount?: string;
+}
 
 // @public
 export interface SlidingWindow {
