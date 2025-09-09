@@ -8,9 +8,9 @@
 
 import {ApiClient} from '../_api_client.js';
 import * as common from '../_common.js';
-import * as _internal_types from '../_internal_types.js';
+import type * as _internal_types from '../_internal_types.js';
 import * as t from '../_transformers.js';
-import * as types from '../types.js';
+import type * as types from '../types.js';
 
 export function videoMetadataToMldev(
   fromObject: types.VideoMetadata,
