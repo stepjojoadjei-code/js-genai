@@ -826,8 +826,9 @@ export function functionCallToVertex(
 ): Record<string, unknown> {
   const toObject: Record<string, unknown> = {};
 
-  if (common.getValueByPath(fromObject, ['id']) !== undefined) {
-    throw new Error('id parameter is not supported in Vertex AI.');
+  const fromId = common.getValueByPath(fromObject, ['id']);
+  if (fromId != null) {
+    common.setValueByPath(toObject, ['id'], fromId);
   }
 
   const fromArgs = common.getValueByPath(fromObject, ['args']);
