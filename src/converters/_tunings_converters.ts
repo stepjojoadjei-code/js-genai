@@ -223,6 +223,10 @@ export function createTuningJobConfigToMldev(
     );
   }
 
+  if (common.getValueByPath(fromObject, ['labels']) !== undefined) {
+    throw new Error('labels parameter is not supported in Gemini API.');
+  }
+
   return toObject;
 }
 
@@ -491,6 +495,11 @@ export function createTuningJobConfigToVertex(
 
   if (common.getValueByPath(fromObject, ['learningRate']) !== undefined) {
     throw new Error('learningRate parameter is not supported in Vertex AI.');
+  }
+
+  const fromLabels = common.getValueByPath(fromObject, ['labels']);
+  if (parentObject !== undefined && fromLabels != null) {
+    common.setValueByPath(parentObject, ['labels'], fromLabels);
   }
 
   return toObject;

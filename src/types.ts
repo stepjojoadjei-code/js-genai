@@ -4002,6 +4002,8 @@ export declare interface CreateTuningJobConfig {
   batchSize?: number;
   /** The learning rate hyperparameter for tuning. If not set, a default of 0.001 or 0.0002 will be calculated based on the number of training examples. */
   learningRate?: number;
+  /** Optional. The labels with user-defined metadata to organize TuningJob and generated resources such as Model and Endpoint. Label keys and values can be no longer than 64 characters (Unicode codepoints), can only contain lowercase letters, numeric characters, underscores and dashes. International characters are allowed. See https://goo.gl/xmQnxf for more information and examples of labels. */
+  labels?: Record<string, string>;
 }
 
 /** Supervised fine-tuning job creation parameters - optional fields. */

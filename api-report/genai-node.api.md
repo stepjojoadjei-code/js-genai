@@ -580,6 +580,7 @@ export interface CreateTuningJobConfig {
     epochCount?: number;
     exportLastCheckpointOnly?: boolean;
     httpOptions?: HttpOptions;
+    labels?: Record<string, string>;
     learningRate?: number;
     learningRateMultiplier?: number;
     preTunedModelCheckpointId?: string;
