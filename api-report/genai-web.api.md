@@ -3199,7 +3199,15 @@ export enum VideoCompressionQuality {
 // @public
 export interface VideoGenerationMask {
     image?: Image_2;
-    maskMode?: string;
+    maskMode?: VideoGenerationMaskMode;
+}
+
+// @public
+export enum VideoGenerationMaskMode {
+    INSERT = "INSERT",
+    OUTPAINT = "OUTPAINT",
+    REMOVE = "REMOVE",
+    REMOVE_STATIC = "REMOVE_STATIC"
 }
 
 // @public

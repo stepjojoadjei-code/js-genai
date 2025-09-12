@@ -733,6 +733,33 @@ export enum VideoGenerationReferenceType {
   STYLE = 'STYLE',
 }
 
+/** Enum for the mask mode of a video generation mask. */
+export enum VideoGenerationMaskMode {
+  /**
+   * The image mask contains a masked rectangular region which is
+      applied on the first frame of the input video. The object described in
+      the prompt is inserted into this region and will appear in subsequent
+      frames.
+   */
+  INSERT = 'INSERT',
+  /**
+   * The image mask is used to determine an object in the
+      first video frame to track. This object is removed from the video.
+   */
+  REMOVE = 'REMOVE',
+  /**
+   * The image mask is used to determine a region in the
+      video. Objects in this region will be removed.
+   */
+  REMOVE_STATIC = 'REMOVE_STATIC',
+  /**
+   * The image mask contains a masked rectangular region where
+      the input video will go. The remaining area will be generated. Video
+      masks are not supported.
+   */
+  OUTPAINT = 'OUTPAINT',
+}
+
 /** Enum that controls the compression quality of the generated videos. */
 export enum VideoCompressionQuality {
   /**
@@ -3414,7 +3441,7 @@ export declare interface VideoGenerationMask {
   /** Describes how the mask will be used. Inpainting masks must
       match the aspect ratio of the input video. Outpainting masks can be
       either 9:16 or 16:9. */
-  maskMode?: string;
+  maskMode?: VideoGenerationMaskMode;
 }
 
 /** Configuration for generating videos. */
