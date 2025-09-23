@@ -819,130 +819,6 @@ export function functionDeclarationToVertex(
   return toObject;
 }
 
-export function functionResponseBlobToMldev(
-  fromObject: types.FunctionResponseBlob,
-): Record<string, unknown> {
-  const toObject: Record<string, unknown> = {};
-
-  const fromMimeType = common.getValueByPath(fromObject, ['mimeType']);
-  if (fromMimeType != null) {
-    common.setValueByPath(toObject, ['mimeType'], fromMimeType);
-  }
-
-  const fromData = common.getValueByPath(fromObject, ['data']);
-  if (fromData != null) {
-    common.setValueByPath(toObject, ['data'], fromData);
-  }
-
-  return toObject;
-}
-
-export function functionResponseBlobToVertex(
-  fromObject: types.FunctionResponseBlob,
-): Record<string, unknown> {
-  const toObject: Record<string, unknown> = {};
-
-  const fromMimeType = common.getValueByPath(fromObject, ['mimeType']);
-  if (fromMimeType != null) {
-    common.setValueByPath(toObject, ['mimeType'], fromMimeType);
-  }
-
-  const fromData = common.getValueByPath(fromObject, ['data']);
-  if (fromData != null) {
-    common.setValueByPath(toObject, ['data'], fromData);
-  }
-
-  return toObject;
-}
-
-export function functionResponseFileDataToMldev(
-  fromObject: types.FunctionResponseFileData,
-): Record<string, unknown> {
-  const toObject: Record<string, unknown> = {};
-
-  const fromFileUri = common.getValueByPath(fromObject, ['fileUri']);
-  if (fromFileUri != null) {
-    common.setValueByPath(toObject, ['fileUri'], fromFileUri);
-  }
-
-  const fromMimeType = common.getValueByPath(fromObject, ['mimeType']);
-  if (fromMimeType != null) {
-    common.setValueByPath(toObject, ['mimeType'], fromMimeType);
-  }
-
-  return toObject;
-}
-
-export function functionResponseFileDataToVertex(
-  fromObject: types.FunctionResponseFileData,
-): Record<string, unknown> {
-  const toObject: Record<string, unknown> = {};
-
-  const fromFileUri = common.getValueByPath(fromObject, ['fileUri']);
-  if (fromFileUri != null) {
-    common.setValueByPath(toObject, ['fileUri'], fromFileUri);
-  }
-
-  const fromMimeType = common.getValueByPath(fromObject, ['mimeType']);
-  if (fromMimeType != null) {
-    common.setValueByPath(toObject, ['mimeType'], fromMimeType);
-  }
-
-  return toObject;
-}
-
-export function functionResponsePartToMldev(
-  fromObject: types.FunctionResponsePart,
-): Record<string, unknown> {
-  const toObject: Record<string, unknown> = {};
-
-  const fromInlineData = common.getValueByPath(fromObject, ['inlineData']);
-  if (fromInlineData != null) {
-    common.setValueByPath(
-      toObject,
-      ['inlineData'],
-      functionResponseBlobToMldev(fromInlineData),
-    );
-  }
-
-  const fromFileData = common.getValueByPath(fromObject, ['fileData']);
-  if (fromFileData != null) {
-    common.setValueByPath(
-      toObject,
-      ['fileData'],
-      functionResponseFileDataToMldev(fromFileData),
-    );
-  }
-
-  return toObject;
-}
-
-export function functionResponsePartToVertex(
-  fromObject: types.FunctionResponsePart,
-): Record<string, unknown> {
-  const toObject: Record<string, unknown> = {};
-
-  const fromInlineData = common.getValueByPath(fromObject, ['inlineData']);
-  if (fromInlineData != null) {
-    common.setValueByPath(
-      toObject,
-      ['inlineData'],
-      functionResponseBlobToVertex(fromInlineData),
-    );
-  }
-
-  const fromFileData = common.getValueByPath(fromObject, ['fileData']);
-  if (fromFileData != null) {
-    common.setValueByPath(
-      toObject,
-      ['fileData'],
-      functionResponseFileDataToVertex(fromFileData),
-    );
-  }
-
-  return toObject;
-}
-
 export function functionResponseToMldev(
   fromObject: types.FunctionResponse,
 ): Record<string, unknown> {
@@ -956,17 +832,6 @@ export function functionResponseToMldev(
   const fromScheduling = common.getValueByPath(fromObject, ['scheduling']);
   if (fromScheduling != null) {
     common.setValueByPath(toObject, ['scheduling'], fromScheduling);
-  }
-
-  const fromParts = common.getValueByPath(fromObject, ['parts']);
-  if (fromParts != null) {
-    let transformedList = fromParts;
-    if (Array.isArray(transformedList)) {
-      transformedList = transformedList.map((item) => {
-        return functionResponsePartToMldev(item);
-      });
-    }
-    common.setValueByPath(toObject, ['parts'], transformedList);
   }
 
   const fromId = common.getValueByPath(fromObject, ['id']);
@@ -998,17 +863,6 @@ export function functionResponseToVertex(
 
   if (common.getValueByPath(fromObject, ['scheduling']) !== undefined) {
     throw new Error('scheduling parameter is not supported in Vertex AI.');
-  }
-
-  const fromParts = common.getValueByPath(fromObject, ['parts']);
-  if (fromParts != null) {
-    let transformedList = fromParts;
-    if (Array.isArray(transformedList)) {
-      transformedList = transformedList.map((item) => {
-        return functionResponsePartToVertex(item);
-      });
-    }
-    common.setValueByPath(toObject, ['parts'], transformedList);
   }
 
   const fromId = common.getValueByPath(fromObject, ['id']);
@@ -3915,17 +3769,6 @@ export function toolComputerUseToMldev(
     common.setValueByPath(toObject, ['environment'], fromEnvironment);
   }
 
-  const fromExcludedPredefinedFunctions = common.getValueByPath(fromObject, [
-    'excludedPredefinedFunctions',
-  ]);
-  if (fromExcludedPredefinedFunctions != null) {
-    common.setValueByPath(
-      toObject,
-      ['excludedPredefinedFunctions'],
-      fromExcludedPredefinedFunctions,
-    );
-  }
-
   return toObject;
 }
 
@@ -3937,17 +3780,6 @@ export function toolComputerUseToVertex(
   const fromEnvironment = common.getValueByPath(fromObject, ['environment']);
   if (fromEnvironment != null) {
     common.setValueByPath(toObject, ['environment'], fromEnvironment);
-  }
-
-  const fromExcludedPredefinedFunctions = common.getValueByPath(fromObject, [
-    'excludedPredefinedFunctions',
-  ]);
-  if (fromExcludedPredefinedFunctions != null) {
-    common.setValueByPath(
-      toObject,
-      ['excludedPredefinedFunctions'],
-      fromExcludedPredefinedFunctions,
-    );
   }
 
   return toObject;

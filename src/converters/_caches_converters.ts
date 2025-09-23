@@ -1417,17 +1417,6 @@ export function toolComputerUseToMldev(
     common.setValueByPath(toObject, ['environment'], fromEnvironment);
   }
 
-  const fromExcludedPredefinedFunctions = common.getValueByPath(fromObject, [
-    'excludedPredefinedFunctions',
-  ]);
-  if (fromExcludedPredefinedFunctions != null) {
-    common.setValueByPath(
-      toObject,
-      ['excludedPredefinedFunctions'],
-      fromExcludedPredefinedFunctions,
-    );
-  }
-
   return toObject;
 }
 
@@ -1439,17 +1428,6 @@ export function toolComputerUseToVertex(
   const fromEnvironment = common.getValueByPath(fromObject, ['environment']);
   if (fromEnvironment != null) {
     common.setValueByPath(toObject, ['environment'], fromEnvironment);
-  }
-
-  const fromExcludedPredefinedFunctions = common.getValueByPath(fromObject, [
-    'excludedPredefinedFunctions',
-  ]);
-  if (fromExcludedPredefinedFunctions != null) {
-    common.setValueByPath(
-      toObject,
-      ['excludedPredefinedFunctions'],
-      fromExcludedPredefinedFunctions,
-    );
   }
 
   return toObject;

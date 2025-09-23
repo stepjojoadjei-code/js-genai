@@ -2305,17 +2305,6 @@ export function toolComputerUseToMldev(
     common.setValueByPath(toObject, ['environment'], fromEnvironment);
   }
 
-  const fromExcludedPredefinedFunctions = common.getValueByPath(fromObject, [
-    'excludedPredefinedFunctions',
-  ]);
-  if (fromExcludedPredefinedFunctions != null) {
-    common.setValueByPath(
-      toObject,
-      ['excludedPredefinedFunctions'],
-      fromExcludedPredefinedFunctions,
-    );
-  }
-
   return toObject;
 }
 
