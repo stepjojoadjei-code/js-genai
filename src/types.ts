@@ -1085,12 +1085,53 @@ export declare interface ExecutableCode {
   language?: Language;
 }
 
+/** Raw media bytes for function response.
+
+  Text should not be sent as raw bytes, use the FunctionResponse.response
+  field.
+   */
+export class FunctionResponseBlob {
+  /** Required. The IANA standard MIME type of the source data. */
+  mimeType?: string;
+  /** Required. Inline media bytes.
+   * @remarks Encoded as base64 string. */
+  data?: string;
+}
+
+/** URI based data for function response. */
+export class FunctionResponseFileData {
+  /** Required. URI. */
+  fileUri?: string;
+  /** Required. The IANA standard MIME type of the source data. */
+  mimeType?: string;
+}
+
+/** A datatype containing media that is part of a `FunctionResponse` message.
+
+  A `FunctionResponsePart` consists of data which has an associated datatype. A
+  `FunctionResponsePart` can only contain one of the accepted types in
+  `FunctionResponsePart.data`.
+
+  A `FunctionResponsePart` must have a fixed IANA MIME type identifying the
+  type and subtype of the media if the `inline_data` field is filled with raw
+  bytes.
+   */
+export class FunctionResponsePart {
+  /** Optional. Inline media bytes. */
+  inlineData?: FunctionResponseBlob;
+  /** Optional. URI based data. */
+  fileData?: FunctionResponseFileData;
+}
+
 /** A function response. */
 export class FunctionResponse {
   /** Signals that function call continues, and more responses will be returned, turning the function call into a generator. Is only applicable to NON_BLOCKING function calls (see FunctionDeclaration.behavior for details), ignored otherwise. If false, the default, future responses will not be considered. Is only applicable to NON_BLOCKING function calls, is ignored otherwise. If set to false, future responses will not be considered. It is allowed to return empty `response` with `will_continue=False` to signal that the function call is finished. */
   willContinue?: boolean;
   /** Specifies how the response should be scheduled in the conversation. Only applicable to NON_BLOCKING function calls, is ignored otherwise. Defaults to WHEN_IDLE. */
   scheduling?: FunctionResponseScheduling;
+  /** List of parts that constitute a function response. Each part may
+      have a different IANA MIME type. */
+  parts?: FunctionResponsePart[];
   /** Optional. The id of the function call this response is for. Populated by the client to match the corresponding function call `id`. */
   id?: string;
   /** Required. The name of the function to call. Matches [FunctionDeclaration.name] and [FunctionCall.name]. */
@@ -1508,6 +1549,12 @@ export declare interface UrlContext {}
 export declare interface ToolComputerUse {
   /** Required. The environment being operated. */
   environment?: Environment;
+  /** By default, predefined functions are included in the final model call.
+    Some of them can be explicitly excluded from being automatically included.
+    This can serve two purposes:
+      1. Using a more restricted / different action space.
+      2. Improving the definitions / instructions of predefined functions. */
+  excludedPredefinedFunctions?: string[];
 }
 
 /** The API secret. */
