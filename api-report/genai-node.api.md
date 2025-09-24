@@ -1058,28 +1058,9 @@ export interface FunctionDeclaration {
 export class FunctionResponse {
     id?: string;
     name?: string;
-    parts?: FunctionResponsePart[];
     response?: Record<string, unknown>;
     scheduling?: FunctionResponseScheduling;
     willContinue?: boolean;
-}
-
-// @public
-export class FunctionResponseBlob {
-    data?: string;
-    mimeType?: string;
-}
-
-// @public
-export class FunctionResponseFileData {
-    fileUri?: string;
-    mimeType?: string;
-}
-
-// @public
-export class FunctionResponsePart {
-    fileData?: FunctionResponseFileData;
-    inlineData?: FunctionResponseBlob;
 }
 
 // @public
@@ -2930,7 +2911,6 @@ export interface ToolCodeExecution {
 // @public
 export interface ToolComputerUse {
     environment?: Environment;
-    excludedPredefinedFunctions?: string[];
 }
 
 // @public
