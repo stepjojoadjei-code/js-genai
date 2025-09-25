@@ -966,12 +966,16 @@ export function tJobState(state: unknown): string {
     return 'JOB_STATE_UNSPECIFIED';
   } else if (stateString === 'BATCH_STATE_PENDING') {
     return 'JOB_STATE_PENDING';
+  } else if (stateString === 'BATCH_STATE_RUNNING') {
+    return 'JOB_STATE_RUNNING';
   } else if (stateString === 'BATCH_STATE_SUCCEEDED') {
     return 'JOB_STATE_SUCCEEDED';
   } else if (stateString === 'BATCH_STATE_FAILED') {
     return 'JOB_STATE_FAILED';
   } else if (stateString === 'BATCH_STATE_CANCELLED') {
     return 'JOB_STATE_CANCELLED';
+  } else if (stateString === 'BATCH_STATE_EXPIRED') {
+    return 'JOB_STATE_EXPIRED';
   } else {
     return stateString;
   }
