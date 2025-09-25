@@ -194,17 +194,6 @@ export function createTuningJobConfigToVertex(
     );
   }
 
-  const fromPreTunedModelCheckpointId = common.getValueByPath(fromObject, [
-    'preTunedModelCheckpointId',
-  ]);
-  if (fromPreTunedModelCheckpointId != null) {
-    common.setValueByPath(
-      toObject,
-      ['preTunedModel', 'checkpointId'],
-      fromPreTunedModelCheckpointId,
-    );
-  }
-
   const fromAdapterSize = common.getValueByPath(fromObject, ['adapterSize']);
   if (parentObject !== undefined && fromAdapterSize != null) {
     common.setValueByPath(

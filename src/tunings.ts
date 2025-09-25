@@ -70,6 +70,9 @@ export class Tunings extends BaseModule {
         const preTunedModel: types.PreTunedModel = {
           tunedModelName: params.baseModel,
         };
+        if (params.config?.preTunedModelCheckpointId) {
+          preTunedModel.checkpointId = params.config.preTunedModelCheckpointId;
+        }
         const paramsPrivate: types.CreateTuningJobParametersPrivate = {
           ...params,
           preTunedModel: preTunedModel,
